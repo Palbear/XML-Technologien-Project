@@ -7,3 +7,9 @@ How to run BaseX:
 3. On Mac/Linux run the script basexserver / on Windows ruin basexserver.bat
 4. Now BaseX is running on port 1984
 
+Note: please add these two line to the .gitignore file or in the GitHub Desktop Application, Go to Repository -> Repository Settings -> Ignored Files :
+*/target/*
+*/target/**
+
+
+
