@@ -8,7 +8,7 @@ Application is assembled with [Spring Boot Initializr](https://start.spring.io/)
 
 ## Prerequisites
 
-In order to run the demo you need the follwoing thinks:
+In order to run the demo you need the following things:
 - [Eclipse IDE for Java EE developers](https://www.eclipse.org/downloads/eclipse-packages/)
 - [Node.js LTS](https://nodejs.org/en/)
 - [Atom editor](https://atom.io/) with the following packages:
@@ -28,4 +28,4 @@ In order to run and play with the demo you need to:
 5. Run the ReactJS part in development mode
     - Open Command Prompt in `src/main/frontend` folder
     - Run `npm start`
-    - You're default web browser will appear
+    - Your default web browser will appear
