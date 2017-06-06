@@ -11,7 +11,7 @@ Application is assembled with [Spring Boot Initializr](https://start.spring.io/)
 In order to run the demo you need the follwoing thinks:
 - [Eclipse IDE for Java EE developers](https://www.eclipse.org/downloads/eclipse-packages/)
 - [Node.js LTS](https://nodejs.org/en/)
-- [Atom editor](https://atom.io/) with the follwoing packeges:
+- [Atom editor](https://atom.io/) with the following packages:
     - [language-babel](https://atom.io/packages/language-babel)
     - [linter-eslint](https://atom.io/packages/linter-eslint)
     - [js-hyperclick](https://atom.io/packages/js-hyperclick) (you need to install first [hyperclick](https://atom.io/packages/hyperclick))
