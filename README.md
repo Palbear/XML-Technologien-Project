@@ -1,4 +1,17 @@
-# XML-Technologien-Project
+# XML-Technologien-Project 2017
+
+## Beschreibung
+
+Kursseite: https://www.mi.fu-berlin.de/inf/groups/hcc/teaching/Sommersemester-2017/XML-Technologien.html
+
+Datensatz: Gemälde - Nationalmuseum Schweden (https://github.com/NationalmuseumSWE/WikidataCollection). 
+ 
+Der Datensatz ist ein Teil der Sammlung des Nationalmuseums in Stockholm. Dieser Teil betrifft etwa 4500 Gemälde. 
+Das Nationalmuseum Schweden stellte LIDO-xml als Grundlage für die Importe zur Verfügung. 
+Folgende Metadaten sind eingeschlossen: Künstler, Titel, Informationen zu den Medien und Dimensionen und öfters Informationen zu den abgebildeten Personen. 
+Der Datensatz ist auf Wikidata verfügbar: http://tools.wmflabs.org/autolist/autolist1.html?props=217&q=CLAIM%5B195%3A842858%5D
+
+
 ## Initial Commit von Github-Desktop-Client
 
 How to run BaseX:
