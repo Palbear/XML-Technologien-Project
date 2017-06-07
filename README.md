@@ -6,11 +6,11 @@ Kursseite: https://www.mi.fu-berlin.de/inf/groups/hcc/teaching/Sommersemester-20
 
 Datensatz: Gemälde - Nationalmuseum Schweden (https://github.com/NationalmuseumSWE/WikidataCollection). 
  
+Datensatz auf Wikidata: http://tools.wmflabs.org/autolist/autolist1.html?props=217&q=CLAIM%5B195%3A842858%5D
+
 Der Datensatz ist ein Teil der Sammlung des Nationalmuseums in Stockholm. Dieser Teil betrifft etwa 4500 Gemälde. 
 Das Nationalmuseum Schweden stellte LIDO-xml als Grundlage für die Importe zur Verfügung. 
 Folgende Metadaten sind eingeschlossen: Künstler, Titel, Informationen zu den Medien und Dimensionen und öfters Informationen zu den abgebildeten Personen. 
-Der Datensatz ist auf Wikidata verfügbar: http://tools.wmflabs.org/autolist/autolist1.html?props=217&q=CLAIM%5B195%3A842858%5D
-
 
 ## Initial Commit von Github-Desktop-Client
 
