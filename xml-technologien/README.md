@@ -22,7 +22,7 @@ In order to run and play with the demo you need to:
 1. Clone the project from GitHub
 2. Import the project in Eclipse as `Existing Maven Project`
 3. Import the  `src/main/frontend` foledr in Atom as `Open Project Folder`
-4. Run the Sprong Boot application from Eclipse as normal Java Application
+4. Run the Spring Boot application from Eclipse as normal Java Application
     - Locate Application.java file
     - Run As > Java Application
 5. Run the ReactJS part in development mode
