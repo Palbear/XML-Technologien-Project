@@ -27,7 +27,7 @@ export default class AddMatchDialog extends React.Component {
           secondary
           fixed
         >
-          add
+          search
         </Button>
         <Dialog
           id="speedBoost"

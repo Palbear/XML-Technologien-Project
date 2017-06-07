@@ -12,6 +12,7 @@ const breadcrumbs = (
     <ListItem url="/">Home</ListItem>
     <ListItem url="/products">Products</ListItem>
     <ListItem url="/products/iphone-7-plus">iPhone 7 Plus</ListItem>
+    <ListItem url="/artists">Artists</ListItem>
   </BreadcrumbList>
 )
 

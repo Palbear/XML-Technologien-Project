@@ -1,6 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
-    xmlns:th="http://www.thymeleaf.org" 
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
   <head>
@@ -20,40 +20,50 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>XML-Tech App</title>
   </head>
   <body>
     <div id="root"></div>
-    <h1>Hello, world!</h1>
 
-    <!--
-      Implementing example of ListItem with React.js by importing BreadcrumbList and ListItem into index.js
-      Source: https://www.npmjs.com/package/react-semantic-breadcrumbs
-      Implementing RDFa should be the same (included as import in index.js)
-    -->
+    <div class="home-container">
 
-    <ol vocab="http://schema.org/" typeof="BreadcrumbList">
-   <li property="itemListElement" typeof="ListItem">
-     <a property="item" typeof="Thing" href="/">
-       <span property="name">Home</span>
-     </a> >
-     <meta property="position" content="1" />
-   </li>
-   <li property="itemListElement" typeof="ListItem">
-     <a property="item" typeof="Thing" href="/products">
-       <span property="name">Products</span>
-     </a> >
-     <meta property="position" content="2" />
-   </li>
-   <li property="itemListElement" typeof="ListItem">
-     <a property="item" typeof="Thing" href="/products/iphone-7-plus">
-       <span property="name">iPhone 7 Plus</span>
-     </a>
-     <meta property="position" content="3" />
-   </li>
- </ol>
+      <h1>XML-Tech App</h1>
+      <h3>Datensatz: Gemälde - Nationalmuseum Schweden</h3>
+      
+      <!--
+        Implementing example of ListItem with React.js by importing BreadcrumbList and ListItem into index.js
+        Source: https://www.npmjs.com/package/react-semantic-breadcrumbs
+        Implementing RDFa should be the same (included as import in index.js)
+      -->
 
+      <ol vocab="http://schema.org/" typeof="BreadcrumbList">
+        <li property="itemListElement" typeof="ListItem">
+          <a property="item" typeof="Thing" href="/">
+            <span property="name">Home</span>
+          </a> >
+          <meta property="position" content="1" />
+        </li>
+        <li property="itemListElement" typeof="ListItem">
+          <a property="item" typeof="Thing" href="/products">
+            <span property="name">Products</span>
+          </a> >
+          <meta property="position" content="2" />
+        </li>
+        <li property="itemListElement" typeof="ListItem">
+          <a property="item" typeof="Thing" href="/products/iphone-7-plus">
+            <span property="name">iPhone 7</span>
+          </a>
+          <meta property="position" content="3" />
+        </li>
+        <li property="itemListElement" typeof="ListItem">
+          <a property="item" typeof="Thing" href="/artists">
+            <span property="name">Artists</span>
+          </a> >
+          <meta property="position" content="4" />
+        </li>
+      </ol>
 
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
