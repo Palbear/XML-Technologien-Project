@@ -10,9 +10,16 @@ import { BreadcrumbList, ListItem, RDFaBreadcrumbList, RDFaListItem, MicrodataBr
 const breadcrumbs = (
   <BreadcrumbList format="RDFa" separator=" > ">
     <ListItem url="/">Home</ListItem>
-    <ListItem url="/products">Products</ListItem>
-    <ListItem url="/products/iphone-7-plus">iPhone 7 Plus</ListItem>
     <ListItem url="/artists">Artists</ListItem>
+    <ListItem url="/artists/leonardo-da-vinci">Leonardo da Vinci</ListItem>
+  </BreadcrumbList>
+)
+
+const breadcrumbsPaintings = (
+  <BreadcrumbList format="RDFa" separator=" > ">
+    <ListItem url="/">Home</ListItem>
+    <ListItem url="/paintings">Paintings</ListItem>
+    <ListItem url="/paintings/mona-lisa">Mona Lisa</ListItem>
   </BreadcrumbList>
 )
 

@@ -1,11 +1,40 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 16px;
   font-family: sans-serif;
 }
 
-.home-container {
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-bottom: 16px;
+ol.breadcrumbs-list, ul {
+    list-style: none;
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumbs-list li {
+    display: inline;
+    color: #ccc;
+}
+
+.breadcrumbs-list a {
+    color: #5a94aa;
+    text-decoration: none
+}
+.breadcrumbs-list a:hover {
+    color: #666;
+    text-decoration: underline
+}
+
+.breadcrumbs-list li.last a {
+    color: #666;
+}
+
+pre {
+    margin-top: 40px;
+    border: 1px solid #ccc;
+    background: #f6f6f6;
+    padding: 20px;
+    font-size: 14px;
+    color: #666;
+    overflow: scroll;
 }

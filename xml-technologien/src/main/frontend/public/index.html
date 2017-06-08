@@ -25,18 +25,18 @@
   <body>
     <div id="root"></div>
 
-    <div class="home-container">
-
       <h1>XML-Tech App</h1>
       <h3>Datensatz: Gemälde - Nationalmuseum Schweden</h3>
-      
+
       <!--
         Implementing example of ListItem with React.js by importing BreadcrumbList and ListItem into index.js
         Source: https://www.npmjs.com/package/react-semantic-breadcrumbs
         Implementing RDFa should be the same (included as import in index.js)
       -->
 
-      <ol vocab="http://schema.org/" typeof="BreadcrumbList">
+      <p>Breadcrumbs Paintings</p>
+
+      <ol vocab="http://schema.org/" typeof="BreadcrumbList" class="breadcrumbs-list">
         <li property="itemListElement" typeof="ListItem">
           <a property="item" typeof="Thing" href="/">
             <span property="name">Home</span>
@@ -44,26 +44,42 @@
           <meta property="position" content="1" />
         </li>
         <li property="itemListElement" typeof="ListItem">
-          <a property="item" typeof="Thing" href="/products">
-            <span property="name">Products</span>
+          <a property="item" typeof="Thing" href="/paintings">
+            <span property="name">Paintings</span>
           </a> >
           <meta property="position" content="2" />
         </li>
         <li property="itemListElement" typeof="ListItem">
-          <a property="item" typeof="Thing" href="/products/iphone-7-plus">
-            <span property="name">iPhone 7</span>
+          <a property="item" typeof="Thing" href="/paintings/mona-lisa">
+            <span property="name">Mona Lisa</span>
           </a>
           <meta property="position" content="3" />
+        </li>
+      </ol>
+
+      <p>Breadcrumbs Artists</p>
+
+      <ol vocab="http://schema.org/" typeof="BreadcrumbList" class="breadcrumbs-list">
+        <li property="itemListElement" typeof="ListItem">
+          <a property="item" typeof="Thing" href="/">
+            <span property="name">Home</span>
+          </a> >
+          <meta property="position" content="1" />
         </li>
         <li property="itemListElement" typeof="ListItem">
           <a property="item" typeof="Thing" href="/artists">
             <span property="name">Artists</span>
           </a> >
-          <meta property="position" content="4" />
+          <meta property="position" content="2" />
+        </li>
+        <li property="itemListElement" typeof="ListItem">
+          <a property="item" typeof="Thing" href="/artists/leonardo-da-vinci">
+            <span property="name">Leonardo da Vinci</span>
+          </a>
+          <meta property="position" content="3" />
         </li>
       </ol>
 
-    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
