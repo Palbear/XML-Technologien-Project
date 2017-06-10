@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery'
 import MatchCard from './MatchCard'
 import AddMatchDialog from './AddMatchDialog'
+import './App.css'
 
 export default class App extends React.Component {
    state = {

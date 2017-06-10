@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 import './index.css';
 import { BreadcrumbList, ListItem, RDFaBreadcrumbList, RDFaListItem, MicrodataBreadcrumbList, MicrodataListItem } from 'react-semantic-breadcrumbs'
 
-
 const breadcrumbs = (
   <BreadcrumbList format="RDFa" separator=" > ">
     <ListItem url="/">Home</ListItem>
