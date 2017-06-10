@@ -16,12 +16,16 @@
                             <xsl:value-of select="lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap//lido:event/lido:eventActor//lido:actor//lido:appellationValue" />
                         </th>
                     </tr>
+                    
                     <tr>
                         <th bgcolor="#9acd32">Date</th>
                         <th>
-                            <xsl:value-of select="lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap//lido:event/lido:eventDate/lido:displayDate" />
+        					<xsl:for-each select="lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap//lido:event/lido:eventDate/lido:displayDate">
+        		 				<xsl:value-of select="." /> <br />
+							</xsl:for-each> 
                         </th>
-                    </tr>
+                    </tr>                  
+                    
                     <tr>
                         <th bgcolor="#9acd32">Category</th>
                         <th>
