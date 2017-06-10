@@ -17,7 +17,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <th bgcolor="#9acd32">Dating</th>
+                        <th bgcolor="#9acd32">Date</th>
                         <th>
                             <xsl:value-of select="lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap//lido:event/lido:eventDate/lido:displayDate" />
                         </th>
