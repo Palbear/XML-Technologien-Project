@@ -1,10 +1,42 @@
 body {
   margin: 0;
-  padding: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
   font-family: sans-serif;
 }
 
-ol.breadcrumbs-list, ul {
+nav {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+    nav ul li {
+        display: inline-block;
+        list-style-type: none;
+
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+    }
+
+        nav > ul > li > a {
+            color: #5a94aa;
+            display: block;
+            line-height: 48px;
+            padding: 0 16px;
+            text-decoration: none;
+        }
+
+.breadcrumbs-list ol, .breadcrumbs-list ul {
     list-style: none;
     display: inline;
     padding: 0;
