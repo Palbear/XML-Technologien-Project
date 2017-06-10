@@ -4,6 +4,7 @@ import MatchCard from './MatchCard'
 import AddMatchDialog from './AddMatchDialog'
 import './App.css'
 import BCrumbs from './BCrumbs';
+import PaintingList from './PaintingList';
 
 export default class App extends React.Component {
    state = {
@@ -26,7 +27,9 @@ export default class App extends React.Component {
         </div>
         
         <div className="App">   	
-        	<BCrumbs name="Tester" />
+        	<BCrumbs name="Tester" />       	
+        	<h4>Sample paintings list</h4>
+        	<PaintingList />
         </div>
         
         <AddMatchDialog />
