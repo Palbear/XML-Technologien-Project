@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:lido="http://www.lido-schema.org">
+<xsl:template match="/">
+  <html>
+    <body>
+      <table border="1">
+        <tr>
+          <th bgcolor="#9acd32"> Title </th>
+          <th>
+             <xsl:value-of select="lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:titleWrap/lido:titleSet/lido:appellationValue" />
+          </th>
+        </tr>
+        <tr>
+          <th bgcolor="#9acd32">Artist/Maker</th>
+          <th>
+            <xsl:value-of select="lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap/lido:eventSet/lido:event/lido:eventActor/lido:actorInRole/lido:roleActor/lido:term" />
+          </th>
+        </tr>
+        <tr>
+          <th bgcolor="#9acd32">Dating</th>
+          <th>
+            <xsl:value-of select="lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap/lido:eventSet/lido:event/lido:eventDate/lido:displayDate" />
+          </th>
+        </tr>
+        <tr>
+          <th bgcolor="#9acd32">Category</th>
+          <th>
+            <xsl:value-of select="lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectClassificationWrap/lido:objectWorkTypeWrap/lido:objectWorkType/lido:term" />
+          </th>
+        </tr>
+<tr>
+          <th bgcolor="#9acd32">Depicted Person</th>
+          <th>
+            <xsl:value-of select="lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:objectRelationWrap/lido:subjectWrap/lido:subjectSet/lido:subject/lido:subjectActor/lido:actor/lido:nameActorSet/lido:appellationValue" />
+          </th>
+        </tr>
+        <th bgcolor="#9acd32">Technique/Material</th>
+        <th>
+          <xsl:value-of select="lido:lidoWrap/lido:lido/lido:descriptiveMetadata/lido:eventWrap/lido:eventSet/lido:event/lido:eventMaterialsTech/lido:displayMaterialsTech" />
+        </th>
+        </tr>
+      </table>
+    </body>
+  </html>
+</xsl:template>
+</xsl:stylesheet>
