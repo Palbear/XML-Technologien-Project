@@ -3,6 +3,7 @@ import $ from 'jquery'
 import MatchCard from './MatchCard'
 import AddMatchDialog from './AddMatchDialog'
 import './App.css'
+import BCrumbs from './BCrumbs';
 
 export default class App extends React.Component {
    state = {
@@ -23,6 +24,11 @@ export default class App extends React.Component {
             <MatchCard match={match}/>
           )}
         </div>
+        
+        <div className="App">   	
+        	<BCrumbs name="Tester" />
+        </div>
+        
         <AddMatchDialog />
       </div>
     )
