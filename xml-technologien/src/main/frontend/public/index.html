@@ -21,8 +21,9 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>XML-Tech App</title>
+    <script type="text/javascript" src="%PUBLIC_URL%/xslt-script.js"></script>
   </head>
-  <body>
+  <body onload="displayResult()">
   
     <header>
     	<h2>XML Tech App</h2>
@@ -36,6 +37,8 @@
           <li><a href="artist.html"> Sample Artist</a></li>
       </ul>
     </nav>
+    
+    <div id="example"></div>
     
     <div id="root"></div>
 
