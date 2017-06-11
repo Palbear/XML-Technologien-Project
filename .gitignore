@@ -3,6 +3,6 @@
 node_modules
 build
 .DS_Store
-xml-technologien/.classpath
-xml-technologien/.project
-xml-technologien/.settings/org.eclipse*
+*/.classpath
+*/.project
+*/.settings/org.eclipse*
