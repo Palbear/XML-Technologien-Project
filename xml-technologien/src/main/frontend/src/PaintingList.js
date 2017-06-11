@@ -9,40 +9,40 @@ class PaintingList extends Component {
 	constructor(props) {
 		  super(props);
 		  this.state = { 
-				  paintings: [
-					  ["19568", "Bonde från Nordingrå", "Farmer from Nordingrå"], 
-					  ["19928", "Vattenfall, Porjus", "Waterfall, Porjus"], 
-					  ["20011", "Ångermanälven", "The River Ångermanälven"], 
-					  ["20147", "Islossning, Faxälven", "The Ice Breaks up, Faxälven"], 
-					  ["20202", "Utsikt över Ragunda, Jämtland", "View of Ragunda, Jämtland"], 
-					  ["21072", "Motiv från Seine", "Motif from the Seine"], 
-					  ["21576", "Forsande bäck", "Cascading Brook"], 
-					  ["22602", "Dam i svart hatt", "Lady in a Black Hat"], 
-					  ["22985", "Bränningen. Motiv från Medelhavet", "The Mediterranean Breaker"], 
-					  ["23192", "Banarbetare", "Navvy"], 
-					  ["23247", "Flickan från Skottland", "The Scotch Girl"], 
-					  ["23414", "Höstafton, Nordingrå", "Autumn, Nordingrå"], 
-					  ["23415", "Vithårig lapp, Kvikkjokk", "White-Haired Lapp, Kvikkjokk"], 
-					  ["23420", "Hösten", "Autumn"], 
-					  ["23743", "Sommarafton vid Kallsjön", "A Summer Evening by Kallsjön"], 
-					  ["23835", "På väg mot Stora Sjöfallet", "On the Way to Stora Sjöfallet"], 
-					  ["23836", "Fiskarstugor vid älven. Motiv från Granvåg vid Faxälven", "Fishing Cottages by the River. Motif from Granvåg, Faxälven"], 
-					  ["23837", "Bonn am Rhein. Vinterlandskap", "Bonn am Rhein. Winter Landscape"], 
-					  ["23838", "Porträtt av folkhögskolelärare Andersson i Fränsta", "Mr Andersson from Främsta, Folh High School Teacher"], 
-					  ["25317", "På väg till Sjöfallet", "On the Way to 'Sjöfallet'"], 
-					  ["25318", "Modellstudie", "Study of a Model"], 
-					  ["25319", "Liggande modell", "Recumbent Modell"], 
-					  ["25630", "Torne träsk om våren", "Torne Marsh in Spring"], 
-					  ["36623", "Utsikt från Klocka", "Förstudie till Hösten"] 	  		  
-				 ]
+				 paintings : [
+					  {recordId: 19568, name: "Bonde från Nordingrå", nameEn: "Farmer from Nordingrå"},
+					  {recordId: 19928, name: "Vattenfall, Porjus", nameEn: "Waterfall, Porjus"}, 
+					  {recordId: 20011, name: "Ångermanälven", nameEn: "The River Ångermanälven"}, 
+					  {recordId: 20147, name: "Islossning, Faxälven", nameEn: "The Ice Breaks up, Faxälven"}, 
+					  {recordId: 20202, name: "Utsikt över Ragunda, Jämtland", nameEn: "View of Ragunda, Jämtland"}, 
+					  {recordId: 21072, name: "Motiv från Seine", nameEn: "Motif from the Seine"}, 
+					  {recordId: 21576, name: "Forsande bäck", nameEn: "Cascading Brook"}, 
+					  {recordId: 22602, name: "Dam i svart hatt", nameEn: "Lady in a Black Hat"}, 
+					  {recordId: 22985, name: "Bränningen. Motiv från Medelhavet", nameEn: "The Mediterranean Breaker"}, 
+					  {recordId: 23192, name: "Banarbetare", nameEn: "Navvy"}, 
+					  {recordId: 23247, name: "Flickan från Skottland", nameEn: "The Scotch Girl"}, 
+					  {recordId: 23414, name: "Höstafton, Nordingrå", nameEn: "Autumn, Nordingrå"}, 
+					  {recordId: 23415, name: "Vithårig lapp, Kvikkjokk", nameEn: "White-Haired Lapp, Kvikkjokk"}, 
+					  {recordId: 23420, name: "Hösten", nameEn: "Autumn"}, 
+					  {recordId: 23743, name: "Sommarafton vid Kallsjön", nameEn: "A Summer Evening by Kallsjön"}, 
+					  {recordId: 23835, name: "På väg mot Stora Sjöfallet", nameEn: "On the Way to Stora Sjöfallet"}, 
+					  {recordId: 23836, name: "Fiskarstugor vid älven. Motiv från Granvåg vid Faxälven", nameEn: "Fishing Cottages by the River. Motif from Granvåg, Faxälven"}, 
+					  {recordId: 23837, name: "Bonn am Rhein. Vinterlandskap", nameEn: "Bonn am Rhein. Winter Landscape"}, 
+					  {recordId: 23838, name: "Porträtt av folkhögskolelärare Andersson i Fränsta", nameEn: "Mr Andersson from Främsta, Folh High School Teacher"}, 
+					  {recordId: 25317, name: "På väg till Sjöfallet", nameEn: "On the Way to 'Sjöfallet'"}, 
+					  {recordId: 25318, name: "Modellstudie", nameEn: "Study of a Model"}, 
+					  {recordId: 25319, name: "Liggande modell", nameEn: "Recumbent Modell"}, 
+					  {recordId: 25630, name: "Torne träsk om våren", nameEn: "Torne Marsh in Spring"}, 
+					  {recordId: 36623, name: "Utsikt från Klocka", nameEn: "Förstudie till Hösten"}	  
+					]
 		  };
 		}
 	
-	renderPaintings() {
-			return this.state.paintings.map(name => (
-				<PaintingListItem key={name[0]} name={name[1]} nameEn={name[2]} recordId={name[0]} />
-		  ));
-		}
+	renderPaintings() {	
+		return this.state.paintings.map(name => (
+				<PaintingListItem name={name.name} nameEn={name.nameEn} recordId={name.recordId} />
+	  ));
+	}
 	
 	render() {
 	    return (
