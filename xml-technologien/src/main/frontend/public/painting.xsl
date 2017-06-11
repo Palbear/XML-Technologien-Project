@@ -14,13 +14,18 @@
                     <tr>
                         <th bgcolor="#9acd32"> Title </th>
                         <th>
-                            <xsl:value-of select="//lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:titleWrap//lido:appellationValue" />
+                            <xsl:for-each select="//lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:titleWrap//lido:appellationValue">
+        		 				<xsl:value-of select="." /> <br />
+							</xsl:for-each> 
                         </th>
                     </tr>
                     <tr>
                         <th bgcolor="#9acd32">Artist/Maker</th>
                         <th>
-                            <xsl:value-of select="//lido:descriptiveMetadata/lido:eventWrap//lido:event/lido:eventActor//lido:actor//lido:appellationValue" />
+                            <xsl:for-each select="//lido:descriptiveMetadata/lido:eventWrap//lido:event">
+                            	<xsl:value-of select="./lido:eventType/lido:term" /> - 
+        		 				<xsl:value-of select=".//lido:eventActor//lido:actor//lido:appellationValue" /> <br />
+							</xsl:for-each>
                         </th>
                     </tr>
                     

@@ -2,39 +2,42 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:lido="http://www.lido-schema.org">
 
 <xsl:template match="/">
-	<html>
-	<body>
-  		<h2>Painting Item</h2>  
-  		<xsl:apply-templates/>
-	</body>
-	</html>
+
+  	<h2>Painting Item</h2>
+  	<xsl:apply-templates/>
+
 </xsl:template>
 
 <xsl:template match="lido:lidoWrap">
-        
+
                 <table border="1">
                     <tr>
                         <th bgcolor="#9acd32"> Title </th>
                         <th>
-                            <xsl:value-of select="//lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:titleWrap//lido:appellationValue" />
+                            <xsl:for-each select="//lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:titleWrap//lido:appellationValue">
+        		 				<xsl:value-of select="." /> <br />
+							</xsl:for-each>
                         </th>
                     </tr>
                     <tr>
                         <th bgcolor="#9acd32">Artist/Maker</th>
                         <th>
-                            <xsl:value-of select="//lido:descriptiveMetadata/lido:eventWrap//lido:event/lido:eventActor//lido:actor//lido:appellationValue" />
+                            <xsl:for-each select="//lido:descriptiveMetadata/lido:eventWrap//lido:event">
+                            	<xsl:value-of select="./lido:eventType/lido:term" /> -
+        		 				<xsl:value-of select=".//lido:eventActor//lido:actor//lido:appellationValue" /> <br />
+							</xsl:for-each>
                         </th>
                     </tr>
-                    
+
                     <tr>
                         <th bgcolor="#9acd32">Date</th>
                         <th>
         					<xsl:for-each select="//lido:descriptiveMetadata/lido:eventWrap//lido:event/lido:eventDate/lido:displayDate">
         		 				<xsl:value-of select="." /> <br />
-							</xsl:for-each> 
+							</xsl:for-each>
                         </th>
-                    </tr>                  
-                    
+                    </tr>
+
                     <tr>
                         <th bgcolor="#9acd32">Category</th>
                         <th>
@@ -74,11 +77,11 @@
                     <tr>
                         <th>Record id</th>
                         <th>
-                            <xsl:value-of select="//lido:administrativeMetadata/lido:recordWrap/lido:recordID" /> 
+                            <xsl:value-of select="//lido:administrativeMetadata/lido:recordWrap/lido:recordID" />
                         </th>
                     </tr>
 
                 </table>
     </xsl:template>
-   
+
 </xsl:stylesheet>
