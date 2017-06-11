@@ -40,7 +40,7 @@ class PaintingList extends Component {
 	
 	renderPaintings() {	
 		return this.state.paintings.map(name => (
-				<PaintingListItem name={name.name} nameEn={name.nameEn} recordId={name.recordId} />
+				<PaintingListItem key={name.recordId} name={name.name} nameEn={name.nameEn} recordId={name.recordId} />
 	  ));
 	}
 	
