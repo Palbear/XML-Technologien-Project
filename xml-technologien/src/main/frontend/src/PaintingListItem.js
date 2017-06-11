@@ -10,9 +10,18 @@ class PaintingListItem extends Component {
 		}
 	
 	render() {
+		var url = 
+			"http://collection.nationalmuseum.se/eMuseumPlus?service=ExternalInterface&module=collection&objectId=" + 
+			this.props.recordId + 
+			"&viewType=detailView";
+		
 		return (
-			<div className="PaintingListItem">				
-				{this.props.name}
+			<div className="PaintingListItem">					
+				EN: {this.props.nameEn}
+				<br />
+				SU: {this.props.name}
+				<br />
+				<a href={url} className="button">Nationalmuseum record info</a>
 			</div>
 		);
 	}
