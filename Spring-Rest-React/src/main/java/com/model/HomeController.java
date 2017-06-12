@@ -17,6 +17,7 @@ package com.model;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author Greg Turnquist
@@ -29,6 +30,11 @@ public class HomeController {
 	public String index() {
 		return "index";
 	}
+	
+	@RequestMapping(value = "/painting", method = RequestMethod.GET)
+	   public String painting() {
+	      return "painting";
+	   }
 
 }
 // end::code[]
