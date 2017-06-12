@@ -87,7 +87,17 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				return React.createElement(PaintingList, { paintings: this.state.paintings });
+				return React.createElement(
+					'div',
+					{ className: 'App' },
+					React.createElement(
+						'h3',
+						null,
+						'Paintings'
+					),
+					React.createElement(PaintingList, { paintings: this.state.paintings }),
+					React.createElement(Filter, null)
+				);
 			}
 		}]);
 	
@@ -224,6 +234,7 @@
 					React.createElement(
 						'td',
 						null,
+						'(optional)',
 						this.props.painting.depicted_person
 					),
 					React.createElement(
@@ -248,6 +259,238 @@
 		return Painting;
 	}(React.Component);
 	// end::painting[]
+	
+	// tag::filter[]
+	
+	
+	var Filter = function (_React$Component4) {
+		_inherits(Filter, _React$Component4);
+	
+		function Filter() {
+			_classCallCheck(this, Filter);
+	
+			return _possibleConstructorReturn(this, (Filter.__proto__ || Object.getPrototypeOf(Filter)).apply(this, arguments));
+		}
+	
+		_createClass(Filter, [{
+			key: 'render',
+			value: function render() {
+				return React.createElement(
+					'div',
+					null,
+					React.createElement(
+						'h3',
+						null,
+						'Filter (only templates)'
+					),
+					React.createElement(SelectCountry, null),
+					React.createElement(SelectCategory, null),
+					React.createElement(SelectArtist, null)
+				);
+			}
+		}]);
+	
+		return Filter;
+	}(React.Component);
+	// end::filter[]
+	
+	// tag::selectCountry[]
+	
+	
+	var SelectCountry = function (_React$Component5) {
+		_inherits(SelectCountry, _React$Component5);
+	
+		function SelectCountry(props) {
+			_classCallCheck(this, SelectCountry);
+	
+			var _this6 = _possibleConstructorReturn(this, (SelectCountry.__proto__ || Object.getPrototypeOf(SelectCountry)).call(this, props));
+	
+			_this6.state = { value: 'select' };
+			return _this6;
+		}
+	
+		_createClass(SelectCountry, [{
+			key: 'onChange',
+			value: function onChange(e) {
+				this.setState({
+					value: e.target.value
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return React.createElement(
+					'div',
+					{ className: 'form-group' },
+					React.createElement(
+						'label',
+						{ htmlFor: 'selectCountry' },
+						'Country'
+					),
+					React.createElement('br', null),
+					React.createElement(
+						'select',
+						{ value: this.state.value, onChange: this.onChange.bind(this), className: 'form-control' },
+						React.createElement(
+							'option',
+							{ value: 'select' },
+							'Select an option'
+						),
+						React.createElement(
+							'option',
+							{ value: 'sweden' },
+							'Schweden'
+						),
+						React.createElement(
+							'option',
+							{ value: 'germany' },
+							'Deutschland'
+						)
+					)
+				);
+			}
+		}]);
+	
+		return SelectCountry;
+	}(React.Component);
+	// end::selectCountry[]
+	
+	//tag::selectCategory[]
+	
+	
+	var SelectCategory = function (_React$Component6) {
+		_inherits(SelectCategory, _React$Component6);
+	
+		function SelectCategory(props) {
+			_classCallCheck(this, SelectCategory);
+	
+			var _this7 = _possibleConstructorReturn(this, (SelectCategory.__proto__ || Object.getPrototypeOf(SelectCategory)).call(this, props));
+	
+			_this7.state = { value: 'select' };
+			return _this7;
+		}
+	
+		_createClass(SelectCategory, [{
+			key: 'onChange',
+			value: function onChange(e) {
+				this.setState({
+					value: e.target.value
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return React.createElement(
+					'div',
+					{ className: 'form-group' },
+					React.createElement(
+						'label',
+						{ htmlFor: 'selectCategory' },
+						'Category'
+					),
+					React.createElement('br', null),
+					React.createElement(
+						'select',
+						{ value: this.state.value, onChange: this.onChange.bind(this), className: 'form-control' },
+						React.createElement(
+							'option',
+							{ value: 'select' },
+							'Select an option'
+						),
+						React.createElement(
+							'option',
+							{ value: 'painting' },
+							'Gem\xE4lde'
+						),
+						React.createElement(
+							'option',
+							{ value: 'ceramics' },
+							'Keramik'
+						),
+						React.createElement(
+							'option',
+							{ value: 'portrait' },
+							'Portrait'
+						)
+					)
+				);
+			}
+		}]);
+	
+		return SelectCategory;
+	}(React.Component);
+	//end::selectCategory[]
+	
+	//tag::selectArtist[]
+	
+	
+	var SelectArtist = function (_React$Component7) {
+		_inherits(SelectArtist, _React$Component7);
+	
+		function SelectArtist(props) {
+			_classCallCheck(this, SelectArtist);
+	
+			var _this8 = _possibleConstructorReturn(this, (SelectArtist.__proto__ || Object.getPrototypeOf(SelectArtist)).call(this, props));
+	
+			_this8.state = { value: 'select' };
+			return _this8;
+		}
+	
+		_createClass(SelectArtist, [{
+			key: 'onChange',
+			value: function onChange(e) {
+				this.setState({
+					value: e.target.value
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return React.createElement(
+					'div',
+					{ className: 'form-group' },
+					React.createElement(
+						'label',
+						{ htmlFor: 'selectArtist' },
+						'Artist'
+					),
+					React.createElement('br', null),
+					React.createElement(
+						'select',
+						{ value: this.state.value, onChange: this.onChange.bind(this), className: 'form-control' },
+						React.createElement(
+							'option',
+							{ value: 'select' },
+							'Select an option'
+						),
+						React.createElement(
+							'option',
+							{ value: 'a-f' },
+							'A-F'
+						),
+						React.createElement(
+							'option',
+							{ value: 'h-m' },
+							'H-M'
+						),
+						React.createElement(
+							'option',
+							{ value: 'n-t' },
+							'N-T'
+						),
+						React.createElement(
+							'option',
+							{ value: 'u-z' },
+							'U-Z'
+						)
+					)
+				);
+			}
+		}]);
+	
+		return SelectArtist;
+	}(React.Component);
+	//end::selectArtist[]
 	
 	// tag::render[]
 	

@@ -32,9 +32,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/painting", method = RequestMethod.GET)
-	   public String painting() {
-	      return "painting";
-	   }
+	public String painting() {
+	    return "painting";
+	}
 
 }
 // end::code[]
