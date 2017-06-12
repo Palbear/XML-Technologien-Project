@@ -31,9 +31,9 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/painting", method = RequestMethod.GET)
-	public String painting() {
-	    return "painting";
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test() {
+	    return "test";
 	}
 
 }

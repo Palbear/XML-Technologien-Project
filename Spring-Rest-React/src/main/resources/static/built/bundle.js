@@ -234,7 +234,6 @@
 					React.createElement(
 						'td',
 						null,
-						'(optional)',
 						this.props.painting.depicted_person
 					),
 					React.createElement(
@@ -245,7 +244,7 @@
 					React.createElement(
 						'td',
 						null,
-						this.props.painting.measurements
+						this.props.paintings.measurements
 					),
 					React.createElement(
 						'td',

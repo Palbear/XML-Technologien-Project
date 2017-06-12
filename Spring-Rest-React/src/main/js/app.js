@@ -70,9 +70,9 @@ class Painting extends React.Component{
 				<td>{this.props.painting.date}</td>
 				<td>{this.props.painting.category}</td>
 				<td>{this.props.painting.inscription}</td>
-				<td>(optional){this.props.painting.depicted_person}</td>
+				<td>{this.props.painting.depicted_person}</td>
 				<td>{this.props.painting.technique_material}</td>
-				<td>{this.props.painting.measurements}</td>
+				<td>{this.props.paintings.measurements}</td>
 				<td>{this.props.painting.right_work}</td>
 			</tr>
 		)
