@@ -23,7 +23,9 @@ Go to the GUI of BaseX and run these two comman on the command line above:
 Run the Application:
 
 To get the your application up and running run this command:
-$ mvn jetty:run
+
+   mvn jetty:run
+
 
 this will fetch all needed java dependencies and start a webserver at [localhost:8080](http://localhost:8080 "XQuery").
 
