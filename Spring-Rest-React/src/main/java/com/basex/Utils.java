@@ -2,36 +2,40 @@ package com.basex;
 
 import java.io.File;
 import java.io.IOException;
-//import javax.xml.xquery.XQConnection;
-//import javax.xml.xquery.XQPreparedExpression;
-//import javax.xml.xquery.XQSequence;
-//import com.ddtek.xquery.xqj.DDXQDataSource
-//import com.basex.BaseXClient.Query;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
 import com.basex.BaseXClient.Query;
-
-public class Main {
-
-	public static void main(final String... args) throws IOException {
-		// create session
-
+import com.dbpedia.PaintingMapper;
+import com.model.Painting;
+public class Utils {
+	
+	public static List<Painting> getAllPainting() throws IOException{
+		
+		List<Painting> paintings = new ArrayList<>();
+		
 		try (BaseXClient session = new BaseXClient("localhost", 1984, "admin", "admin")) {
 			File file = new File("src/main/resources/xq/all_paintings.xq");
 			final String input = FileUtils.readFileToString(file);
-
+			
 			try (Query query = session.query(input)) {
 				// loop through all results
 				while (query.more()) {
-					System.out.println(query.next());
+					PaintingMapper mapper = new PaintingMapper();
+					Painting painting = mapper.setPainting(query.next());
+					painting = mapper.getPainting();
+					paintings.add(painting);
 				}
 
 				// print query info
 				System.out.println(query.info());
 			}
+			
 		}
+		
+		return paintings;
 	}
 
 }

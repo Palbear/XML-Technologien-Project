@@ -15,9 +15,13 @@
  */
 package com.model;
 
+import java.io.IOException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import com.basex.*;
 
 /**
  * @author Greg Turnquist
@@ -27,23 +31,17 @@ import org.springframework.stereotype.Component;
 public class DatabaseLoader implements CommandLineRunner {
 
 	private final PaintingsRepository repository;
-
+	private List<Painting> paintings = Utils.getAllPainting();
+	
 	@Autowired
-	public DatabaseLoader(PaintingsRepository repository) {
+	public DatabaseLoader(PaintingsRepository repository) throws IOException {
 		this.repository = repository;
 	}
 
 	@Override
 	public void run(String... strings) throws Exception {
-		this.repository.save(new Painting("Bonde från Nordingrå Farmer from Nordingrå", 
-				"Creation - Helmer Osslund", 
-				"Executed c. 1917 Utf. ca 1917",
-				"Målningar (Måleri)", 
-				"Signerad: helmer OSSLUND",
-				"", 
-				"Olja på papper", 
-				"Mått 56 x 45 cm", 
-				"Nationalmuseum, Sweden"));
+		
+		this.repository.save(paintings);
 		
 	}
 }
