@@ -23,7 +23,7 @@ http://localhost:8080/api/paintings/search/findByMeasurementsLike?measurements=2
 Find all Paintings by Category:
 http://localhost:8080/api/paintings/search/findByCategoryLike?category=M%C3%A5lningar%20(M%C3%A5leri)&size=10&page=4
 
-Find all Paintings by Author Name:
+Find all Paintings by Artist Name:
 http://localhost:8080/api/paintings/search/findByArtistLike?name=Allaert%20van%20Everdingen
 http://localhost:8080/api/paintings/search/findByArtistLike?name=David%20Kl%C3%B6cker%20Ehrenstrahl
 http://localhost:8080/api/paintings/search/findByArtistLike?name=Nicolas%20Lancret
