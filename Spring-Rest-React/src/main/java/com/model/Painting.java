@@ -72,7 +72,6 @@ public class Painting {
 	
 	
 	
-	@SuppressWarnings("unused")
 	public Painting() {}
 
 	public Painting(String recordID, String title, String artist, String date, 
