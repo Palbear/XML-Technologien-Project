@@ -37,7 +37,11 @@ public class HomeController {
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test() {
 	    return "test";
-	}	
+	}
+	@RequestMapping(value = "/sparql", method = RequestMethod.GET)
+	public String sparql() {
+	    return "sparql";
+	}
 	
 
 }
