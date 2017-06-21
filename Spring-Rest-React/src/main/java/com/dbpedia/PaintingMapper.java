@@ -27,6 +27,7 @@ public class PaintingMapper {
            painting.setTechnique_material(descriptives.get(7));
            painting.setMeasurements(descriptives.get(8));
            painting.setRight_work(descriptives.get(9));
+           painting.setImage_link(descriptives.get(10));
 		}
 		return painting;
 				
@@ -44,6 +45,7 @@ public class PaintingMapper {
 		painting.getTechnique_material();
 		painting.getMeasurements();
 		painting.getRight_work();
+		painting.getImage_link();
 	
 		return painting;
 		
