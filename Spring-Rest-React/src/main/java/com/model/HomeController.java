@@ -33,6 +33,11 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/react")
+	public String reacttest() {
+		return "reacttest";
+	}
+	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test() {
 	    return "test";
