@@ -70,13 +70,17 @@ public class Painting {
     @Column( length = 1000 )
 	private String right_work;
 	
+	@Lob
+    @Column( length = 1000 )
+	private String image_link;
+	
 	
 	
 	public Painting() {}
 
 	public Painting(String recordID, String title, String artist, String date, 
 			String category, String inscription, String depicted_person, 
-			String technique_material, String measurements , String right_work) {
+			String technique_material, String measurements , String right_work, String image_link) {
 		this.recordID = recordID;
 		this.title = title;
 		this.artist = artist;
@@ -87,6 +91,7 @@ public class Painting {
 		this.technique_material = technique_material;
 		this.measurements = measurements;
 		this.right_work = right_work;
+		this.image_link = image_link;
 		
 	}
 
@@ -177,13 +182,21 @@ public class Painting {
 	public void setRight_work(String right_work) {
 		this.right_work = right_work;
 	}
+	
+	public String getImage_link() {
+		return image_link;
+	}
+	
+	public void setImage_link(String image_link) {
+		this.image_link = image_link;
+	}
 
 	@Override
 	public String toString() {
 		return "Painting [id=" + id + ", recordID=" + recordID + ", title=" + title + ", artist=" + artist + ", date="
 				+ date + ", category=" + category + ", inscription=" + inscription + ", depicted_person="
 				+ depicted_person + ", technique_material=" + technique_material + ", measurements=" + measurements
-				+ ", right_work=" + right_work + "]";
+				+ ", right_work=" + right_work + ", image_link=" + image_link + "]";
 	}
 	
 	
