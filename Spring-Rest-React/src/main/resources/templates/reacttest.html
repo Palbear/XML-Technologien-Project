@@ -5,9 +5,23 @@
 </head>
 <body>
 
-    <div class='container'>
+    <header>
+    	<h2>XML Tech App</h2>
+    </header>
+
+	
+	<div id='left-box' class='left-box'>
+		<div id='country' class ='country'>COUNTRY</div>
+		<div id='category' class='category'>CATEGORY</div>
+		<div id='artist' class='artist'>ARTIST</div>
+	</div>
+	
+ 	<div id='root' class='right-box'></div>
+
+<!-- <div class='container'>
         <div id='root'></div>
     </div>
+ --> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.min.js"></script>
     <script src="https://fb.me/react-dom-15.0.1.js"></script>
@@ -18,7 +32,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
+   <!-- <link rel="stylesheet" href="/rtest.css" /> -->  
+
     <script type="text/babel" src="/reactjs.js"></script>
+    
+    <style>
+    	.left-box {
+		float: left;
+  		width: 20%;
+	}
+		.right-box {
+ 		float: right;
+  		width: 80%;
+	}
+		.country {
+		background-color: #E55126;
+	}
+		.category {
+		background-color: #E5A227;
+	}
+		.artist {
+		background-color: #0C73B8;
+	}
+		.country, .category, .artist{
+ 		 width: 80%;
+ 		 padding: 1em 3em 2em 2em;
+		 margin: 0.5em;
+	     color: whitesmoke;
+	}
+		
+	</style>
     
 
 </body>
