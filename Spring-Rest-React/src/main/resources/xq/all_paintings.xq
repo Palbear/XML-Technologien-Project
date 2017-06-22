@@ -1,6 +1,8 @@
 declare namespace lido="http://www.lido-schema.org";
 for $document in collection("sweden-clean") 
 let $x := $document//lido:recordID/text()
+let $credit := $document//lido:rightsWorkSet/lido:creditLine/text()
+let $y := $document//lido:resourceRepresentation[@lido:type = 'image_thumb']
 order by ($x)
 return string-join((
     $document//lido:recordID/text(), 
@@ -22,6 +24,8 @@ return string-join((
      ($document//lido:measurementsSet/lido:measurementValue/text())[1],
     "-",
     ($document//lido:measurementsSet/lido:measurementValue/text())[2],
+   ",",
+  
     ",",
-    $document//lido:rightsWorkSet/lido:creditLine/text()
+    $y/lido:linkResource/text()
   ))
