@@ -11,9 +11,24 @@
 
 	
 	<div id='left-box' class='left-box'>
-		<div id='country' class ='country'>COUNTRY</div>
-		<div id='category' class='category'>CATEGORY</div>
-		<div id='artist' class='artist'>ARTIST</div>
+		<div id='country' class ='country'>
+			<span style="color:whitesmoke">COUNTRY</span>
+			<div id='selectCountry'></div>
+		</div>
+		<div id='category' class='category'>
+			<span style="color:whitesmoke">CATEGORY</span>
+			<div id='selectCategory'></div>
+		</div>
+		<div id='artist' class='artist'>
+			<span style="color:whitesmoke">ARTIST</span>
+			<div id='selectArtist'></div>
+		</div>
+		<div id='test' class='test'>
+			<span style="color:whitesmoke">
+			TEST : painting by <br/>
+			</span>
+			<div id='selectTest'></div>
+		</div>
 	</div>
 	
  	<div id='root' class='right-box'></div>
@@ -35,6 +50,7 @@
    <!-- <link rel="stylesheet" href="/rtest.css" /> -->  
 
     <script type="text/babel" src="/reactjs.js"></script>
+    <script type="text/babel" src="/filterjs.js"></script>
     
     <style>
     	.left-box {
@@ -54,11 +70,14 @@
 		.artist {
 		background-color: #0C73B8;
 	}
-		.country, .category, .artist{
+		.test {
+		background-color: #54BD54;
+	}
+		.country, .category, .artist, .test{
  		 width: 80%;
  		 padding: 1em 3em 2em 2em;
 		 margin: 0.5em;
-	     color: whitesmoke;
+	     color: black;
 	}
 		
 	</style>
