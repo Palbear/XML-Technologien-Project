@@ -71,7 +71,7 @@ class SelectArtist extends React.Component {
 	      		<br/>
 	      	</p>
 	        <select value={this.state.value} onChange={this.onChange.bind(this)} className="form-control">
-	        	<option value="select">Select an option</option>
+	        	<option value="select">Select</option>
 	        	<option value="a-f">A-F</option>
 	        	<option value="h-m">H-M</option>
 	        	<option value="n-t">N-T</option>
