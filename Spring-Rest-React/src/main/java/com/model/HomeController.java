@@ -46,7 +46,10 @@ public class HomeController {
 	public String sparql() {
 	    return "sparql";
 	}
-	
+	@RequestMapping(value = "/sparqlx", method = RequestMethod.GET)
+	public String sparqlx() {
+	    return "sparqlx";
+	}
 
 }
 // end::code[]

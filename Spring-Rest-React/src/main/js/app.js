@@ -4,6 +4,16 @@
 const React = require('react');
 const ReactDOM = require('react-dom')
 const client = require('./client');
+import BasicRoute from './route/route.js';
+
+import {
+	  BrowserRouter as Router,
+	  Route,
+	  Link
+	} from 'react-router-dom'
+import PaintingList from './paintingList/PaintingList.js'
+import NavigationPanel from './NavBar/NavigationPanel.js';
+
 // end::vars[]
 
 // tag::app[]
@@ -11,74 +21,22 @@ class App extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {paintings: []};
 	}
 	
-	componentDidMount() {
-		client({method: 'GET', path: '/api/paintings'}).done(response => {
-			this.setState({paintings: response.entity._embedded.paintings});
-		});
-	}
 
 	render() {
 		return (
 		  <div className="App">
-		  	<h3>Paintings</h3>
-			<PaintingList paintings={this.state.paintings}/>
-			<Filter />
+		  	<NavigationPanel/>
+		  	<div>
+		  		<h3>Paintings</h3>
+		  		<PaintingList/>
+		  		<Filter />
+		  	</div>
           </div>
 		)
 	}
 }
-// end::app[]
-
-// tag::painting-list[]
-class PaintingList extends React.Component{
-	render() {
-		var paintings = this.props.paintings.map(painting =>
-			<Painting key={painting._links.self.href} painting={painting}/>
-		);
-		return (
-			  <table>
-				<tbody>
-					<tr>
-						<th>Title</th>
-						<th>Artist/Maker</th>
-						<th>Date</th>
-						<th>Category</th>
-						<th>Inscription</th>
-						<th>Depicted Person</th>
-						<th>Technique/Material</th>
-						<th>Measurements</th>
-						<th>Rights work</th>
-					</tr>
-					{paintings}
-				</tbody>
-			</table>			
-		)
-	}
-}
-// end::painting-list[]
-
-// tag::painting[]
-class Painting extends React.Component{
-	render() {
-		return (
-			<tr>
-				<td>{this.props.painting.title}</td>
-				<td>{this.props.painting.artist}</td>
-				<td>{this.props.painting.date}</td>
-				<td>{this.props.painting.category}</td>
-				<td>{this.props.painting.inscription}</td>
-				<td>{this.props.painting.depicted_person}</td>
-				<td>{this.props.painting.technique_material}</td>
-				<td>{this.props.paintings.measurements}</td>
-				<td>{this.props.painting.right_work}</td>
-			</tr>
-		)
-	}
-}
-// end::painting[]
 
 // tag::filter[]
 class Filter extends React.Component{
