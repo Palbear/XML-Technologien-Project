@@ -8,13 +8,16 @@ let $authors := $event//lido:eventActor//lido:actor
 let $m := $document//lido:objectMeasurementsWrap
 let $width := $m//lido:measurementsSet[lido:measurementType='Width']
 let $height := $m//lido:measurementsSet[lido:measurementType='Height']
+let $titles := $document//lido:titleSet
 order by ($recordId)
 return string-join((
   
   '{ "recordId": ', 
     $recordId,  
-    ', "title": "', 
-    $document//lido:titleSet/lido:appellationValue,
+    ', "title": "SV: ', 
+    $titles/lido:appellationValue[@xml:lang = 'sv']/text(), 
+    ", EN: ", 
+    $titles/lido:appellationValue[@xml:lang = 'en']/text(), 
     '", "artist": "', 
     $authors//lido:nameActorSet/lido:appellationValue,
     '", "earliestDate": "',
