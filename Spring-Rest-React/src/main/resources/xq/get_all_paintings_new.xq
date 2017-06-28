@@ -9,7 +9,6 @@ let $m := $document//lido:objectMeasurementsWrap
 let $width := $m//lido:measurementsSet[lido:measurementType='Width']
 let $height := $m//lido:measurementsSet[lido:measurementType='Height']
 order by ($recordId)
-where $recordId = 100358
 return string-join((
   
   '{ "recordId": ', 
@@ -29,9 +28,9 @@ return string-join((
     '", "materials": "',
     $document//lido:eventMaterialsTech/lido:displayMaterialsTech/text(),
     '", "measurements": ',
-     ($width/lido:measurementValue/text()),
+     $width/lido:measurementValue/text(),
     '-',
-    ($height/lido:measurementValue/text()),
+    $height/lido:measurementValue/text(),
      ', "linkResourceThumb": "',
     $thumb/lido:linkResource/text(), 
     '" }'
