@@ -8,8 +8,8 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 
 import com.basex.BaseXClient.Query;
-import com.dbpedia.PaintingMapper;
 import com.model.Painting;
+import com.model.PaintingMapper;
 public class Utils {
 	
 	public static List<Painting> getAllPainting() throws IOException{
