@@ -27,11 +27,11 @@ return string-join((
     $document//lido:objectRelationWrap/lido:subjectSet/lido:subject/lido:appellationValue/text(),
     '", "materials": "',
     $document//lido:eventMaterialsTech/lido:displayMaterialsTech/text(),
-    '", "measurements": ',
-     $width/lido:measurementValue/text(),
-    '-',
-    $height/lido:measurementValue/text(),
-     ', "linkResourceThumb": "',
+    '", "width": "', 
+    $width/lido:measurementValue/text(),
+    '", "height": "',
+    $width/lido:measurementValue/text(),
+    '", "linkResourceThumb": "',
     $thumb/lido:linkResource/text(), 
     '" }'
   ))
