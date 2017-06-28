@@ -348,9 +348,8 @@
 	// tag::render[]
 	
 	
-	ReactDOM.render(React.createElement(App, null), document.getElementById('react')
+	ReactDOM.render(React.createElement(App, null), document.getElementById('react'));
 	// end::render[]
-	);
 
 /***/ }),
 /* 1 */
@@ -4084,7 +4083,7 @@
 	
 	'use strict';
 	
-	module.exports = '15.6.0';
+	module.exports = '15.6.1';
 
 /***/ }),
 /* 35 */
@@ -13576,10 +13575,11 @@
 	
 	    var currentValue = '' + node[valueField];
 	
-	    // if someone has already defined a value bail and don't track value
-	    // will cause over reporting of changes, but it's better then a hard failure
-	    // (needed for certain tests that spyOn input values)
-	    if (node.hasOwnProperty(valueField)) {
+	    // if someone has already defined a value or Safari, then bail
+	    // and don't track value will cause over reporting of changes,
+	    // but it's better then a hard failure
+	    // (needed for certain tests that spyOn input values and Safari)
+	    if (node.hasOwnProperty(valueField) || typeof descriptor.get !== 'function' || typeof descriptor.set !== 'function') {
 	      return;
 	    }
 	
@@ -16706,10 +16706,6 @@
 	   * @param {ReactDOMComponent} component
 	   */
 	  var warnValidStyle = function (name, value, component) {
-	    // Don't warn for CSS variables
-	    if (name.indexOf('--') === 0) {
-	      return;
-	    }
 	    var owner;
 	    if (component) {
 	      owner = component._currentElement._owner;
@@ -16751,13 +16747,16 @@
 	      if (!styles.hasOwnProperty(styleName)) {
 	        continue;
 	      }
+	      var isCustomProperty = styleName.indexOf('--') === 0;
 	      var styleValue = styles[styleName];
 	      if (process.env.NODE_ENV !== 'production') {
-	        warnValidStyle(styleName, styleValue, component);
+	        if (!isCustomProperty) {
+	          warnValidStyle(styleName, styleValue, component);
+	        }
 	      }
 	      if (styleValue != null) {
 	        serialized += processStyleName(styleName) + ':';
-	        serialized += dangerousStyleValue(styleName, styleValue, component) + ';';
+	        serialized += dangerousStyleValue(styleName, styleValue, component, isCustomProperty) + ';';
 	      }
 	    }
 	    return serialized || null;
@@ -16785,14 +16784,17 @@
 	      if (!styles.hasOwnProperty(styleName)) {
 	        continue;
 	      }
+	      var isCustomProperty = styleName.indexOf('--') === 0;
 	      if (process.env.NODE_ENV !== 'production') {
-	        warnValidStyle(styleName, styles[styleName], component);
+	        if (!isCustomProperty) {
+	          warnValidStyle(styleName, styles[styleName], component);
+	        }
 	      }
-	      var styleValue = dangerousStyleValue(styleName, styles[styleName], component);
+	      var styleValue = dangerousStyleValue(styleName, styles[styleName], component, isCustomProperty);
 	      if (styleName === 'float' || styleName === 'cssFloat') {
 	        styleName = styleFloatAccessor;
 	      }
-	      if (styleName.indexOf('--') === 0) {
+	      if (isCustomProperty) {
 	        style.setProperty(styleName, styleValue);
 	      } else if (styleValue) {
 	        style[styleName] = styleValue;
@@ -17085,7 +17087,7 @@
 	 * @param {ReactDOMComponent} component
 	 * @return {string} Normalized style value with dimensions applied.
 	 */
-	function dangerousStyleValue(name, value, component) {
+	function dangerousStyleValue(name, value, component, isCustomProperty) {
 	  // Note that we've removed escapeTextForBrowser() calls here since the
 	  // whole string will be escaped when the attribute is injected into
 	  // the markup. If you provide unsafe user data here they can inject
@@ -17102,7 +17104,7 @@
 	  }
 	
 	  var isNonNumeric = isNaN(value);
-	  if (isNonNumeric || value === 0 || isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name]) {
+	  if (isCustomProperty || isNonNumeric || value === 0 || isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name]) {
 	    return '' + value; // cast to string
 	  }
 	
@@ -25898,7 +25900,7 @@
 	
 	'use strict';
 	
-	module.exports = '15.6.0';
+	module.exports = '15.6.1';
 
 /***/ }),
 /* 221 */
