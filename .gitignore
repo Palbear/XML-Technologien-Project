@@ -6,3 +6,4 @@ build
 */.classpath
 */.project
 */.settings/org.eclipse*
+Spring-Rest-React/src/main/resources/static/built/bundle.js.map
