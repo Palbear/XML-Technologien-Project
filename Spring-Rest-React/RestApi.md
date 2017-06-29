@@ -42,3 +42,8 @@ Find all Painting by Date:
 
 http://localhost:8080/api/paintings/search/findByDateLike?date=1684
 
+Find a specific Painting by recordID:
+
+http://localhost:8080/api/paintings/search/findByRecordIDLike?recordid=100529
+http://localhost:8080/api/paintings/search/findByRecordIDLike?recordid=100358
+
