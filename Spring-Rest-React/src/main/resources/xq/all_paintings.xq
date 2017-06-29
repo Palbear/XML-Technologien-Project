@@ -30,7 +30,6 @@ return string-join((
      "-",
      $height/lido:measurementValue/text(),
    ",",
-  
     ",",
     $y/lido:linkResource/text()
   ))

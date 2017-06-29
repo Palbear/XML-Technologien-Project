@@ -19,18 +19,20 @@ public class Main {
 		// create session
 
 		try (BaseXClient session = new BaseXClient("localhost", 1984, "admin", "admin")) {
-			File file = new File("src/main/resources/xq/all_paintings.xq");
+			File file = new File("src/main/resources/xq/all_paintings_2.xq");
 			//File file = new File("src/main/resources/xq/get_all_paintings_new.xq");
 			final String input = FileUtils.readFileToString(file);
 
 			try (Query query = session.query(input)) {
 				// loop through all results
-				while (query.more()) {
-					System.out.println(query.next());
+				while (query.more()) {	
+					String res = query.next();
+					System.out.println(res);
 				}
 
 				// print query info
 				System.out.println(query.info());
+				
 			}
 		}
 	}
