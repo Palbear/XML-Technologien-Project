@@ -50856,7 +50856,7 @@
 																									React.createElement(
 																													"a",
 																													{ href: "#" },
-																													"Sweden Painting"
+																													"Home"
 																									)
 																					),
 																					React.createElement(_reactBootstrap.Navbar.Toggle, null)
@@ -50870,37 +50870,7 @@
 																									React.createElement(
 																													_reactBootstrap.NavItem,
 																													{ eventKey: 1, href: "/about" },
-																													"Table"
-																									),
-																									React.createElement(
-																													_reactBootstrap.NavItem,
-																													{ eventKey: 2, href: "/api" },
-																													"API"
-																									),
-																									React.createElement(
-																													_reactBootstrap.NavDropdown,
-																													{ eventKey: 3, title: "Something else", id: "basic-nav-dropdown" },
-																													React.createElement(
-																																	_reactBootstrap.MenuItem,
-																																	{ eventKey: 3.1 },
-																																	"Action"
-																													),
-																													React.createElement(
-																																	_reactBootstrap.MenuItem,
-																																	{ eventKey: 3.2 },
-																																	"Another action"
-																													),
-																													React.createElement(
-																																	_reactBootstrap.MenuItem,
-																																	{ eventKey: 3.3 },
-																																	"Something else here"
-																													),
-																													React.createElement(_reactBootstrap.MenuItem, { divider: true }),
-																													React.createElement(
-																																	_reactBootstrap.MenuItem,
-																																	{ eventKey: 3.3 },
-																																	"Separated link"
-																													)
+																													"Information about the project"
 																									)
 																					)
 																	)
