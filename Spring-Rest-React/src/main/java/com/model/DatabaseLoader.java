@@ -31,7 +31,7 @@ import com.basex.*;
 public class DatabaseLoader implements CommandLineRunner {
 
 	private final PaintingsRepository repository;
-	private List<Painting> paintings = Utils.getAllPainting();
+	
 	
 	@Autowired
 	public DatabaseLoader(PaintingsRepository repository) throws IOException {
@@ -40,7 +40,7 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		
+		List<Painting> paintings = Utils.getAllPainting();
 		this.repository.save(paintings);
 		
 	}

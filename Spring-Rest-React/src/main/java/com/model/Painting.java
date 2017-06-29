@@ -64,11 +64,11 @@ public class Painting {
 	
 	@Lob
     @Column( length = 1000 )
-	private String measurements;
+	private String width;
 	
 	@Lob
     @Column( length = 1000 )
-	private String right_work;
+	private String height;
 	
 	@Lob
     @Column( length = 1000 )
@@ -80,7 +80,7 @@ public class Painting {
 
 	public Painting(String recordID, String title, String artist, String date, 
 			String category, String inscription, String depicted_person, 
-			String technique_material, String measurements , String right_work, String image_link) {
+			String technique_material, String width , String height, String image_link) {
 		this.recordID = recordID;
 		this.title = title;
 		this.artist = artist;
@@ -89,8 +89,8 @@ public class Painting {
 		this.inscription = inscription;
 		this.depicted_person = depicted_person;
 		this.technique_material = technique_material;
-		this.measurements = measurements;
-		this.right_work = right_work;
+		this.width = width;
+		this.height = height;
 		this.image_link = image_link;
 		
 	}
@@ -167,22 +167,23 @@ public class Painting {
 		this.technique_material = technique_material;
 	}
 
-	public String getMeasurements() {
-		return measurements;
-	}
-
-	public void setMeasurements(String measurements) {
-		this.measurements = measurements;
-	}
-
-	public String getRight_work() {
-		return right_work;
-	}
-
-	public void setRight_work(String right_work) {
-		this.right_work = right_work;
-	}
 	
+	public String getWidth() {
+		return width;
+	}
+
+	public void setWidth(String width) {
+		this.width = width;
+	}
+
+	public String getHeight() {
+		return height;
+	}
+
+	public void setHeight(String height) {
+		this.height = height;
+	}
+
 	public String getImage_link() {
 		return image_link;
 	}
@@ -195,9 +196,10 @@ public class Painting {
 	public String toString() {
 		return "Painting [id=" + id + ", recordID=" + recordID + ", title=" + title + ", artist=" + artist + ", date="
 				+ date + ", category=" + category + ", inscription=" + inscription + ", depicted_person="
-				+ depicted_person + ", technique_material=" + technique_material + ", measurements=" + measurements
-				+ ", right_work=" + right_work + ", image_link=" + image_link + "]";
+				+ depicted_person + ", technique_material=" + technique_material + ", width=" + width + ", height="
+				+ height + ", image_link=" + image_link + "]";
 	}
+
 	
 	
 	

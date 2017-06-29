@@ -29,7 +29,6 @@ public interface PaintingsRepository extends JpaRepository<Painting, Long> {
 	List<Painting> findByArtistLike(@Param("name") String artist, Pageable pageable);
 	List<Painting> findByCategoryLike(@Param("category") String category, Pageable pageable);
 	//List<Painting> findByDepicted_PersonLike(@Param("depicted_person") String depicted_person, Pageable pageable);
-	List<Painting> findByMeasurementsLike(@Param("measurements") String measurements, Pageable pageable);
 	List<Painting> findByDateLike(@Param("date") String date, Pageable pageable);
 	//List<Painting> findByRightWorkLike(@Param("right_work") String right_work, Pageable pageable);
 	//List<Painting> findByTechnique_MaterialLike(@Param("technique_material") String technique_material, Pageable pageable);
