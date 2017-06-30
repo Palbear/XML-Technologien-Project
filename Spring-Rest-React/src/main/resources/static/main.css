@@ -3,7 +3,7 @@ body {
 table {
     border-collapse: collapse;
     margin: 4rem;
-    
+
 }
 tbody {
 	margin: 5rem;
@@ -20,3 +20,36 @@ td, th {
 th {
 	background-color: #ffc107;
 }
+.painting2View{
+    border-radius: 8px;
+    width: 400px;
+    height:300px;
+    position: fixed;
+    left:100px;
+    top:150px;
+}
+.infoFROMxml{
+  margin-top:470px;
+  position: fixed;
+  width: 400px;
+  height: 300px;
+  text-align: left;
+  color: #000000;
+ }
+ .infoFROMdbpedia{
+   margin-bottom:100px;
+   position: fixed;
+   width: 200px;
+   height: 3500px;
+   text-align: right;
+   color: #000000;
+  }
+  .backButton{
+    width: 119px;
+    height: 43px;
+    background-color:  #47d147;
+    font-weight: 300;
+    font-size: 18px;
+    text-align: center;
+    color: #ffffff;
+  }

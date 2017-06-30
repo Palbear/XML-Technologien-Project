@@ -5,7 +5,7 @@ import {
   Link
 } from 'react-router-dom'
 import PaintingList from '../paintingList/PaintingList.js'
-
+import PaintingInfo from '../paintingInfo/PaintingInfo.jsx'
 const BasicRoute = () => (
   <Router>
     <div>
