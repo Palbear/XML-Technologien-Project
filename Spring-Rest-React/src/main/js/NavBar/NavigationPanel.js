@@ -20,9 +20,17 @@ class NavigationPanel extends React.Component {
                         <LinkContainer to="/paintings">
                             <NavItem >Paintings</NavItem>
                         </LinkContainer>
+                        <LinkContainer to="/paintinginfo">
+                            <NavItem >Painting Info</NavItem>
+                        </LinkContainer>
+
+
+
                         <NavDropdown eventKey={3} title="Others" id="basic-nav-dropdown">
                             <MenuItem eventKey={3.1}>Api</MenuItem>
+                            <LinkContainer to="/paintinginfo">
                             <MenuItem eventKey={3.2}>Painting</MenuItem>
+                            </LinkContainer>
                             <MenuItem eventKey={3.3}>Something else here</MenuItem>
                             <MenuItem divider/>
                             <MenuItem eventKey={3.3}>Separated link</MenuItem>

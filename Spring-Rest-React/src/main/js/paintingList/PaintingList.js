@@ -56,8 +56,29 @@ class PaintingList extends React.Component{
                 <Button onClick={() => this.setFilter('Allaert')}>Allaert</Button>
                 <Button onClick={() => this.setFilter('David')}>David</Button>
                 <Button onClick={() => this.setFilter('Nicolas')}>Nicolas</Button>
+                {/*<div id='left-box' className='left-box'>
+                    <div id='country' className='country'>
+                        <span style="color:whitesmoke">COUNTRY</span>
+                        <div id='selectCountry'></div>
+                    </div>
+                    <div id='category' className='category'>
+                        <span style="color:whitesmoke">CATEGORY</span>
+                        <div id='selectCategory'></div>
+                    </div>
+                    <div id='artist' className='artist'>
+                        <span style="color:whitesmoke">ARTIST</span>
+                        <div id='selectArtist'></div>
+                    </div>
+                    <div id='test' className='test'>
+                        <span style="color:whitesmoke">
+                        TEST : painting by <br/>
+                        </span>
+                        <div id='selectTest'></div>
+                    </div>
+                </div>*/}
 
-                <table className="table table-striped">
+
+                <table className="table table-striped right-box">
                     <thead>
                     <tr>
                         <th>RecordID</th>

@@ -7,8 +7,7 @@ const client = require('./client');
 
 import { BrowserRouter as Router, Route, Link, IndexRoute, IndexLink, hashHistory } from 'react-router-dom';
 import NavigationPanel from './NavBar/NavigationPanel.js';
-import PaintingTable from './paintingTable/PaintingTable.js';
-import PaintingList from './paintingList/PaintingList.js';
+import BasicRoute from './route/route.js';
 
 class App extends React.Component {
 
@@ -20,10 +19,7 @@ class App extends React.Component {
 		return (
 		  <div className="App">
 			  <NavigationPanel/>
-			  <Route exact path="/" component={PaintingTable}/>
-			  <Route path="/table" component={PaintingList}/>
-			  <Route path="/paintings" component={PaintingList}/>
-			  <Route path="/nicolas" component={PaintingList}/>
+			  <BasicRoute />
 		  </div>
 		)
 	}

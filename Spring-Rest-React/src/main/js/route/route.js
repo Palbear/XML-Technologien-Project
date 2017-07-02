@@ -1,27 +1,17 @@
 import React from 'react'
 import {
-  BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
-import PaintingList from '../paintingTable/PaintingTable.js'
-import PaintingInfo from '../paintingInfo/PaintingInfo.jsx'
+import PaintingTable from '../paintingTable/PaintingTable.js';
+import PaintingList from '../paintingList/PaintingList.js';
+import PaintingInfo from '../paintingInfo/PaintingInfo.jsx';
 
 const BasicRoute = () => (
-  <Router>
       <div>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/topics">Topics</Link></li>
-          </ul>
-
-          <hr/>
-
-          <Route exact path="/" component={PaintingList}/>
-          <Route path="/about" component={PaintingList}/>
-          <Route path="/topics" component={PaintingList}/>
-        </div>
-  </Router>
+          <Route exact path="/" component={PaintingTable}/>
+          <Route path="/table" component={PaintingTable}/>
+          <Route path="/paintings" component={PaintingList}/>
+          <Route path="/paintinginfo" component={PaintingInfo}/>
+      </div>
 )
 export default BasicRoute

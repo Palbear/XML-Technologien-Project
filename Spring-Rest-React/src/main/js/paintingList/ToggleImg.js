@@ -11,7 +11,10 @@ class ToggleImg extends React.Component{
         };
     }
     onClick() {
-        this.setState({ showResults: !this.state.showResults });
+        let self = this;
+        this.setState({
+            showResults: !self.state.showResults
+        });
     }
     render() {
         return (
@@ -23,6 +26,6 @@ class ToggleImg extends React.Component{
             </div>
         );
     }
-};
+}
 
 module.exports = ToggleImg;

@@ -2,9 +2,10 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const PropTypes = require('prop-types');
-import NavigationPanel from '../NavBar/NavigationPanel.js';
+//const SparqlClient = require('sparql-client');
+//const util = require('util');
 
-class Painting extends React.Component{
+class PaintingInfo extends React.Component{
     constructor(props) {
 	    super(props);
       this.state={
@@ -42,12 +43,35 @@ class Painting extends React.Component{
       this.state.projectInf.DBPediaInf="this is a text that will be probably about the artist who painted the painting. Probably it will be some basic informaiton, like when he was born, if he studied, where he studied, if he was married and so on and so forth.";
       this.forceUpdate();
     }
+/*
+    sparql() {
+        let endpoint = 'http://dbpedia.org/sparql';
 
+        // Get the leaderName(s) of the given citys
+        // if you do not bind any city, it returns 10 random leaderNames
+        let query = "SELECT * FROM <http://dbpedia.org> WHERE { ?city <http://dbpedia.org/property/leaderName> ?leaderName} LIMIT 10";
+        let client = new SparqlClient(endpoint);
+        console.log("Query to " + endpoint);
+        console.log("Query: " + query);
+        client.query(query)
+        //.bind('city', 'db:Chicago')
+        //.bind('city', 'db:Tokyo')
+        //.bind('city', 'db:Casablanca')
+            .bind('city', '<http://dbpedia.org/resource/Vienna>')
+            .execute(function(error, results) {
+                process.stdout.write(util.inspect(arguments, null, 20, true)+"\n");
+            });
 
+        alert("Yepp it worked!");
+    }
+
+    notify(){
+        alert("sparql.js was accessed succesfullly!");
+    }
+*/
     render() {
   		return (
         <div>
-          <NavBar/>
 
           <div className="infoFROMxml">
             <p>Title: {this.state.paintingInf.title}</p>
@@ -68,3 +92,5 @@ class Painting extends React.Component{
       )
     }
 }
+
+module.exports = PaintingInfo;

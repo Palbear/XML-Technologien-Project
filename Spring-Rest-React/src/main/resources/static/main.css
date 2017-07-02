@@ -53,3 +53,29 @@ th {
     text-align: center;
     color: #ffffff;
   }
+.left-box {
+    float: left;
+    width: 20%;
+}
+.right-box {
+    float: right;
+    width: 80%;
+}
+.country {
+    background-color: #E55126;
+}
+.category {
+    background-color: #E5A227;
+}
+.artist {
+    background-color: #0C73B8;
+}
+.test {
+    background-color: #54BD54;
+}
+.country, .category, .artist, .test{
+    width: 80%;
+    padding: 1em 3em 2em 2em;
+    margin: 0.5em;
+    color: black;
+}
