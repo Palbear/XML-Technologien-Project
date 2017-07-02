@@ -1,31 +1,26 @@
-'use strict';
+/**
+ * Created by tarix on 02.07.17.
+ */
 const React = require('react');
-const ReactDOM = require('react-dom');
-const PropTypes = require('prop-types');
+import ToggleImg from './ToggleImg';
 
 class Painting extends React.Component{
-	constructor(props) {
-	    super(props);
-	  }
-	render() {
-		return (
-			<tr>
-				<td>{this.props.painting.title ? this.props.painting.title : ''}</td>
-				<td>{this.props.painting.artist ? this.props.painting.artist : ''}</td>
-				<td>{this.props.painting.date ? this.props.painting.date : ''}</td>
-				<td>{this.props.painting.category ? this.props.painting.category : ''}</td>
-				<td>{this.props.painting.inscription ? this.props.painting.inscription : ''}</td>
-				<td>{this.props.painting.depicted_person ? this.props.painting.depicted_person : ''}</td>
-				<td>{this.props.painting.technique_material ? this.props.painting.technique_material : ''}</td>
-				<td>{this.props.painting.measurements ? this.props.painting.measurements : ''}</td>
-				<td>{this.props.painting.right_work ? this.props.painting.right_work : ''}</td>
-			</tr>
-		)
-	}
-}
-
-Painting.propTypes = {
-	painting: PropTypes.object
+    constructor(props) {
+        super(props);
+    }
+    render(){
+        return(
+            <tr>
+                <td>{this.props.painting.recordID}</td>
+                <td>{this.props.painting.title}</td>
+                <td>{this.props.painting.artist}</td>
+                <td>{this.props.painting.category}</td>
+                <td>
+                    <ToggleImg imgurl={this.props.painting.image_link} />
+                </td>
+            </tr>
+        );
+    }
 };
 
-export default Painting;
+module.exports = Painting;

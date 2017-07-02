@@ -1,57 +1,86 @@
-'use strict';
-
+/**
+ * Created by tarix on 02.07.17.
+ */
 const React = require('react');
-const ReactDOM = require('react-dom');
-//const Painting = require('./Painting');
-const PropTypes = require('prop-types');
-const client = require('../client');
-import Painting from './Painting.js'
+const axios = require('axios');
+import Painting from './Painting';
 import {Button} from "react-bootstrap";
 
-//tag::painting-list[]
 class PaintingList extends React.Component{
-	constructor(props) {
-	    super(props);
-	    this.state = {paintings: []};
-	  }
-	componentDidMount() {
-		client({method: 'GET', path: '/api/paintings'}).done(response => {
-			this.setState({paintings: response.entity._embedded.paintings});
-		});
-	}
-	//<Painting key={painting._links.self.href} painting={painting}/>
-	render() {
-		var paintings = this.state.paintings.map( (painting) =>
-		<Painting key={painting._links.self.href} painting={painting}/>
-		);
-		return (
-				<div>
-				<div>
-				  <table>
-					<tbody>
-						<tr>
-							<th>Title</th>
-							<th>Artist/Maker</th>
-							<th>Date</th>
-							<th>Category</th>
-							<th>Inscription</th>
-							<th>Depicted Person</th>
-							<th>Technique/Material</th>
-							<th>Measurements</th>
-							<th>Rights work</th>
-						</tr>
-						{paintings}
-					</tbody>
-				  </table>
-				</div>
-				  <Button bsStyle="success">Next</Button>
-				</div>
-		)
-	}
-}
+    constructor(props) {
+        super(props);
+        this.state = {
+            paintings: [],
+            url: "http://localhost:8080/api/paintings"
+        };
+    }
+    loadPaintingsFromServer(url) {
+        let path = url ? url : "http://localhost:8080/api/paintings";
+        let self = this;
 
-PaintingList.propTypes = {
-	paintings: PropTypes.array
+        axios.get(path)
+            .then(function(response) {
+                self.setState({
+                    paintings: response.data._embedded.paintings
+                });
+                console.log(paintings);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    componentWillMount() {
+        this.loadPaintingsFromServer();
+    }
+    setFilter(word) {
+        if (word === 'All') {
+            this.loadPaintingsFromServer();
+        } else if (word === 'Allaert') {
+            this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=Allaert%20van%20Everdingen');
+        } else if (word === 'David') {
+            this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=David%20Kl%C3%B6cker%20Ehrenstrahl');
+        } else if (word === 'Nicolas') {
+            this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=Nicolas%20Lancret');
+        }
+    }
+    render() {
+        let rows = [];
+        this.state.paintings.forEach(function(painting) {
+            rows.push(
+                <Painting painting={painting} key={painting.recordID} />);
+        });
+        return (
+            <div>
+                <Button onClick={() => this.setFilter('All')}>Home</Button>
+                <Button onClick={() => this.setFilter('Allaert')}>Allaert</Button>
+                <Button onClick={() => this.setFilter('David')}>David</Button>
+                <Button onClick={() => this.setFilter('Nicolas')}>Nicolas</Button>
+
+                <table className="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>RecordID</th>
+                        <th>Title</th>
+                        <th>Artist</th>
+                        <th>Category</th>
+                        <th>View</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {rows}
+                    </tbody>
+                </table>
+            </div>
+        );
+    }
 };
 
-export default PaintingList;
+module.exports = PaintingList;
+
+
+
+
+
+
+

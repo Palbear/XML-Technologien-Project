@@ -2,7 +2,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const PropTypes = require('prop-types');
-import NavigationPanel from './NavBar/NavigationPanel.js';
+import NavigationPanel from '../NavBar/NavigationPanel.js';
 
 class Painting extends React.Component{
     constructor(props) {
@@ -24,7 +24,7 @@ class Painting extends React.Component{
       this.loadPaintingInf(this.props);
     }
     loadPaintingInf(recordID){
-      this.state..paintingInf.title="This is the title of my painting";
+      this.state.paintingInf.title="This is the title of my painting";
       this.state.paintingInf.artist="Picasso";
       this.state.paintingInf.date="1231";
       this.state.paintingInf.category="some category";
@@ -48,9 +48,9 @@ class Painting extends React.Component{
   		return (
         <div>
           <NavBar/>
-          <img src={C:\Users\Suzana Puscasu\Documents\GitHub\XML-Technologien-Project\Spring-Rest-React\src\main\resources\static\pic.jpg} className="painting2View"/>
+
           <div className="infoFROMxml">
-            <p>Title: {this.state..paintingInf.title}</p>
+            <p>Title: {this.state.paintingInf.title}</p>
             <p>Artist: {this.state.paintingInf.artist}</p>
             <p>Date: {this.state.paintingInf.date}</p>
             <p>Category: {this.state.paintingInf.category}</p>
