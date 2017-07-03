@@ -33,6 +33,7 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final PaintingsRepository repository;
 	private List<Painting> paintings = Utils.getAllPainting();
 	
+	
 	@Autowired
 	public DatabaseLoader(PaintingsRepository repository) throws IOException {
 		this.repository = repository;

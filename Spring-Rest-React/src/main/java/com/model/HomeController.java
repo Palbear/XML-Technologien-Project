@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 // tag::code[]
 @Controller
 //@RestController
-@RequestMapping("/")
 public class HomeController {
 
 	@RequestMapping(value = "/")
@@ -33,23 +32,5 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/react")
-	public String reacttest() {
-		return "reacttest";
-	}
-	
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String test() {
-	    return "test";
-	}
-	@RequestMapping(value = "/sparql", method = RequestMethod.GET)
-	public String sparql() {
-	    return "sparql";
-	}
-	@RequestMapping(value = "/sparqlx", method = RequestMethod.GET)
-	public String sparqlx() {
-	    return "sparqlx";
-	}
-
 }
 // end::code[]

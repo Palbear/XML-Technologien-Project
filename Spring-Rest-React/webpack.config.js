@@ -5,6 +5,11 @@ module.exports = {
     devtool: 'sourcemaps',
     cache: true,
     debug: true,
+    node: {
+      net: 'empty',
+      tls: 'empty',
+      dns: 'empty'
+    },
     output: {
         path: __dirname,
         filename: './src/main/resources/static/built/bundle.js'
