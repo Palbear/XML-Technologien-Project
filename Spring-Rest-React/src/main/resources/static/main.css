@@ -1,19 +1,26 @@
 body {
 }
 table {
-    border-collapse: collapse;
-    margin: 4rem;
+
+    border-collapse: collapse; 
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-left: 36px;
+    margin-left: 10px;
+    padding-right: 36px;
+    margin-right: 10px;
 
 }
 tbody {
-	margin: 5rem;
+	margin: 5px;
 }
 h2, h3 {
-	margin: 5rem;
+	margin: 5px;
 }
 td, th {
     border: 1px solid #999;
-    padding: 0.5rem;
+    padding: 5px;
     text-align: left;
 }
 
