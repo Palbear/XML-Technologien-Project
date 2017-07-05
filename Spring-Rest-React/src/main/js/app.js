@@ -2,8 +2,11 @@
 
 const React = require('react');
 const ReactDOM = require('react-dom')
+// const axios = require('axios');
 const when = require('when');
 const client = require('./client');
+import {Button} from "react-bootstrap";
+import ToggleImg from './ToggleImg';
 
 const follow = require('./follow'); // function to hop multiple links by "rel"
 
@@ -17,9 +20,6 @@ class App extends React.Component {
 		super(props);
 		this.state = {paintings: [], attributes: [], page: 1, pageSize: 5, links: {}};
 		this.updatePageSize = this.updatePageSize.bind(this);
-		this.onCreate = this.onCreate.bind(this);
-		this.onUpdate = this.onUpdate.bind(this);
-		this.onView = this.onView.bind(this);
 		this.onNavigate = this.onNavigate.bind(this);
 		this.refreshCurrentPage = this.refreshCurrentPage.bind(this);
 		this.refreshAndGoToLastPage = this.refreshAndGoToLastPage.bind(this);
@@ -57,41 +57,6 @@ class App extends React.Component {
 				links: this.links
 			});
 		});
-	}
-
-	// tag::on-create[]
-	onCreate(newPainting) {
-		follow(client, root, ['paintings']).done(response => {
-			client({
-				method: 'POST',
-				path: response.entity._links.self.href,
-				entity: newPainting,
-				headers: {'Content-Type': 'application/json'}
-			})
-		})
-	}
-	// end::on-create[]
-
-	onUpdate(painting, updatedPainting) {
-		client({
-			method: 'PUT',
-			path: painting.entity._links.self.href,
-			entity: updatedPainting,
-			headers: {
-				'Content-Type': 'application/json',
-				'If-Match': painting.headers.Etag
-			}
-		}).done(response => {
-			/* Let the websocket handler update the state */
-		}, response => {
-			if (response.status.code === 412) {
-				alert('DENIED: Unable to update ' + painting.entity._links.self.href + '. Your copy is stale.');
-			}
-		});
-	}
-
-	onView(painting) {
-		client({method: 'DELETE', path: painting.entity._links.self.href});
 	}
 
 	onNavigate(navUri) {
@@ -192,8 +157,6 @@ class App extends React.Component {
 							  pageSize={this.state.pageSize}
 							  attributes={this.state.attributes}
 							  onNavigate={this.onNavigate}
-							  onUpdate={this.onUpdate}
-							  onView={this.onView}
 							  updatePageSize={this.updatePageSize}/>
 			</div>
 		)
@@ -211,7 +174,42 @@ class PaintingList extends React.Component {
 		this.handleNavNext = this.handleNavNext.bind(this);
 		this.handleNavLast = this.handleNavLast.bind(this);
 		this.handleInput = this.handleInput.bind(this);
+		// this.state = {
+    //     paintings: [],
+    //     url: "http://localhost:8080/api/paintings"
+    // };
 	}
+
+	// loadPaintingsFromServer(url) {
+  //     let path = url ? url : "http://localhost:8080/api/paintings";
+  //     let self = this;
+	//
+  //     axios.get(path)
+  //         .then(function(response) {
+  //             self.setState({
+  //                 paintings: response.data._embedded.paintings
+  //             });
+  //             console.log(paintings);
+  //         })
+  //         .catch(function (error) {
+  //             console.log(error);
+  //         });
+	//  }
+
+	//  componentWillMount() {
+	//          this.loadPaintingsFromServer();
+	//      }
+  //  setFilter(word) {
+  //      if (word === 'All') {
+  //          this.loadPaintingsFromServer();
+  //      } else if (word === 'Allaert') {
+  //          this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=Allaert%20van%20Everdingen');
+  //      } else if (word === 'David') {
+  //          this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=David%20Kl%C3%B6cker%20Ehrenstrahl');
+  //      } else if (word === 'Nicolas') {
+  //          this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=Nicolas%20Lancret');
+  //      }
+  //  }
 
 	handleInput(e) {
 		e.preventDefault();
@@ -246,13 +244,15 @@ class PaintingList extends React.Component {
 	render() {
 		var pageInfo = this.props.page.hasOwnProperty("number") ?
 			<h3>paintings - Page {this.props.page.number + 1} of {this.props.page.totalPages}</h3> : null;
-
+		// let rows = [];
+    // this.state.paintings.forEach(function(painting) {
+    //     rows.push(
+    //         <Painting painting={painting} key={painting.recordID} />);
+    // });
 		var paintings = this.props.paintings.map(painting =>
 			<Painting key={painting.entity._links.self.href}
 					  painting={painting}
-					  attributes={this.props.attributes}
-					  onUpdate={this.props.onUpdate}
-					  onView={this.props.onView}/>
+					  attributes={this.props.attributes}/>
 		);
 
 		var navLinks = [];
@@ -273,20 +273,19 @@ class PaintingList extends React.Component {
 			<div>
 				{pageInfo}
 				<input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}/>
+        {/* <Button onClick={() => this.setFilter('All')}>Home</Button>
+        <Button onClick={() => this.setFilter('Allaert')}>Allaert</Button>
+        <Button onClick={() => this.setFilter('David')}>David</Button>
+        <Button onClick={() => this.setFilter('Nicolas')}>Nicolas</Button> */}
 				<table>
 					<tbody>
 						<tr>
-							<th>recordID</th>
-							<th>title</th>
-							<th>artist</th>
-							<th>date</th>
-							<th>category</th>
-							<th>inscription</th>
-							<th>depicted_person</th>
-							<th>technique_material</th>
-							<th>measurements</th>
-							<th>right_work</th>
-							<th>image_link</th>
+							<th>RecordID</th>
+              <th>Title</th>
+              <th>Artist</th>
+              <th>Category</th>
+							<th>Date</th>
+							<th>VIEW</th>
 						</tr>
 						{paintings}
 					</tbody>
@@ -303,33 +302,31 @@ class Painting extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.handleView = this.handleView.bind(this);
-	}
-
-	handleView() {
-		this.props.onView(this.props.painting);
 	}
 
 	render() {
 		return (
 			<tr>
-				<td>{this.props.painting.entity.recordID}</td>
-				<td>{this.props.painting.entity.title}</td>
-				<td>{this.props.painting.entity.artist}</td>
-				<td>{this.props.painting.entity.date}</td>
-				<td>{this.props.painting.entity.category}</td>
-				<td>{this.props.painting.entity.inscription}</td>
-				<td>{this.props.painting.entity.depicted_person}</td>
-				<td>{this.props.painting.entity.technique_material}</td>
-				<td>{this.props.painting.entity.measurements}</td>
-				<td>{this.props.painting.entity.right_work}</td>
-				<td><div class="parent"><img src={this.props.painting.entity.image_link}/></div></td>
+			 <td>{this.props.painting.entity.recordID}</td>
+			 <td>{this.props.painting.entity.title}</td>
+			 <td>{this.props.painting.entity.artist}</td>
+			 <td>{this.props.painting.entity.category}</td>
+			 <td>{this.props.painting.entity.date}</td>
+			 <td>
+
+						<ToggleImg imgurl={this.props.painting.entity.image_link} />
+
+			 </td>
 			</tr>
 		)
 	}
 }
 
+
+
+
 ReactDOM.render(
 	<App />,
 	document.getElementById('react')
+
 )

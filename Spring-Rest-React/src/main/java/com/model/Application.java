@@ -22,6 +22,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Greg Turnquist
  */
 // tag::code[]
+
 @SpringBootApplication
 public class Application {
 
