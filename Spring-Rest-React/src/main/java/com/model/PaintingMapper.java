@@ -49,6 +49,7 @@ public class PaintingMapper {
 	
 	public Painting getPainting(){
 		
+		
 		painting.getRecordID();
 		painting.getTitle();
 		painting.getArtist();

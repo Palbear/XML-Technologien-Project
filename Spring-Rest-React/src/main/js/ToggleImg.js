@@ -1,5 +1,4 @@
 const React = require('react');
-import Toggle from 'react-toggle'
 
 class ToggleImg extends React.Component{
     constructor(props) {
@@ -7,7 +6,6 @@ class ToggleImg extends React.Component{
         this.state = {
             showResults: false
         };
-
     }
     onClick() {
         let self = this;

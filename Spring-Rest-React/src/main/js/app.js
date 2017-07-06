@@ -6,7 +6,9 @@ const ReactDOM = require('react-dom')
 const when = require('when');
 const client = require('./client');
 import {Button} from "react-bootstrap";
+import {Image} from "react-bootstrap";
 import ToggleImg from './ToggleImg';
+import Lightbox from 'react-images';
 
 const follow = require('./follow'); // function to hop multiple links by "rel"
 
@@ -299,12 +301,13 @@ class PaintingList extends React.Component {
 }
 
 class Painting extends React.Component {
-
 	constructor(props) {
 		super(props);
 	}
-
 	render() {
+		var self = this;
+
+
 		return (
 			<tr>
 			 <td>{this.props.painting.entity.recordID}</td>
@@ -314,8 +317,7 @@ class Painting extends React.Component {
 			 <td>{this.props.painting.entity.date}</td>
 			 <td>
 
-						<ToggleImg imgurl={this.props.painting.entity.image_link} />
-
+						<Image src={`http://emp-web-22.zetcom.ch/eMuseumPlus?service=ImageAsset&module=collection&objectId=${this.props.painting.entity.recordID}`} onClick={this.popup}/>
 			 </td>
 			</tr>
 		)
