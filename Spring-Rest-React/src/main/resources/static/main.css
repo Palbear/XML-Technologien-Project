@@ -86,3 +86,7 @@ th {
     margin: 0.5em;
     color: black;
 }
+.show-false {
+		display: none;
+	}
+

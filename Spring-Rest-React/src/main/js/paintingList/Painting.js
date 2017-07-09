@@ -1,8 +1,7 @@
-/**
- * Created by tarix on 02.07.17.
- */
 const React = require('react');
+const Modal = require('react-modal');
 import ToggleImg from './ToggleImg';
+import ModalView from './ModalView';
 
 class Painting extends React.Component{
     constructor(props) {
@@ -16,7 +15,8 @@ class Painting extends React.Component{
                 <td>{this.props.painting.artist}</td>
                 <td>{this.props.painting.category}</td>
                 <td>
-                    <ToggleImg imgurl={this.props.painting.image_link} />
+                	<ModalView src={this.props.painting} />
+                	{/* <ToggleImg imgurl={this.props.painting.image_link} /> */}
                 </td>
             </tr>
         );
