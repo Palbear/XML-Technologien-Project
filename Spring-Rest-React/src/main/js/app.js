@@ -9,11 +9,11 @@ import {Button} from "react-bootstrap";
 import {Image} from "react-bootstrap";
 import ToggleImg from './ToggleImg';
 import Lightbox from 'react-images';
-
+import ModalView from './ModalView';
+const Modal = require('react-modal');
+const axios = require('axios');
 const follow = require('./follow'); // function to hop multiple links by "rel"
-
 const stompClient = require('./websocket-listener');
-
 const root = '/api';
 
 class App extends React.Component {
@@ -150,11 +150,41 @@ class App extends React.Component {
 	}
 	// end::register-handlers[]
 
+	loadPaintingsFromServer(url) {
+			let path = url ? url : "http://localhost:8080/api/paintings";
+			let self = this;
+
+			axios.get(path)
+					.then(function(response) {
+							self.setState({
+									paintings: response.data._embedded.paintings
+							});
+							console.log(paintings);
+					})
+					.catch(function (error) {
+							console.log(error);
+					});
+	 }
+
+	 componentWillMount() {
+ 	         this.loadPaintingsFromServer();
+ 	     }
+    setFilter(word) {
+        if (word === 'All') {
+            this.loadPaintingsFromServer();
+        } else if (word === 'Allaert') {
+            this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=Allaert%20van%20Everdingen');
+        } else if (word === 'David') {
+            this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=David%20Kl%C3%B6cker%20Ehrenstrahl');
+        } else if (word === 'Nicolas') {
+            this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=Nicolas%20Lancret');
+        }
+    }
 	render() {
 		return (
 			<div>
 				<PaintingList page={this.state.page}
-							  paintings={this.state.paintings}
+							  paintings={loadPaintingsFromServer('http://localhost:8080/api/paintings')}
 							  links={this.state.links}
 							  pageSize={this.state.pageSize}
 							  attributes={this.state.attributes}
@@ -181,37 +211,6 @@ class PaintingList extends React.Component {
     //     url: "http://localhost:8080/api/paintings"
     // };
 	}
-
-	// loadPaintingsFromServer(url) {
-  //     let path = url ? url : "http://localhost:8080/api/paintings";
-  //     let self = this;
-	//
-  //     axios.get(path)
-  //         .then(function(response) {
-  //             self.setState({
-  //                 paintings: response.data._embedded.paintings
-  //             });
-  //             console.log(paintings);
-  //         })
-  //         .catch(function (error) {
-  //             console.log(error);
-  //         });
-	//  }
-
-	//  componentWillMount() {
-	//          this.loadPaintingsFromServer();
-	//      }
-  //  setFilter(word) {
-  //      if (word === 'All') {
-  //          this.loadPaintingsFromServer();
-  //      } else if (word === 'Allaert') {
-  //          this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=Allaert%20van%20Everdingen');
-  //      } else if (word === 'David') {
-  //          this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=David%20Kl%C3%B6cker%20Ehrenstrahl');
-  //      } else if (word === 'Nicolas') {
-  //          this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=Nicolas%20Lancret');
-  //      }
-  //  }
 
 	handleInput(e) {
 		e.preventDefault();
@@ -316,8 +315,8 @@ class Painting extends React.Component {
 			 <td>{this.props.painting.entity.category}</td>
 			 <td>{this.props.painting.entity.date}</td>
 			 <td>
-
-						<Image src={`http://emp-web-22.zetcom.ch/eMuseumPlus?service=ImageAsset&module=collection&objectId=${this.props.painting.entity.recordID}`} onClick={this.popup}/>
+				 		<ModalView src={this.props.painting} />
+						{/* <Image src={`http://emp-web-22.zetcom.ch/eMuseumPlus?service=ImageAsset&module=collection&objectId=${this.props.painting.entity.recordID}`} onClick={this.popup}/> */}
 			 </td>
 			</tr>
 		)
