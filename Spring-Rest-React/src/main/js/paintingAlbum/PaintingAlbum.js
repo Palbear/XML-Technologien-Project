@@ -2,8 +2,9 @@ const React = require('react');
 const axios = require('axios');
 import Painting from './Painting';
 import {Button} from "react-bootstrap";
+import {CardColumns} from "reactstrap";
 
-class PaintingList extends React.Component{
+class PaintingAlbum extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -75,26 +76,18 @@ class PaintingList extends React.Component{
                 </div>*/}
 
 
-                <table className="table table-striped right-box">
-                    <thead>
-                    <tr>
-                        <th>RecordID</th>
-                        <th>Title</th>
-                        <th>Artist</th>
-                        <th>Category</th>
-                        <th>View</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {rows}
-                    </tbody>
-                </table>
+                <CardColumns>
+                	{rows}
+                </CardColumns>
             </div>
         );
     }
 };
 
-module.exports = PaintingList
+module.exports = PaintingAlbum;
+
+
+
 
 
 

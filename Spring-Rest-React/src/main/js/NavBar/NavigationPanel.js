@@ -14,11 +14,11 @@ class NavigationPanel extends React.Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <LinkContainer to="/table">
-                            <NavItem >Table</NavItem>
-                        </LinkContainer>
-                        <LinkContainer to="/paintings">
-                            <NavItem >Paintings</NavItem>
+                    	<LinkContainer to="/paintings">
+                    		<NavItem >PaintingsTable</NavItem>
+                    	</LinkContainer>
+                        <LinkContainer to="/paintingalbum">
+                            <NavItem >PaintingsAlbum</NavItem>
                         </LinkContainer>
                         <LinkContainer to="/paintinginfo">
                             <NavItem >Painting Info</NavItem>
