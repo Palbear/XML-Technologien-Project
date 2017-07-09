@@ -23,7 +23,6 @@ class PaintingList extends React.Component{
                 self.setState({
                     paintings: response.data._embedded.paintings
                 });
-                console.log(paintings);
             })
             .catch(function (error) {
                 console.log(error);

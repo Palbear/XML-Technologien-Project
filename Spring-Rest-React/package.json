@@ -41,6 +41,7 @@
     "fs": "0.0.1-security",
     "net": "^1.0.2",
     "react-router-bootstrap": "^0.24.2",
+    "react-rpg": "^2.0.0",
     "sparql-client": "^0.2.0",
     "tls": "0.0.1",
     "util": "^0.10.3"
