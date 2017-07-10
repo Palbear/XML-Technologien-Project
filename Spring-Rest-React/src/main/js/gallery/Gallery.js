@@ -4,6 +4,8 @@
 const React = require('react');
 const axios = require('axios');
 import { ReactRpg } from 'react-rpg';
+import PaintingModal from './PaintingModal';
+
 
 class Gallery extends React.Component{
     constructor(props) {
@@ -11,8 +13,24 @@ class Gallery extends React.Component{
         this.state = {
             paintings: [],
             images: [],
+            selectedUrl:'',
+            showModal: false,
             url: "http://localhost:8080/api/paintings"
         };
+    }
+    componentWillMount() {
+        this.loadPaintingsFromServer();
+    }
+    showModal(url, obj) {
+        this.setState({
+            showModal: true,
+            selectedUrl: url,
+        });
+    }
+    closeModal() {
+        this.setState({
+            showModal: false,
+        });
     }
     loadPaintingsFromServer(url) {
         let path = url ? url : "http://localhost:8080/api/paintings";
@@ -24,7 +42,7 @@ class Gallery extends React.Component{
                 const images = paintings.map((painting) => {
                     return {
                         url: painting.image_link,
-                        clickHandler: (url, obj) => { console.log(url) }
+                        clickHandler: (url, obj) => { self.showModal(url, obj) }
                         }
                 });
                 self.setState({
@@ -37,9 +55,7 @@ class Gallery extends React.Component{
             });
     }
 
-    componentWillMount() {
-        this.loadPaintingsFromServer();
-    }
+
     setFilter(word) {
         if (word === 'All') {
             this.loadPaintingsFromServer();
@@ -54,7 +70,10 @@ class Gallery extends React.Component{
     render() {
         return (
             <div>
-                <ReactRpg imagesArray={this.state.images} columns={[ 1, 2, 5 ]} padding={10} />
+                <div>
+                    <ReactRpg imagesArray={this.state.images} columns={[ 1, 2, 5 ]} padding={10} />
+                </div>
+                <PaintingModal showModal={this.state.showModal} selectedUrl={this.state.selectedUrl} paintings={this.state.paintings}/>
             </div>
         );
     }
