@@ -274,7 +274,7 @@
 					'div',
 					null,
 					React.createElement(PaintingList, { page: this.state.page,
-						paintings: loadPaintingsFromServer('http://localhost:8080/api/paintings'),
+						paintings: this.state.paintings,
 						links: this.state.links,
 						pageSize: this.state.pageSize,
 						attributes: this.state.attributes,

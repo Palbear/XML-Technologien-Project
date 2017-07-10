@@ -8,3 +8,5 @@ build
 */.project
 */.idea
 */.settings/org.eclipse*
+Spring-Rest-React/src/main/resources/static/built/bundle.js
+Spring-Rest-React/src/main/resources/static/built/bundle.js.map
