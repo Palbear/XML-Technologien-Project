@@ -26,8 +26,7 @@ class NavigationPanel extends React.Component {
                         <LinkContainer to="/gallery">
                             <NavItem >Gallery</NavItem>
                         </LinkContainer>
-
-
+                    
                         <NavDropdown eventKey={3} title="Help" id="basic-nav-dropdown">
                             <MenuItem eventKey={3.1}>Api</MenuItem>
                             <LinkContainer to="/paintinginfo">

@@ -19,7 +19,7 @@ class Painting extends React.Component{
 					<br/>
 					<p className="text-link">
 						<a itemProp="url" href={url} className="button">Museum link</a>
-					</p>					
+					</p>
 				</td>
 				<td>
 					<div itemProp="creator" itemScope itemType="http://schema.org/Person">
