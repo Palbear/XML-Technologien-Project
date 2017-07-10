@@ -8,3 +8,8 @@ build
 */.project
 */.idea
 */.settings/org.eclipse*
+/Spring-Rest-React/.idea/
+.idea/
+Spring-Rest-React/target/
+/Spring-Rest-React/src/main/resources/static/built/
+/.idea/
