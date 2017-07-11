@@ -5,7 +5,7 @@ const React = require('react');
 const axios = require('axios');
 import { ReactRpg } from 'react-rpg';
 import PaintingModal from './PaintingModal';
-import {Pagination, Pager} from "react-bootstrap";
+import {Pagination} from "react-bootstrap";
 
 
 class Gallery extends React.Component{
