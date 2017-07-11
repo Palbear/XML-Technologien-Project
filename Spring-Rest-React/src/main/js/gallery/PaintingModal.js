@@ -15,9 +15,10 @@ class PaintingModal extends React.Component{
             showModal: false,
             paintings: [],
             painting: {},
-            info: ''
+            info: 'initial info'
         };
         this.close = this.close.bind(this)
+        this.movementQuery = this.movementQuery.bind(this)
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.showModal !== this.state.showModal) {
@@ -55,8 +56,9 @@ class PaintingModal extends React.Component{
                 console.log(r);
                 console.log("Artistic Movement 1 -> ", r.results.bindings[0].movement.value);
                 console.log("Artistic Movement 2 -> ", r.results.bindings[1].movement.value);
+                const tmp = "Artistic movement " + r.results.bindings[1].movement.value;
                 this.setState({
-                    info: r.results.bindings[0]
+                    info: tmp               
                 });
             }).catch(function(e) { console.log(e) });
     }
@@ -204,15 +206,15 @@ class PaintingModal extends React.Component{
                     </Modal.Header>
 
                     <Modal.Body>
-                        <div align="center" itemScope itemType="http://schema.org/Painting">
+                        <div className="modal-dialog" itemScope itemType="http://schema.org/Painting">
                             	<img src={this.props.selectedUrl} width="555" height="450" />
                             	<p> <strong>TITLE : </strong> <br /> <span itemProp="name">{this.state.painting.title}</span> </p>
                             	<p> <strong>ARTIST : </strong>
-                            		<br />
-                            		<div itemProp="creator" itemScope itemType="http://schema.org/Person">
-            							<span itemProp="name">{this.state.painting.artist}</span>
-            						</div>
-                            	</p>
+                    			<br /> 
+                    				<span itemProp="creator" itemScope itemType="http://schema.org/Person">
+    									<span itemProp="name">{this.state.painting.artist}</span>
+    								</span>
+    							</p>
                             	<p> <strong>DATE : </strong> <br /> {this.state.painting.date} </p>
                             	<p> <strong>INSCRIPTION :</strong> <br /> {this.state.painting.inscription} </p>
                             	<p> <strong>MATERIAL : </strong> <br /> {this.state.painting.technique_material} </p>
