@@ -251,7 +251,7 @@ class PaintingModal extends React.Component {
             <li>
                 {item.abstract.value}
                 <br/>
-                {item.thumbnail.value}
+                <img src={item.thumbnail.value}/>
             </li>
         ) : '';
         const authorBirthPlace = this.state.authorBirthPlace ? this.state.authorBirthPlace.map((item) =>
