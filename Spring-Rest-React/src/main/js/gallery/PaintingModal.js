@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactBootstrap = require('react-bootstrap');
 var Modal = ReactBootstrap.Modal;
+let dps = require('dbpedia-sparql-client').default;
 
 class PaintingModal extends React.Component{
 
@@ -9,7 +10,8 @@ class PaintingModal extends React.Component{
         this.state = {
             showModal: false,
             paintings: [],
-            painting: {}
+            painting: {},
+            info: ''
         };
         this.close = this.close.bind(this)
     }
@@ -35,6 +37,21 @@ class PaintingModal extends React.Component{
             showModal: false
         });
     }
+    dbpediaQuery() {
+        //let query = 'SELECT ?p ?o WHERE { db:Danny_Kaye ?p ?o }';
+        let query = 'SELECT DISTINCT ?Concept WHERE {[] a ?Concept} LIMIT 10';
+
+        dps.client()
+            .query(query)
+            .timeout(15000) // optional, defaults to 10000
+            .asJson() // or asXml()
+            .then(function(r) {
+                console.log(r);
+                this.setState({
+                    info: r.results.bindings[0]
+                });
+            }).catch(function(e) { console.log(e) });
+    }
 
     render() {
         return (
@@ -51,10 +68,12 @@ class PaintingModal extends React.Component{
                             <p> <strong>DATE : </strong> <br /> {this.state.painting.date} </p>
                             <p> <strong>CATEGORY : </strong> <br /> {this.state.painting.category} </p>
                             <p> <strong>INSCRIPTION :</strong> <br /> {this.state.painting.inscription} </p>
+                            <p> <strong>Query 1 :</strong> <br /> {this.state.info.toString()} </p>
                         </div>
                     </Modal.Body>
 
                     <Modal.Footer>
+                        <button onClick={this.dbpediaQuery}>doQuery</button>
                         <button onClick={this.close}>close</button>
                     </Modal.Footer>
                 </Modal>
