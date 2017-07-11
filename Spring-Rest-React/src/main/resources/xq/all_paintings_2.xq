@@ -7,6 +7,10 @@ let $authors := $event//lido:eventActor//lido:actor
 let $m := $doc//lido:objectMeasurementsWrap
 let $width := $m//lido:measurementsSet[lido:measurementType='Width']/lido:measurementValue
 let $height := $m//lido:measurementsSet[lido:measurementType='Height']/lido:measurementValue
+for $depicted in $doc//lido:objectRelationWrap//lido:subject
+let $depictedId := $depicted//lido:actorID
+let $depictedPerson := $depicted//lido:appellationValue/text()
+let $depict := string-join(($depictedId, " ", $depictedPerson))
 let $sep := "_SPRTR_"
 order by ($recordId)
 return string-join((
@@ -22,9 +26,9 @@ return string-join((
     $sep,
     string-join($doc//lido:inscriptions/lido:inscriptionTranscription/text(), ". "),
     $sep,
-    string-join($doc//lido:objectRelationWrap/lido:subjectSet/lido:subject/lido:appellationValue/text(), ", "),
+    string-join($depict, ", "),
     $sep,
-    string-join($doc//lido:eventMaterialsTech/lido:displayMaterialsTech/text(), ", "),
+    string-join($doc//lido:eventMaterialsTech/lido:displayMaterialsTech, ", "),
     $sep,
     string-join($width, " or ") || "-" ||  string-join($height, " or "),
    $sep,

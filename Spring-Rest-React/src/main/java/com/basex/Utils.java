@@ -12,6 +12,11 @@ import com.model.Painting;
 import com.model.PaintingMapper;
 public class Utils {
 	
+	/**
+	 * This methods fires on application start, reads all the selected paintings infos from XML-Datenbank and transforms them into list of {@link Painting} objects
+	 * @return list of Painting objects
+	 * @throws IOException
+	 */
 	public static List<Painting> getAllPainting() throws IOException{
 		
 		List<Painting> paintings = new ArrayList<>();
@@ -32,8 +37,7 @@ public class Utils {
 
 				// print query info
 				System.out.println(query.info());
-			}
-			
+			}			
 		}
 		
 		return paintings;

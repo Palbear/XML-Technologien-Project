@@ -34,6 +34,23 @@ public class Main {
 				System.out.println(query.info());
 				
 			}
+			
+			/*
+			File file2 = new File("src/main/resources/xq/validate-schema.xq");
+			final String input2 = FileUtils.readFileToString(file2);
+
+			try (Query query = session.query(input2)) {
+				// loop through all results
+				while (query.more()) {	
+					String res = query.next();
+					System.out.println(res);
+				}
+
+				// print query info
+				System.out.println(query.info());
+				
+			}
+			*/
 		}
 	}
 
