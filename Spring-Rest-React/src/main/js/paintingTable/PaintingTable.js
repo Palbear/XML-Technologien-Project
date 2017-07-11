@@ -34,7 +34,6 @@ class PaintingTable extends React.Component{
 							<th>Artist/Maker</th>
 							<th>Date</th>
 							<th>Links</th>
-							<th>Category</th>
 							<th>Inscription</th>
 							<th>Depicted Person</th>
 							<th>Technique/Material</th>

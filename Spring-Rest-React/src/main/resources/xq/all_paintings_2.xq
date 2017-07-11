@@ -28,7 +28,7 @@ return string-join((
     $sep,
     string-join($depict, ", "),
     $sep,
-    string-join(($doc//lido:eventMaterialsTech/lido:displayMaterialsTech/text(), ", ")),
+    string-join($doc//lido:eventMaterialsTech/lido:displayMaterialsTech, ", "),
     $sep,
     string-join($width, " or ") || "-" ||  string-join($height, " or "),
    $sep,

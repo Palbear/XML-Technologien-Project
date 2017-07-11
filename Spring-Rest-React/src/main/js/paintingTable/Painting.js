@@ -30,7 +30,6 @@ class Painting extends React.Component{
 						<a itemProp="url" href={url} className="button">Museum link</a>
 					</p>
 				</td>
-				<td>{this.props.painting.category ? this.props.painting.category : ''}</td>
 				<td>{this.props.painting.inscription ? this.props.painting.inscription : ''}</td>
 				<td>{this.props.painting.depicted_person ? this.props.painting.depicted_person : ''}</td>
 				<td>
