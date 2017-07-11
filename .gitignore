@@ -13,3 +13,4 @@ build
 Spring-Rest-React/target/
 /Spring-Rest-React/src/main/resources/static/built/
 /.idea/
+*.json
