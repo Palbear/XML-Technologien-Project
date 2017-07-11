@@ -45,7 +45,7 @@ class PaintingModal extends React.Component{
     //This method returns the artistic movement of the artist (could be more than one movement)
     // A parameter of the author name should replace "Pablo Picasso" and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
     movementQuery() {
-        let query = 'SELECT DISTINCT ?movement WHERE { ?author rdfs:label ?name . FILTER regex(?name, "Pablo Picasso", "i") ?author dbo:movement ?movement }';
+        let query = 'SELECT DISTINCT ?mov WHERE { ?author rdfs:label ?name . FILTER regex(?name, "Pablo Picasso", "i") ?author dbo:movement ?movement . ?movement rdfs:label ?mov . FILTER (LANG(?mov) = "en")}';
 
         dps.client()
             .query(query)
@@ -53,8 +53,35 @@ class PaintingModal extends React.Component{
             .asJson() // or asXml()
             .then(function(r) {
                 console.log(r);
-                console.log("Artistic Movement 1 -> ", r.results.bindings[0].movement.value);
-                console.log("Artistic Movement 2 -> ", r.results.bindings[1].movement.value);
+                console.log("Artistic Movement 1 -> ", r.results.bindings[0].mov.value);
+                console.log("Artistic Movement 2 -> ", r.results.bindings[1].mov.value);
+                this.setState({
+                    info: r.results.bindings[0]
+                });
+            }).catch(function(e) { console.log(e) });
+    }
+
+    //This method retrieves ten other artists from the same movement
+    // A parameter of the author name should replace "Pablo Picasso" and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
+    tenOtherArtistsFromSameMovement() {
+        let query = 'PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> SELECT ?otherArtist WHERE { ?author rdfs:label ?name . FILTER regex(?name, "Pablo Picasso", "i") FILTER (LANG(?name) = "en") ?author dbo:movement ?movement . ?person dbo:movement ?movement . ?person rdfs:label ?otherArtist . FILTER (LANG(?otherArtist) = "en")} LIMIT 10';
+
+        dps.client()
+            .query(query)
+            .timeout(15000) // optional, defaults to 10000
+            .asJson() // or asXml()
+            .then(function(r) {
+                console.log(r);
+                console.log("Other artist from the same movement -> ", r.results.bindings[0].otherArtist.value);
+                console.log("Other artist from the same movement -> ", r.results.bindings[0].otherArtist.value);
+                console.log("Other artist from the same movement -> ", r.results.bindings[2].otherArtist.value);
+                console.log("Other artist from the same movement -> ", r.results.bindings[3].otherArtist.value);
+                console.log("Other artist from the same movement -> ", r.results.bindings[4].otherArtist.value);
+                console.log("Other artist from the same movement -> ", r.results.bindings[5].otherArtist.value);
+                console.log("Other artist from the same movement -> ", r.results.bindings[6].otherArtist.value);
+                console.log("Other artist from the same movement -> ", r.results.bindings[7].otherArtist.value);
+                console.log("Other artist from the same movement -> ", r.results.bindings[8].otherArtist.value);
+                console.log("Other artist from the same movement -> ", r.results.bindings[9].otherArtist.value);
                 this.setState({
                     info: r.results.bindings[0]
                 });
@@ -87,14 +114,14 @@ class PaintingModal extends React.Component{
     //TODO:
     // A parameter of the author name should replace "August_Strindberg" and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
     authorBirthPlace(){
-      let query = "prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> select ?birthPlace where { dbpedia:August_Strindberg dbpedia-owl:abstract ?abstract ; dbpedia-owl:birthPlace ?birthPlace . filter(langMatches(lang(?abstract),'en'))}";
+      let query = "prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> select ?birthPlace ?place where { dbpedia:August_Strindberg dbpedia-owl:abstract ?abstract ; dbpedia-owl:birthPlace ?birthPlace . filter(langMatches(lang(?abstract),'en')) ?birthPlace rdfs:label ?place . filter(langMatches(lang(?place),'en')) }";
       dps.client()
           .query(query)
           .timeout(15000) // optional, defaults to 10000
           .asJson() // or asXml()
           .then(function(r) {
               console.log(r);
-              console.log("Birth Place of Author  1 -> ", r.results.bindings[0].birthPlace.value);
+              console.log("Birth Place of Author  1 -> ", r.results.bindings[0].place.value);
               this.setState({
                   info: r.results.bindings[0]
               });
@@ -139,9 +166,10 @@ class PaintingModal extends React.Component{
     The name (Magdalena Sibylla) works  as the name in DBpedia is (Sophia Magdalena of Denmark)
     But this name (Drottning Sofia Magdalena) doesn't work as it is different in DBpedia (Sophia Magdalena of Denmark)
     The name (Prinsessan Sofia Albertina) also doesn't work as in DBpedia it is (Sophia Albertina, Abbess of Quedlinburg)
+    If it may makes trouble we can drop this feature!
     */
     birthPlaceOfDepictedPerson(){
-      let query = 'SELECT ?name ?birthPlace WHERE { ?author rdfs:label ?name . FILTER regex(?name, "Magdalena Sibylla", "i") ?author dbo:birthPlace ?birthPlace }';
+      let query = 'PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> SELECT ?name ?place WHERE { ?author rdfs:label ?name . FILTER regex(?name, "Suzanne Roslin", "i") ?author dbo:birthPlace ?birthPlace . ?birthPlace rdfs:label ?place . filter(langMatches(lang(?place),"en"))}';
       dps.client()
           .query(query)
           .timeout(15000) // optional, defaults to 10000
@@ -166,15 +194,15 @@ class PaintingModal extends React.Component{
           .asJson() // or asXml()
           .then(function(r) {
               console.log(r);
-              console.log("Other People born in the same place -> ", r.results.bindings[0].person.value);
-              console.log("Other People born in the same place -> ", r.results.bindings[2].person.value);
-              console.log("Other People born in the same place -> ", r.results.bindings[3].person.value);
-              console.log("Other People born in the same place -> ", r.results.bindings[4].person.value);
-              console.log("Other People born in the same place -> ", r.results.bindings[5].person.value);
-              console.log("Other People born in the same place -> ", r.results.bindings[6].person.value);
-              console.log("Other People born in the same place -> ", r.results.bindings[7].person.value);
-              console.log("Other People born in the same place -> ", r.results.bindings[8].person.value);
-              console.log("Other People born in the same place -> ", r.results.bindings[9].person.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[0].name.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[2].name.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[3].name.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[4].name.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[5].name.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[6].name.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[7].name.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[8].name.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[9].name.value);
               this.setState({
                   info: r.results.bindings[0]
               });
@@ -224,6 +252,7 @@ class PaintingModal extends React.Component{
 
                     <Modal.Footer>
 
+                        <button onClick={this.tenOtherArtistsFromSameMovement}>Ten other artists from the same artistic movement</button>
                         <button onClick={this.authorDescriptionAndThumbnailQuery}>Author's Description and Photo</button>
                         <button onClick={this.movementQuery}>Artistic Movement</button>
                         <button onClick={this.authorBirthPlace}>Author's Birth Place</button>
