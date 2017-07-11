@@ -16,10 +16,6 @@ class Painting extends React.Component{
 			<tr itemScope itemType="http://schema.org/Painting">
 				<td>
 					<span itemProp="name">{this.props.painting.title ? this.props.painting.title : ''}</span>			
-					<br/>
-					<p className="text-link">
-						<a itemProp="url" href={url} className="button">Museum link</a>
-					</p>
 				</td>
 				<td>
 					<div itemProp="creator" itemScope itemType="http://schema.org/Person">
@@ -28,6 +24,11 @@ class Painting extends React.Component{
 				</td>
 				<td>
 					<span itemProp="dateCreated">{this.props.painting.date ? this.props.painting.date : ''}</span>
+				</td>
+				<td>
+					<p className="text-link">
+						<a itemProp="url" href={url} className="button">Museum link</a>
+					</p>
 				</td>
 				<td>{this.props.painting.category ? this.props.painting.category : ''}</td>
 				<td>{this.props.painting.inscription ? this.props.painting.inscription : ''}</td>

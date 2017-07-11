@@ -33,12 +33,13 @@ class PaintingTable extends React.Component{
 							<th>Title</th>
 							<th>Artist/Maker</th>
 							<th>Date</th>
+							<th>Links</th>
 							<th>Category</th>
 							<th>Inscription</th>
 							<th>Depicted Person</th>
 							<th>Technique/Material</th>
 							<th>Measurements</th>
-							<th>Rights work</th>
+							<th>Rights resource</th>
 						</tr>
 						{paintings}
 					</tbody>
