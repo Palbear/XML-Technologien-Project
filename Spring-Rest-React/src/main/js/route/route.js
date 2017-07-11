@@ -10,7 +10,7 @@ import Sample from '../sample/Sample.js';
 
 const BasicRoute = () => (
       <div>
-          <Route exact path="/" component={PaintingTable}/>
+          <Route exact path="/" component={Gallery}/>
           <Route path="/table" component={PaintingTable}/>
           <Route path="/paintings" component={PaintingList}/>
           <Route path="/paintinginfo" component={PaintingInfo}/>

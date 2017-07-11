@@ -8,35 +8,31 @@ class NavigationPanel extends React.Component {
             <Navbar inverse collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href="/">Sweden Painting</a>
+                        <a href="/">NM Sweden Paintings</a>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <LinkContainer to="/table">
-                            <NavItem >Table</NavItem>
-                        </LinkContainer>
+                    	<LinkContainer to="/table">
+                    		<NavItem >Table</NavItem>
+                    	</LinkContainer>
                         <LinkContainer to="/paintings">
-                            <NavItem >Paintings</NavItem>
-                        </LinkContainer>
+                            <NavItem >Filtered Paintings</NavItem>
+                        </LinkContainer>                       
                         <LinkContainer to="/paintinginfo">
                             <NavItem >Painting Info</NavItem>
-                        </LinkContainer>
-                        <LinkContainer to="/gallery">
-                            <NavItem >Gallery</NavItem>
                         </LinkContainer>
                     
                         <NavDropdown eventKey={3} title="Help" id="basic-nav-dropdown">
                             <MenuItem eventKey={3.1}>Api</MenuItem>
                             <LinkContainer to="/paintinginfo">                         
-                            <MenuItem eventKey={3.2}>Painting</MenuItem>
-                            </LinkContainer>
-                            <LinkContainer to="/sample">   
-                            <MenuItem eventKey={3.3}>XSLT Sample</MenuItem>
-                            </LinkContainer>
+                            	<MenuItem eventKey={3.2}>Painting</MenuItem>
+                            </LinkContainer>                        
                             <MenuItem divider/>
-                            <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                            <LinkContainer to="/sample">
+                        		<MenuItem eventKey={3.3}>XSLT Sample (Lidia Test donotdelete)</MenuItem>
+                        	</LinkContainer>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

@@ -5,7 +5,6 @@ let dps = require('dbpedia-sparql-client').default;
 const {Client} = require('virtuoso-sparql-client');
 let SparqlClient = new Client("https://libris.kb.se/sparql");
 
-
 class PaintingModal extends React.Component{
 
     constructor(props) {
@@ -171,15 +170,15 @@ class PaintingModal extends React.Component{
                     </Modal.Header>
 
                     <Modal.Body>
-                        <div align="center">
-                            <img src={this.props.selectedUrl} width="555" height="450" />
-                            <p> <strong>TITLE : </strong> <br /> {this.state.painting.title} </p>
-                            <p> <strong>ARTIST : </strong> <br /> {this.state.painting.artist} </p>
-                            <p> <strong>DATE : </strong> <br /> {this.state.painting.date} </p>
-                            <p> <strong>CATEGORY : </strong> <br /> {this.state.painting.category} </p>
-                            <p> <strong>INSCRIPTION :</strong> <br /> {this.state.painting.inscription} </p>
-                            <p> <strong>Depicted Person :</strong> <br /> {this.state.painting.depicted_person} </p>
-                            <p> <strong>Query 1 :</strong> <br /> {this.state.info.toString()} </p>
+                        <div align="center">                      	
+                            	<img src={this.props.selectedUrl} width="555" height="450" />
+                            	<p> <strong>TITLE : </strong> <br /> {this.state.painting.title} </p>
+                            	<p> <strong>ARTIST : </strong> <br /> {this.state.painting.artist} </p>
+                            	<p> <strong>DATE : </strong> <br /> {this.state.painting.date} </p>
+                            	<p> <strong>MATERIAL : </strong> <br /> {this.state.painting.material} </p>
+                            	<p> <strong>INSCRIPTION :</strong> <br /> {this.state.painting.inscription} </p>
+                            	<p> <strong>Depicted Person :</strong> <br /> {this.state.painting.depicted_person} </p>
+                            	<p> <strong>Query 1 :</strong> <br /> {this.state.info.toString()} </p>
                         </div>
                     </Modal.Body>
 
