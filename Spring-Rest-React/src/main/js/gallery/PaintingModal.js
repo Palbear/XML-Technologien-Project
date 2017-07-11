@@ -1,10 +1,12 @@
 const React = require('react');
 const ReactBootstrap = require('react-bootstrap');
+const PropTypes = require('prop-types');
 var Modal = ReactBootstrap.Modal;
 let dps = require('dbpedia-sparql-client').default;
 const {Client} = require('virtuoso-sparql-client');
 let SparqlClient = new Client("https://libris.kb.se/sparql");
 
+// This class takes care of the pop-up Painting window from the Paintings Gallery
 class PaintingModal extends React.Component{
 
     constructor(props) {
@@ -163,6 +165,13 @@ class PaintingModal extends React.Component{
         .catch(console.log);
     }
     render() {
+    	
+    	var url = 
+			"http://collection.nationalmuseum.se/eMuseumPlus?service=ExternalInterface&module=collection&objectId=" + 
+			this.state.painting.recordID + 
+			"&viewType=detailView";
+    	var urlTitle = "Nationalmuseum Sweden page: Record " + this.state.painting.recordID;
+    	
         return (
                 <Modal show={this.state.showModal} onHide={this.close}>
                     <Modal.Header closeButton>
@@ -170,14 +179,20 @@ class PaintingModal extends React.Component{
                     </Modal.Header>
 
                     <Modal.Body>
-                        <div align="center">                      	
+                        <div align="center" itemScope itemType="http://schema.org/Painting">                      	
                             	<img src={this.props.selectedUrl} width="555" height="450" />
-                            	<p> <strong>TITLE : </strong> <br /> {this.state.painting.title} </p>
-                            	<p> <strong>ARTIST : </strong> <br /> {this.state.painting.artist} </p>
-                            	<p> <strong>DATE : </strong> <br /> {this.state.painting.date} </p>
-                            	<p> <strong>MATERIAL : </strong> <br /> {this.state.painting.material} </p>
+                            	<p> <strong>TITLE : </strong> <br /> <span itemProp="name">{this.state.painting.title}</span> </p>
+                            	<p> <strong>ARTIST : </strong> 
+                            		<br /> 
+                            		<div itemProp="creator" itemScope itemType="http://schema.org/Person">
+            							<span itemProp="name">{this.state.painting.artist}</span>
+            						</div>
+                            	</p>
+                            	<p> <strong>DATE : </strong> <br /> {this.state.painting.date} </p>                           	
                             	<p> <strong>INSCRIPTION :</strong> <br /> {this.state.painting.inscription} </p>
+                            	<p> <strong>MATERIAL : </strong> <br /> {this.state.painting.technique_material} </p>                            	
                             	<p> <strong>Depicted Person :</strong> <br /> {this.state.painting.depicted_person} </p>
+                            	<p> <strong>Link :</strong> <br /> <a itemProp="url" href={url} className="button">{urlTitle}</a> </p>
                             	<p> <strong>Query 1 :</strong> <br /> {this.state.info.toString()} </p>
                         </div>
                     </Modal.Body>

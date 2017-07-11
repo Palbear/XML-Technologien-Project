@@ -1,5 +1,6 @@
 const React = require('react');
 const ReactBootstrap = require('react-bootstrap');
+const PropTypes = require('prop-types');
 var Modal = ReactBootstrap.Modal;
 let dps = require('dbpedia-sparql-client').default;
 
@@ -68,11 +69,16 @@ class SampleModal extends React.Component{
                     </Modal.Header>
 
                     <Modal.Body>
-                        <div align="center">
+                        <div align="center" itemScope itemType="http://schema.org/Painting">
                             <img src={this.props.selectedUrl} width="250" height="225" />
-                            <p> <strong>TITLE : </strong> <br /> {this.state.painting.title} </p>
-                            <p> <strong>ARTIST : </strong> <br /> {this.state.painting.artist} </p>
-                            <p> <strong>DATE : </strong> <br /> {this.state.painting.date} </p>
+                            <p> <strong>TITLE : </strong> <br /> <span itemProp="name">{this.state.painting.title}</span> </p>
+                            <p> <strong>ARTIST : </strong> 
+                    			<br /> 
+                    			<div itemProp="creator" itemScope itemType="http://schema.org/Person">
+    								<span itemProp="name">{this.state.painting.artist}</span>
+    								</div>
+    							</p>
+                            <p> <strong>DATE : </strong> <br /> <span itemProp="dateCreated">{this.state.painting.date}</span> </p>
                             <p> <strong>Query 1 :</strong> <br /> {this.state.info.toString()} </p>                           
                         </div>
                     </Modal.Body>
