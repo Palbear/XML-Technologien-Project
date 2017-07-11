@@ -46,10 +46,24 @@ class Gallery extends React.Component{
 
         axios.get(path)
             .then(function(response) {
-                const paintings = response.data._embedded.paintings;
+                let paintings = response.data._embedded.paintings;
+                paintings = paintings.map((painting) => {
+                   let newPainting = painting;
+                   let arr = newPainting.image_link.split('&');
+                   let resultString = arr[0];
+                   for(let i = 1; i<arr.length; i++) {
+                       if (arr[i].indexOf('objectId') > -1) {
+                           resultString = resultString.concat('&').concat(arr[i]);
+                           break;
+                       }
+                       resultString = resultString.concat('&').concat(arr[i]);
+                   }
+                    newPainting.smallImage = resultString;
+                   return newPainting
+                });
                 const images = paintings.map((painting) => {
                     return {
-                        url: painting.image_link,
+                        url: painting.smallImage,
                         clickHandler: (url, obj) => { self.showModal(url, obj) }
                         }
                 });
