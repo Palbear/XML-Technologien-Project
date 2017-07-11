@@ -283,50 +283,118 @@ class PaintingModal extends React.Component {
 
                 <Modal.Body>
                     <div className="modal-dialog" itemScope itemType="http://schema.org/Painting">
-                        <img src={this.props.selectedUrl} width="555" height="450"/>
-                        <p><strong>TITLE : </strong> <br /> <span itemProp="name">{this.state.painting.title}</span></p>
-                        <p><strong>ARTIST : </strong>
-                            <br />
-                            <span itemProp="creator" itemScope itemType="http://schema.org/Person">
-    								<span itemProp="name">{this.state.painting.artist}</span>
-    							</span>
-                        </p>
-                        <p><strong>DATE : </strong> <br /> {this.state.painting.date} </p>
-                        <p><strong>INSCRIPTION :</strong> <br /> {this.state.painting.inscription} </p>
-                        <p><strong>MATERIAL : </strong> <br /> {this.state.painting.technique_material} </p>
-                        <p><strong>Depicted Person :</strong> <br /> {this.state.painting.depicted_person} </p>
-                        <p><strong>Link :</strong> <br /> <a itemProp="url" href={url} className="button">{urlTitle}</a>
-                        </p>
-                        {this.state.movement.length > 0 ?
-                        <p><strong>The artistic movement of the artist :</strong> <br />
-                            <ul>{movements}</ul>
-                        </p> : ''}
-                        {this.state.otherArtistsFromSameMovement.length > 0 ?
-                        <p><strong>The artistic movement from the same movement :</strong> <br />
-                            <ul>{otherArtistsFromSameMovement}</ul>
-                        </p> : ''}
-                        {this.state.authorDescriptionAndThumbnail.length > 0 ?
-                        <p><strong>The description about the Author and a Thumbnail :</strong> <br />
-                            <ul>{authorDescriptionAndThumbnail}</ul>
-                        </p> : ''}
-                        {this.state.authorBirthPlace.length > 0 ?
-                        <p><strong>The author birth place :</strong> <br />
-                            <ul>{authorBirthPlace}</ul>
-                        </p> : '' }
-                        {this.state.otherPeoplesBornInSamePlace.length > 0 ?
-                        <p><strong>A 10 other known poeple who were born in the same place :</strong> <br />
-                            <ul>{otherPeoplesBornInSamePlace}</ul>
-                        </p> : '' }
+                    
+                      <img src={this.props.selectedUrl} width="555" height="450"/>
+                        
+                      <div className="painting-modal-infos-container">
+                        
+                        <div className="painting-info-entry">
+                        	<strong>TITLE</strong> <br />
+                        	<span itemProp="name">{this.state.painting.title}</span>
+                        </div>
+                        
+                        <div className="painting-info-entry">
+                        	<strong>ARTIST</strong> <br />
+                        	<span itemProp="creator" itemScope itemType="http://schema.org/Person">
+								<span itemProp="name">{this.state.painting.artist}</span>
+							</span>
+                        </div>
+                        
+                        <div className="painting-info-entry">
+                        	<strong>DATE</strong> <br /> 
+                        	<span itemProp="dateCreated">{this.state.painting.date}</span>
+                    	</div>
+                    	
+                        <div className="painting-info-entry">
+                        	<strong>INSCRIPTION</strong> <br /> 
+                        	{this.state.painting.inscription}
+                        </div>
+                        
+                        <div className="painting-info-entry">
+                        	<strong>MATERIAL : </strong> <br />
+                        	{this.state.painting.technique_material}
+                        </div>
+                        
+                        <div className="painting-info-entry">
+                        	<strong>Depicted Person :</strong> <br />
+                        	{this.state.painting.depicted_person}
+                        </div>
+                        
+                        <div className="painting-info-entry">
+                        	<strong>Link :</strong> <br />
+                        	<a itemProp="url" href={url} className="button">{urlTitle}</a>
+                        </div>
+                        
+                      </div>                                     
+                      
+                      <div className="painting-modal-infos-container painting-info-entry">
+                      
+                      	<div>
+                      
+                      		{this.state.authorDescriptionAndThumbnail.length > 0 ?
+                              <p><strong>The description about the Author and a Thumbnail :</strong> <br />
+                                  <ul>{authorDescriptionAndThumbnail}</ul>
+                              </p> : ''}
+                      	</div>
+                      	
+                      	<div>
+                      	
+                      	{this.state.movement.length > 0 ?
+                                <p><strong>The artistic movement of the artist :</strong> <br />
+                                    <ul>{movements}</ul>
+                                </p> : ''}
+                      	
+                      	</div>
+                      	
+                      	
+                      	<div>
+                      	
+                      	{this.state.authorBirthPlace.length > 0 ?
+                                <p><strong>The author birth place :</strong> <br />
+                                    <ul>{authorBirthPlace}</ul>
+                                </p> : '' }
+                      	
+                      	</div>
+                      	
+                      	<div>
+                      	
+                      	{this.state.otherPeoplesBornInSamePlace.length > 0 ?
+                                <p><strong>10 other known people born in the same place :</strong> <br />
+                                    <ul>{otherPeoplesBornInSamePlace}</ul>
+                                </p> : '' }
+                      	
+                      	</div>
+                      	
+                      	<div>
+                      	
+                      	 {this.state.otherArtistsFromSameMovement.length > 0 ?
+                                 <p><strong>The artistic movement from the same movement :</strong> <br />
+                                     <ul>{otherArtistsFromSameMovement}</ul>
+                                 </p> : ''}
+                      	
+                      	</div>
+                      	
+                      	<div>
+                      	
+                      	 {this.state.artistsBornBeforeTheDateOfThePainting.length > 0 ?
+                                 <p><strong>The artists born before the date of the painting and who were born in Berlin :</strong> <br />
+                                     <ul>{artistsBornBeforeTheDateOfThePainting}</ul>
+                                 </p> : '' }
+                                              	 
+                      	</div>
+                      	
+                        <div>
+                        
                         {this.state.birthPlacesOfDepictedPerson.length > 0 ?
-                        <p><strong>The the birth place of the depicted person :</strong> <br />
-                            <ul>{birthPlacesOfDepictedPerson}</ul>
-                        </p> : ''}
-                        {this.state.artistsBornBeforeTheDateOfThePainting.length > 0 ?
-                        <p><strong>The artists born before the date of the painting and who were born in Berlin :</strong> <br />
-                            <ul>{artistsBornBeforeTheDateOfThePainting}</ul>
-                        </p> : '' }
-
-                    </div>
+                                <p><strong>The the birth place of the depicted person :</strong> <br />
+                                    <ul>{birthPlacesOfDepictedPerson}</ul>
+                                </p> : ''}
+                        
+                        </div>
+                      
+                      </div>                                  
+                                                       
+                   </div>
                 </Modal.Body>
 
                 <Modal.Footer>
