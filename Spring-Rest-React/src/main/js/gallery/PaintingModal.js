@@ -53,6 +53,8 @@ class PaintingModal extends React.Component{
             .asJson() // or asXml()
             .then(function(r) {
                 console.log(r);
+                console.log("Artistic Movement 1 -> ", r.results.bindings[0].movement.value);
+                console.log("Artistic Movement 2 -> ", r.results.bindings[1].movement.value);
                 this.setState({
                     info: r.results.bindings[0]
                 });
@@ -71,6 +73,9 @@ class PaintingModal extends React.Component{
           .asJson() // or asXml()
           .then(function(r) {
               console.log(r);
+              console.log("Abstact -> ", r.results.bindings[0].abstract.value);
+              console.log("Thumbnail -> ", r.results.bindings[0].thumbnail.value);
+              //.results.bindings["0"].abstract.value
               this.setState({
                   info: r.results.bindings[0]
               });
@@ -89,6 +94,7 @@ class PaintingModal extends React.Component{
           .asJson() // or asXml()
           .then(function(r) {
               console.log(r);
+              console.log("Birth Place of Author  1 -> ", r.results.bindings[0].birthPlace.value);
               this.setState({
                   info: r.results.bindings[0]
               });
@@ -108,6 +114,15 @@ class PaintingModal extends React.Component{
           .asJson() // or asXml()
           .then(function(r) {
               console.log(r);
+              console.log("Other People born in the same place -> ", r.results.bindings[0].otherName.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[2].otherName.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[3].otherName.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[4].otherName.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[5].otherName.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[6].otherName.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[7].otherName.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[8].otherName.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[9].otherName.value);
               this.setState({
                   info: r.results.bindings[0]
               });
@@ -133,6 +148,7 @@ class PaintingModal extends React.Component{
           .asJson() // or asXml()
           .then(function(r) {
               console.log(r);
+              console.log("Birth place of the depicted person -> ", r.results.bindings["0"].birthPlace.value)
               this.setState({
                   info: r.results.bindings[0]
               });
@@ -150,6 +166,15 @@ class PaintingModal extends React.Component{
           .asJson() // or asXml()
           .then(function(r) {
               console.log(r);
+              console.log("Other People born in the same place -> ", r.results.bindings[0].person.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[2].person.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[3].person.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[4].person.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[5].person.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[6].person.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[7].person.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[8].person.value);
+              console.log("Other People born in the same place -> ", r.results.bindings[9].person.value);
               this.setState({
                   info: r.results.bindings[0]
               });
@@ -165,13 +190,13 @@ class PaintingModal extends React.Component{
         .catch(console.log);
     }
     render() {
-    	
-    	var url = 
-			"http://collection.nationalmuseum.se/eMuseumPlus?service=ExternalInterface&module=collection&objectId=" + 
-			this.state.painting.recordID + 
+
+    	var url =
+			"http://collection.nationalmuseum.se/eMuseumPlus?service=ExternalInterface&module=collection&objectId=" +
+			this.state.painting.recordID +
 			"&viewType=detailView";
     	var urlTitle = "Nationalmuseum Sweden page: Record " + this.state.painting.recordID;
-    	
+
         return (
                 <Modal show={this.state.showModal} onHide={this.close}>
                     <Modal.Header closeButton>
@@ -179,18 +204,18 @@ class PaintingModal extends React.Component{
                     </Modal.Header>
 
                     <Modal.Body>
-                        <div align="center" itemScope itemType="http://schema.org/Painting">                      	
+                        <div align="center" itemScope itemType="http://schema.org/Painting">
                             	<img src={this.props.selectedUrl} width="555" height="450" />
                             	<p> <strong>TITLE : </strong> <br /> <span itemProp="name">{this.state.painting.title}</span> </p>
-                            	<p> <strong>ARTIST : </strong> 
-                            		<br /> 
+                            	<p> <strong>ARTIST : </strong>
+                            		<br />
                             		<div itemProp="creator" itemScope itemType="http://schema.org/Person">
             							<span itemProp="name">{this.state.painting.artist}</span>
             						</div>
                             	</p>
-                            	<p> <strong>DATE : </strong> <br /> {this.state.painting.date} </p>                           	
+                            	<p> <strong>DATE : </strong> <br /> {this.state.painting.date} </p>
                             	<p> <strong>INSCRIPTION :</strong> <br /> {this.state.painting.inscription} </p>
-                            	<p> <strong>MATERIAL : </strong> <br /> {this.state.painting.technique_material} </p>                            	
+                            	<p> <strong>MATERIAL : </strong> <br /> {this.state.painting.technique_material} </p>
                             	<p> <strong>Depicted Person :</strong> <br /> {this.state.painting.depicted_person} </p>
                             	<p> <strong>Link :</strong> <br /> <a itemProp="url" href={url} className="button">{urlTitle}</a> </p>
                             	<p> <strong>Query 1 :</strong> <br /> {this.state.info.toString()} </p>
@@ -198,6 +223,7 @@ class PaintingModal extends React.Component{
                     </Modal.Body>
 
                     <Modal.Footer>
+
                         <button onClick={this.authorDescriptionAndThumbnailQuery}>Author's Description and Photo</button>
                         <button onClick={this.movementQuery}>Artistic Movement</button>
                         <button onClick={this.authorBirthPlace}>Author's Birth Place</button>
