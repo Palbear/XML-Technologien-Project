@@ -85,8 +85,6 @@ class PaintingModal extends React.Component {
             .asJson() // or asXml()
             .then(function (r) {
                 console.log(r);
-                console.log("Artistic Movement 1 -> ", r.results.bindings[0].mov.value);
-                console.log("Artistic Movement 2 -> ", r.results.bindings[1].mov.value);
                 self.setState({
                     movement: r.results.bindings
                 });
@@ -107,16 +105,6 @@ class PaintingModal extends React.Component {
             .asJson() // or asXml()
             .then(function (r) {
                 console.log(r);
-                console.log("Other artist from the same movement -> ", r.results.bindings[0].otherArtist.value);
-                console.log("Other artist from the same movement -> ", r.results.bindings[0].otherArtist.value);
-                console.log("Other artist from the same movement -> ", r.results.bindings[2].otherArtist.value);
-                console.log("Other artist from the same movement -> ", r.results.bindings[3].otherArtist.value);
-                console.log("Other artist from the same movement -> ", r.results.bindings[4].otherArtist.value);
-                console.log("Other artist from the same movement -> ", r.results.bindings[5].otherArtist.value);
-                console.log("Other artist from the same movement -> ", r.results.bindings[6].otherArtist.value);
-                console.log("Other artist from the same movement -> ", r.results.bindings[7].otherArtist.value);
-                console.log("Other artist from the same movement -> ", r.results.bindings[8].otherArtist.value);
-                console.log("Other artist from the same movement -> ", r.results.bindings[9].otherArtist.value);
                 self.setState({
                     otherArtistsFromSameMovement: r.results.bindings
                 });
@@ -161,7 +149,6 @@ class PaintingModal extends React.Component {
             .asJson() // or asXml()
             .then(function (r) {
                 console.log(r);
-                console.log("Birth Place of Author  1 -> ", r.results.bindings[0].place.value);
                 self.setState({
                     authorBirthPlace: r.results.bindings
                 });
@@ -184,15 +171,6 @@ class PaintingModal extends React.Component {
             .asJson() // or asXml()
             .then(function (r) {
                 console.log(r);
-                console.log("Other People born in the same place -> ", r.results.bindings[0].otherName.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[2].otherName.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[3].otherName.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[4].otherName.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[5].otherName.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[6].otherName.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[7].otherName.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[8].otherName.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[9].otherName.value);
                 self.setState({
                     otherPeoplesBornInSamePlace: r.results.bindings
                 });
@@ -243,15 +221,6 @@ class PaintingModal extends React.Component {
             .asJson() // or asXml()
             .then(function (r) {
                 console.log(r);
-                console.log("Other People born in the same place -> ", r.results.bindings[0].name.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[2].name.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[3].name.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[4].name.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[5].name.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[6].name.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[7].name.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[8].name.value);
-                console.log("Other People born in the same place -> ", r.results.bindings[9].name.value);
                 self.setState({
                     artistsBornBeforeTheDateOfThePainting: r.results.bindings
                 });
@@ -327,33 +296,32 @@ class PaintingModal extends React.Component {
                         <p><strong>Depicted Person :</strong> <br /> {this.state.painting.depicted_person} </p>
                         <p><strong>Link :</strong> <br /> <a itemProp="url" href={url} className="button">{urlTitle}</a>
                         </p>
-                        <p><strong>Query 1 :</strong> <br /> {this.state.info} </p>
                         {this.state.movement.length > 0 ?
                         <p><strong>The artistic movement of the artist :</strong> <br />
                             <ul>{movements}</ul>
                         </p> : ''}
                         {this.state.otherArtistsFromSameMovement.length > 0 ?
-                        <p><strong>The artistic movement of the artist :</strong> <br />
+                        <p><strong>The artistic movement from the same movement :</strong> <br />
                             <ul>{otherArtistsFromSameMovement}</ul>
                         </p> : ''}
                         {this.state.authorDescriptionAndThumbnail.length > 0 ?
-                        <p><strong>The otherArtistsFromSameMovement :</strong> <br />
+                        <p><strong>The description about the Author and a Thumbnail :</strong> <br />
                             <ul>{authorDescriptionAndThumbnail}</ul>
                         </p> : ''}
                         {this.state.authorBirthPlace.length > 0 ?
-                        <p><strong>The authorBirthPlace :</strong> <br />
+                        <p><strong>The author birth place :</strong> <br />
                             <ul>{authorBirthPlace}</ul>
                         </p> : '' }
                         {this.state.otherPeoplesBornInSamePlace.length > 0 ?
-                        <p><strong>The otherPeoplesBornInSamePlace :</strong> <br />
+                        <p><strong>A 10 other known poeple who were born in the same place :</strong> <br />
                             <ul>{otherPeoplesBornInSamePlace}</ul>
                         </p> : '' }
                         {this.state.birthPlacesOfDepictedPerson.length > 0 ?
-                        <p><strong>The birthPlacesOfDepictedPerson :</strong> <br />
+                        <p><strong>The the birth place of the depicted person :</strong> <br />
                             <ul>{birthPlacesOfDepictedPerson}</ul>
                         </p> : ''}
                         {this.state.artistsBornBeforeTheDateOfThePainting.length > 0 ?
-                        <p><strong>The artistsBornBeforeTheDateOfThePainting :</strong> <br />
+                        <p><strong>The artists born before the date of the painting and who were born in Berlin :</strong> <br />
                             <ul>{artistsBornBeforeTheDateOfThePainting}</ul>
                         </p> : '' }
 
