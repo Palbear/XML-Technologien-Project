@@ -90,3 +90,7 @@ th {
 .text-link {
 	padding: 5px;
 }
+
+.show-false {
+		display: none;
+}
