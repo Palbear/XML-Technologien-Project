@@ -5,6 +5,7 @@ const React = require('react');
 const axios = require('axios');
 import { ReactRpg } from 'react-rpg';
 import PaintingModal from './PaintingModal';
+import {Pagination, Pager} from "react-bootstrap";
 
 
 class Gallery extends React.Component{
@@ -15,8 +16,11 @@ class Gallery extends React.Component{
             images: [],
             selectedUrl:'',
             showModal: false,
-            url: "http://localhost:8080/api/paintings"
+            url: "http://localhost:8080/api/paintings",
+            activePage: 1,
+            pages: 1
         };
+        this.handleSelect = this.handleSelect.bind(this);
     }
     componentWillMount() {
         this.loadPaintingsFromServer();
@@ -32,8 +36,12 @@ class Gallery extends React.Component{
             showModal: false,
         });
     }
-    loadPaintingsFromServer(url) {
+    handleSelect(page) {
+        this.loadPaintingsFromServer('http://localhost:8080/api/paintings?page=' + page + '&size=20', page);
+    }
+    loadPaintingsFromServer(url, page) {
         let path = url ? url : "http://localhost:8080/api/paintings";
+        let currentPage = page ? page : 1;
         let self = this;
 
         axios.get(path)
@@ -47,15 +55,15 @@ class Gallery extends React.Component{
                 });
                 self.setState({
                     paintings: response.data._embedded.paintings,
-                    images: images
+                    pages: response.data.page.totalPages,
+                    images: images,
+                    activePage: currentPage,
                 });
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
-
-
     setFilter(word) {
         if (word === 'All') {
             this.loadPaintingsFromServer();
@@ -73,6 +81,17 @@ class Gallery extends React.Component{
                 <div>
                     <ReactRpg imagesArray={this.state.images} columns={[ 1, 2, 5 ]} padding={10} />
                 </div>
+                <Pagination
+                    prev
+                    next
+                    first
+                    last
+                    ellipsis
+                    boundaryLinks
+                    items={this.state.pages}
+                    maxButtons={5}
+                    activePage={this.state.activePage}
+                    onSelect={this.handleSelect} />
                 <PaintingModal showModal={this.state.showModal} selectedUrl={this.state.selectedUrl} paintings={this.state.paintings}/>
             </div>
         );

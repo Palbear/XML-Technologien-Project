@@ -1,8 +1,9 @@
 const React = require('react');
 const ReactBootstrap = require('react-bootstrap');
 const PropTypes = require('prop-types');
-var Modal = ReactBootstrap.Modal;
+const Modal = ReactBootstrap.Modal;
 let dps = require('dbpedia-sparql-client').default;
+import {Button} from "react-bootstrap";
 
 // This class takes care of the pop-up Painting window from the Paintings Gallery
 class PaintingModal extends React.Component {
@@ -329,7 +330,7 @@ class PaintingModal extends React.Component {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <button onClick={this.close}>close</button>
+                    <Button onClick={this.close}>close</Button>
                 </Modal.Footer>
             </Modal>
         );
