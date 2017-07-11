@@ -3,8 +3,6 @@ const ReactBootstrap = require('react-bootstrap');
 const PropTypes = require('prop-types');
 var Modal = ReactBootstrap.Modal;
 let dps = require('dbpedia-sparql-client').default;
-const {Client} = require('virtuoso-sparql-client');
-let SparqlClient = new Client("https://libris.kb.se/sparql");
 
 // This class takes care of the pop-up Painting window from the Paintings Gallery
 class PaintingModal extends React.Component{
@@ -209,15 +207,6 @@ class PaintingModal extends React.Component{
               });
           }).catch(function(e) { console.log(e) });
     }
-
-    // CORS problem!
-    sparqlQueryNationalLibrary(){
-      SparqlClient.query('PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbpedia: <http://dbpedia.org/ontology/> PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> select distinct ?subject ?predicate ?object {   ?subject a foaf:Person .   ?subject foaf:name "David Klöcker Ehrenstrahl" .   ?subject ?predicate ?object .  filter( regex(str(?object), "dbpedia" ))}')
-        .then((results)=>{
-          console.log(results);
-        })
-        .catch(console.log);
-    }
     render() {
 
     	var url =
@@ -237,7 +226,7 @@ class PaintingModal extends React.Component{
                             	<img src={this.props.selectedUrl} width="555" height="450" />
                             	<p> <strong>TITLE : </strong> <br /> <span itemProp="name">{this.state.painting.title}</span> </p>
                             	<p> <strong>ARTIST : </strong>
-                    			<br /> 
+                    			<br />
                     			<span itemProp="creator" itemScope itemType="http://schema.org/Person">
     								<span itemProp="name">{this.state.painting.artist}</span>
     							</span>
