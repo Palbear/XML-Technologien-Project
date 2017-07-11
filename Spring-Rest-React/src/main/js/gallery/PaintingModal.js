@@ -46,13 +46,13 @@ class PaintingModal extends React.Component {
                 paintings: nextProps.paintings,
                 painting: painting[0]
             });
-            this.movementQuery();
-            this.tenOtherArtistsFromSameMovement();
-            this.authorDescriptionAndThumbnailQuery();
-            this.authorBirthPlace();
-            this.otherTenPeopleBornInSamePlace();
-            this.birthPlaceOfDepictedPerson();
-            this.tenArtistsBornBeforeTheDateOfThePainting();
+            this.movementQuery(painting[0].artist);
+            this.tenOtherArtistsFromSameMovement(painting[0].artist);
+            this.authorDescriptionAndThumbnailQuery(painting[0].artist);
+            this.authorBirthPlace(painting[0].artist);
+            this.otherTenPeopleBornInSamePlace(painting[0].artist);
+            this.birthPlaceOfDepictedPerson(painting[0].artist);
+            this.tenArtistsBornBeforeTheDateOfThePainting(painting[0].date);
         }
     }
 
@@ -62,14 +62,22 @@ class PaintingModal extends React.Component {
 
     close() {
         this.setState({
+            movement: [],
+            otherArtistsFromSameMovement: [],
+            authorDescriptionAndThumbnail: [],
+            authorBirthPlace: [],
+            otherPeoplesBornInSamePlace: [],
+            birthPlacesOfDepictedPerson: [],
+            artistsBornBeforeTheDateOfThePainting: [],
             showModal: false
         });
     }
 
     //This method returns the artistic movement of the artist (could be more than one movement)
     // A parameter of the author name should replace "Pablo Picasso" and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
-    movementQuery() {
-        let query = 'SELECT DISTINCT ?mov WHERE { ?author rdfs:label ?name . FILTER regex(?name, "Pablo Picasso", "i") ?author dbo:movement ?movement . ?movement rdfs:label ?mov . FILTER (LANG(?mov) = "en")}';
+    movementQuery(author) {
+        //let query = 'SELECT DISTINCT ?mov WHERE { ?author rdfs:label ?name . FILTER regex(?name, "Pablo Picasso", "i") ?author dbo:movement ?movement . ?movement rdfs:label ?mov . FILTER (LANG(?mov) = "en")}';
+        let query = 'SELECT DISTINCT ?mov WHERE { ?author rdfs:label ?name . FILTER regex(?name,"' + author + ', "i") ?author dbo:movement ?movement . ?movement rdfs:label ?mov . FILTER (LANG(?mov) = "en")}';
         let self = this;
         dps.client()
             .query(query)
@@ -89,8 +97,9 @@ class PaintingModal extends React.Component {
 
     //This method retrieves ten other artists from the same movement mit
     // A parameter of the author name should replace "Pablo Picasso" and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
-    tenOtherArtistsFromSameMovement() {
-        let query = 'PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> SELECT ?otherArtist WHERE { ?author rdfs:label ?name . FILTER regex(?name, "Pablo Picasso", "i") FILTER (LANG(?name) = "en") ?author dbo:movement ?movement . ?person dbo:movement ?movement . ?person rdfs:label ?otherArtist . FILTER (LANG(?otherArtist) = "en")} LIMIT 10';
+    tenOtherArtistsFromSameMovement(author) {
+        //let query = 'PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> SELECT ?otherArtist WHERE { ?author rdfs:label ?name . FILTER regex(?name, "Pablo Picasso", "i") FILTER (LANG(?name) = "en") ?author dbo:movement ?movement . ?person dbo:movement ?movement . ?person rdfs:label ?otherArtist . FILTER (LANG(?otherArtist) = "en")} LIMIT 10';
+        let query = 'PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> SELECT ?otherArtist WHERE { ?author rdfs:label ?name . FILTER regex(?name, "' + author + '", "i") FILTER (LANG(?name) = "en") ?author dbo:movement ?movement . ?person dbo:movement ?movement . ?person rdfs:label ?otherArtist . FILTER (LANG(?otherArtist) = "en")} LIMIT 10';
         let self = this;
         dps.client()
             .query(query)
@@ -118,9 +127,9 @@ class PaintingModal extends React.Component {
 
     // This method extracts the Description about the Author and a Thumbnail of his photo
     // A parameter of the author name should replace "Ferdinand_von_Wright" and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
-    authorDescriptionAndThumbnailQuery() {
+    authorDescriptionAndThumbnailQuery(author) {
 
-        let query = "prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> select ?abstract ?thumbnail where { dbpedia:Ferdinand_von_Wright dbpedia-owl:abstract ?abstract ; dbpedia-owl:thumbnail ?thumbnail . filter(langMatches(lang(?abstract),'en'))}";
+        let query = "prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> select ?abstract ?thumbnail where { dbpedia:" + author.split(' ').join('_') + " dbpedia-owl:abstract ?abstract ; dbpedia-owl:thumbnail ?thumbnail . filter(langMatches(lang(?abstract),'en'))}";
         let self = this;
         dps.client()
             .query(query)
@@ -143,8 +152,8 @@ class PaintingModal extends React.Component {
     // This method takes the name of the author and returns a birthPlace
     //TODO:
     // A parameter of the author name should replace "August_Strindberg" and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
-    authorBirthPlace() {
-        let query = "prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> select ?birthPlace ?place where { dbpedia:August_Strindberg dbpedia-owl:abstract ?abstract ; dbpedia-owl:birthPlace ?birthPlace . filter(langMatches(lang(?abstract),'en')) ?birthPlace rdfs:label ?place . filter(langMatches(lang(?place),'en')) }";
+    authorBirthPlace(author) {
+        let query = "prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> select ?birthPlace ?place where { dbpedia:" + author.split(' ').join('_') + " dbpedia-owl:abstract ?abstract ; dbpedia-owl:birthPlace ?birthPlace . filter(langMatches(lang(?abstract),'en')) ?birthPlace rdfs:label ?place . filter(langMatches(lang(?place),'en')) }";
         let self = this;
         dps.client()
             .query(query)
@@ -165,9 +174,9 @@ class PaintingModal extends React.Component {
     // This method takes the name of the author and returns a 10 other known poeple who were born in the same place
     //TODO:
     // A parameter of the author name should replace "Ferdinand_von_Wright" and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
-    otherTenPeopleBornInSamePlace() {
+    otherTenPeopleBornInSamePlace(author) {
 
-        let query = "PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> SELECT DISTINCT ?otherName WHERE { dbpedia:Ferdinand_von_Wright dbpedia-owl:birthPlace ?birthPlace . ?person dbo:birthPlace ?birthPlace . ?person dbo:birthDate ?birth . ?person foaf:name ?otherName .} LIMIT 10";
+        let query = "PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> SELECT DISTINCT ?otherName WHERE { dbpedia:" + author.split(' ').join('_') + " dbpedia-owl:birthPlace ?birthPlace . ?person dbo:birthPlace ?birthPlace . ?person dbo:birthDate ?birth . ?person foaf:name ?otherName .} LIMIT 10";
         let self = this;
         dps.client()
             .query(query)
@@ -204,8 +213,8 @@ class PaintingModal extends React.Component {
      The name (Prinsessan Sofia Albertina) also doesn't work as in DBpedia it is (Sophia Albertina, Abbess of Quedlinburg)
      If it may makes trouble we can drop this feature!
      */
-    birthPlaceOfDepictedPerson() {
-        let query = 'PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> SELECT ?name ?place WHERE { ?author rdfs:label ?name . FILTER regex(?name, "Suzanne Roslin", "i") ?author dbo:birthPlace ?birthPlace . ?birthPlace rdfs:label ?place . filter(langMatches(lang(?place),"en"))}';
+    birthPlaceOfDepictedPerson(author) {
+        let query = 'PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> SELECT ?name ?place WHERE { ?author rdfs:label ?name . FILTER regex(?name, "' + author + '", "i") ?author dbo:birthPlace ?birthPlace . ?birthPlace rdfs:label ?place . filter(langMatches(lang(?place),"en"))}';
         let self = this;
         dps.client()
             .query(query)
@@ -225,8 +234,8 @@ class PaintingModal extends React.Component {
     // This method takes the date of the painting and returns 10 other known artists who were born in Berlin
     //TODO:
     // A parameter of the date should be replaced by the date variable of the painting
-    tenArtistsBornBeforeTheDateOfThePainting() {
-        let query = "PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> SELECT ?name ?person WHERE { ?person dbo:birthPlace db:Berlin . ?person dbo:birthDate ?birth . ?person foaf:name ?name . FILTER (?birth < '1900'^^xsd:date) . } LIMIT 10";
+    tenArtistsBornBeforeTheDateOfThePainting(date) {
+        let query = "PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> SELECT ?name ?person WHERE { ?person dbo:birthPlace db:Berlin . ?person dbo:birthDate ?birth . ?person foaf:name ?name . FILTER (?birth < '" + date +"'^^xsd:date) . } LIMIT 10";
         let self = this;
         dps.client()
             .query(query)
@@ -258,14 +267,7 @@ class PaintingModal extends React.Component {
             this.state.painting.recordID +
             "&viewType=detailView";
         var urlTitle = "Nationalmuseum Sweden page: Record " + this.state.painting.recordID;
-        /*            movement:[],
-         otherArtistsFromSameMovement:[],
-         authorDescriptionAndThumbnail:[],
-         authorBirthPlace:[],
-         otherPeoplesBornInSamePlace:[],
-         birthPlacesOfDepictedPerson:[],
-         artistsBornBeforeTheDateOfThePainting:[],
-         */
+
         const movements = this.state.movement ? this.state.movement.map((item) =>
             <li>
                 {item.mov.value}
@@ -326,31 +328,31 @@ class PaintingModal extends React.Component {
                         <p><strong>Link :</strong> <br /> <a itemProp="url" href={url} className="button">{urlTitle}</a>
                         </p>
                         <p><strong>Query 1 :</strong> <br /> {this.state.info} </p>
-                        {this.state.movement ?
+                        {this.state.movement.length > 0 ?
                         <p><strong>The artistic movement of the artist :</strong> <br />
                             <ul>{movements}</ul>
                         </p> : ''}
-                        {this.state.otherArtistsFromSameMovement ?
+                        {this.state.otherArtistsFromSameMovement.length > 0 ?
                         <p><strong>The artistic movement of the artist :</strong> <br />
                             <ul>{otherArtistsFromSameMovement}</ul>
                         </p> : ''}
-                        {this.state.authorDescriptionAndThumbnail ?
+                        {this.state.authorDescriptionAndThumbnail.length > 0 ?
                         <p><strong>The otherArtistsFromSameMovement :</strong> <br />
                             <ul>{authorDescriptionAndThumbnail}</ul>
                         </p> : ''}
-                        {this.state.authorBirthPlace ?
+                        {this.state.authorBirthPlace.length > 0 ?
                         <p><strong>The authorBirthPlace :</strong> <br />
                             <ul>{authorBirthPlace}</ul>
                         </p> : '' }
-                        {this.state.otherPeoplesBornInSamePlace ?
+                        {this.state.otherPeoplesBornInSamePlace.length > 0 ?
                         <p><strong>The otherPeoplesBornInSamePlace :</strong> <br />
                             <ul>{otherPeoplesBornInSamePlace}</ul>
                         </p> : '' }
-                        {this.state.birthPlacesOfDepictedPerson ?
+                        {this.state.birthPlacesOfDepictedPerson.length > 0 ?
                         <p><strong>The birthPlacesOfDepictedPerson :</strong> <br />
                             <ul>{birthPlacesOfDepictedPerson}</ul>
                         </p> : ''}
-                        {this.state.artistsBornBeforeTheDateOfThePainting ?
+                        {this.state.artistsBornBeforeTheDateOfThePainting.length > 0 ?
                         <p><strong>The artistsBornBeforeTheDateOfThePainting :</strong> <br />
                             <ul>{artistsBornBeforeTheDateOfThePainting}</ul>
                         </p> : '' }
