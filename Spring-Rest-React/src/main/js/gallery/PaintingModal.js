@@ -58,7 +58,7 @@ class PaintingModal extends React.Component {
     }
 
     findPainting(paintings, selectedUrl) {
-        return paintings.filter((painting) => painting.image_link === selectedUrl)
+        return paintings.filter((painting) => painting.smallImage === selectedUrl)
     }
 
     close() {
@@ -283,7 +283,7 @@ class PaintingModal extends React.Component {
 
                 <Modal.Body>
                     <div className="modal-dialog" itemScope itemType="http://schema.org/Painting">
-                        <img src={this.props.selectedUrl} width="555" height="450"/>
+                        <img src={this.state.painting.image_link} width="555" height="450"/>
                         <p><strong>TITLE : </strong> <br /> <span itemProp="name">{this.state.painting.title}</span></p>
                         <p><strong>ARTIST : </strong>
                             <br />
