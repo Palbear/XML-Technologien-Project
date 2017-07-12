@@ -78,7 +78,8 @@ class PaintingModal extends React.Component {
     // A parameter of the author name should replace "Pablo Picasso" and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
     movementQuery(author) {
         //let query = 'SELECT DISTINCT ?mov WHERE { ?author rdfs:label ?name . FILTER regex(?name, "Pablo Picasso", "i") ?author dbo:movement ?movement . ?movement rdfs:label ?mov . FILTER (LANG(?mov) = "en")}';
-        let query = 'SELECT DISTINCT ?mov WHERE { ?author rdfs:label ?name . FILTER regex(?name,"' + author + ', "i") FILTER (LANG(?name) = "en") ?author dbo:movement ?movement . ?movement rdfs:label ?mov . FILTER (LANG(?mov) = "en")}';
+        let query = 'prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> select ?mov where { dbpedia:' + author.split(' ').join('_') + ' dbpedia-owl:abstract ?abstract ; dbpedia-owl:movement ?movement . filter(langMatches(lang(?abstract),"en"))?movement rdfs:label ?mov .filter(langMatches(lang(?mov),"en"))}';
+        //let query = 'SELECT DISTINCT ?mov WHERE { ?author rdfs:label ?name . FILTER regex(?name,"' + author + ', "i") FILTER (LANG(?name) = "en") ?author dbo:movement ?movement . ?movement rdfs:label ?mov . FILTER (LANG(?mov) = "en")}';
         let self = this;
         dps.client()
             .query(query)
