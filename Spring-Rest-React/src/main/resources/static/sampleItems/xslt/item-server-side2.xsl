@@ -18,7 +18,7 @@
         
                 <table border="1">
                     <tr>
-                        <th bgcolor="#9acd32"> Title </th>
+                        <th bgcolor="#ff0"> Title </th>
                         <th>
                             <xsl:for-each select="//lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:titleWrap//lido:appellationValue">
         		 				<xsl:value-of select="." /> 
@@ -26,7 +26,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <th bgcolor="#9acd32">Artist/Maker</th>
+                        <th bgcolor="#ff0">Artist/Maker</th>
                         <th>
                             <xsl:for-each select="//lido:descriptiveMetadata/lido:eventWrap//lido:event">
                             	<xsl:value-of select="./lido:eventType/lido:term" /> - 
@@ -36,7 +36,7 @@
                     </tr>
                     
                     <tr>
-                        <th bgcolor="#9acd32">Date</th>
+                        <th bgcolor="#ff0">Date</th>
                         <th>
         					<xsl:for-each select="//lido:descriptiveMetadata/lido:eventWrap//lido:event/lido:eventDate/lido:displayDate">
         		 				<xsl:value-of select="." /> 
@@ -45,33 +45,33 @@
                     </tr>                  
                     
                     <tr>
-                        <th bgcolor="#9acd32">Category</th>
+                        <th bgcolor="#ff0">Category</th>
                         <th>
                             <xsl:value-of select="//lido:descriptiveMetadata//lido:objectWorkTypeWrap/lido:objectWorkType/lido:term" />
                         </th>
                     </tr>
                     <!--  
                     <tr>
-                        <th bgcolor="#9acd32"> Inscription </th>
+                        <th bgcolor="#ff0"> Inscription </th>
                         <th>
                             <xsl:value-of select="//lido:descriptiveMetadata//lido:inscriptionsWrap//lido:inscriptionTranscription" />
                         </th>
                     </tr>
                     -->
                     <tr>
-                        <th bgcolor="#9acd32">Depicted Person</th>
+                        <th bgcolor="#ff0">Depicted Person</th>
                         <th>
                             <xsl:value-of select="//lido:descriptiveMetadata/lido:objectRelationWrap/lido:subjectWrap//lido:actor/lido:nameActorSet/lido:appellationValue" />
                         </th>
                     </tr>
                     <tr>
-                        <th bgcolor="#9acd32">Technique/Material</th>
+                        <th bgcolor="#ff0">Technique/Material</th>
                         <th>
                             <xsl:value-of select="//lido:descriptiveMetadata/lido:eventWrap/lido:eventSet/lido:event/lido:eventMaterialsTech/lido:displayMaterialsTech" />
                         </th>
                     </tr>
                     <tr>
-                        <th bgcolor="#9acd32">Measurements</th>
+                        <th bgcolor="#ff0">Measurements</th>
                         <th>
                             <xsl:value-of select="//lido:descriptiveMetadata/lido:objectIdentificationWrap/lido:objectMeasurementsWrap/lido:objectMeasurementsSet/lido:displayObjectMeasurements" />
                         </th>
