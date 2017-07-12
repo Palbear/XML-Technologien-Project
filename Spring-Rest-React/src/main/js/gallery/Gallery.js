@@ -47,10 +47,10 @@ class Gallery extends React.Component{
     loadPaintingsFromServer(url, page) {
         let path = url ? url : "http://localhost:8080/api/paintings";
         let currentPage = page ? page : 1;
-        let self = this;
+        //let self = this;
 
         axios.get(path)
-            .then(function(response) {
+            .then((response) => {
                 let paintings = response.data._embedded.paintings;
                 paintings = paintings.map((painting) => {
                    let newPainting = painting;
@@ -66,20 +66,20 @@ class Gallery extends React.Component{
                     newPainting.smallImage = resultString;
                    return newPainting
                 });
-                const images = paintings.map((painting) => {
+                let images = [];
+                images = paintings.map((painting) => {
                     return {
                         url: painting.smallImage,
-                        clickHandler: (url, obj) => { self.showModal(url, obj) }
+                        clickHandler: (url, obj) => { this.showModal(url, obj) }
                         }
                 });
-                self.setState({
+                this.setState({
                     paintings: response.data._embedded.paintings,
-                    pages: response.data.page.totalPages,
+                    pages: response.data.page ? response.data.page.totalPages : 0,
                     images: images,
                     activePage: currentPage,
                 });
-            })
-            .catch(function (error) {
+            }).catch(function (error) {
                 console.log(error);
             });
     }
