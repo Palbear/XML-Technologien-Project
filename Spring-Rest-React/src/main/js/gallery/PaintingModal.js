@@ -358,7 +358,7 @@ class PaintingModal extends React.Component {
                 	
                 	<div>
                 		{this.state.otherPeoplesBornInSamePlace.length > 0 ?
-                            <div><strong>10 other known people born in the same place :</strong> <br /><ul>{otherPeoplesBornInSamePlace}</ul></div> : '' }
+                            <div><strong>10 other known people born in the same place</strong> <br /><ul>{otherPeoplesBornInSamePlace}</ul></div> : '' }
                 	</div>
                     
                 	<div>
@@ -384,7 +384,7 @@ class PaintingModal extends React.Component {
                 	
                 	<div>
                 		{this.state.artistsBornBeforeTheDateOfThePainting.length > 0 ?
-                            <p><strong>The artists born before the date of the painting and who were born in Berlin :</strong> <br />
+                            <p><strong>Artists born in Berlin before the creation date of the painting</strong> <br />
                                 <ul>{artistsBornBeforeTheDateOfThePainting}</ul>
                             </p> : '' }
                 	</div>   
