@@ -307,22 +307,32 @@ class PaintingModal extends React.Component {
                     </div>
                     
                     <div className="painting-info-entry">
-                    	<strong>INSCRIPTION :</strong> <br />
+                    	<strong>INSCRIPTION</strong> <br />
                     	{this.state.painting.inscription}
                     </div>
                     
                     <div className="painting-info-entry">
-                    	<strong>MATERIAL : </strong> <br />
+                    	<strong>MATERIAL</strong> <br />
                     	<span itemProp="material">{this.state.painting.technique_material}</span>
                     </div>
                     
                     <div className="painting-info-entry">
-                    	<strong>Depicted Person :</strong> <br />
+                    	<strong>Depicted Person</strong> <br />
                     	{this.state.painting.depicted_person}
                     </div>
                     
                     <div className="painting-info-entry">
-                    	<strong>Link :</strong> <br />
+                    	<strong>Measurements</strong> <br />
+                    	{this.state.painting.measurements}
+                    </div>
+                    
+                    <div className="painting-info-entry">
+                		<strong>Copyright notice</strong> <br />
+                		<span itemProp="license">{this.state.painting.right_work}</span>
+                	</div>
+                    
+                    <div className="painting-info-entry">
+                    	<strong>Link</strong> <br />
                     	<a itemProp="url" href={url} className="button">{urlTitle}</a>
                     </div>                   
                     

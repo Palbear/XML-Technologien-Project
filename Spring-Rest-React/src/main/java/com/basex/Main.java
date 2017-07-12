@@ -12,8 +12,14 @@ import java.io.PrintWriter;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -40,7 +46,42 @@ public class Main {
 		
 		//validateSchemaTest(pathXml, pathSchema);
 		
-		testGetAllPaintings();
+		//testGetAllPaintings();
+		testXslt();		
+	}
+	
+	private static void testXslt() {
+		String pathXml = "src/main/resources/static/sampleItems/xslt/data.xml";
+		String pathXsl = "src/main/resources/static/sampleItems/xslt/languages.xsl";
+	
+	
+		File stylesheet = new File(pathXsl);
+        File datafile = new File(pathXml);
+
+        DocumentBuilder builder;
+		try {
+
+	        // Use a Transformer for output	        
+	        TransformerFactory factory = TransformerFactory.newInstance();
+	        Source xslt = new StreamSource(stylesheet);
+	        Transformer transformer = factory.newTransformer(xslt);
+
+	        Source text = new StreamSource(datafile);
+	        transformer.transform(text, new StreamResult(new File("src/main/resources/static/sampleItems/xslt/output.xml")));
+	        
+	        System.out.println("Finished xslt");       
+						
+		} catch (TransformerConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransformerException e) {		
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
+
 	}
 	
 	private static void testGetAllPaintings() {
