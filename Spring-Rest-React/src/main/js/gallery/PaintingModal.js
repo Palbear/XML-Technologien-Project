@@ -78,7 +78,7 @@ class PaintingModal extends React.Component {
     // A parameter of the author name should replace "Pablo Picasso" and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
     movementQuery(author) {
         //let query = 'SELECT DISTINCT ?mov WHERE { ?author rdfs:label ?name . FILTER regex(?name, "Pablo Picasso", "i") ?author dbo:movement ?movement . ?movement rdfs:label ?mov . FILTER (LANG(?mov) = "en")}';
-        let query = 'SELECT DISTINCT ?mov WHERE { ?author rdfs:label ?name . FILTER regex(?name,"' + author + ', "i") ?author dbo:movement ?movement . ?movement rdfs:label ?mov . FILTER (LANG(?mov) = "en")}';
+        let query = 'SELECT DISTINCT ?mov WHERE { ?author rdfs:label ?name . FILTER regex(?name,"' + author + ', "i") FILTER (LANG(?name) = "en") ?author dbo:movement ?movement . ?movement rdfs:label ?mov . FILTER (LANG(?mov) = "en")}';
         let self = this;
         dps.client()
             .query(query)
@@ -277,74 +277,74 @@ class PaintingModal extends React.Component {
         ) : '';
         return (
             <Modal show={this.state.showModal} bsSize="large" onHide={this.close}>
-            
+
                 <Modal.Header closeButton>
                     <Modal.Title>{this.state.painting.title}</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
                 	<div className="modal-dialog" itemScope itemType="http://schema.org/Painting">
-                    
-                    
+
+
                     <img itemProp="image" src={this.state.painting.image_link} width="100%" />
-                    
+
                   <div className="painting-modal-infos-container">
-                    
+
                     <div className="painting-info-entry">
                     	<strong>TITLE</strong> <br />
                     	<span itemProp="name">{this.state.painting.title}</span>
                     </div>
-                    
+
                     <div className="painting-info-entry">
                     	<strong>ARTIST</strong><br />
                     	<span itemProp="creator" itemScope itemType="http://schema.org/Person">
 							<span itemProp="name">{this.state.painting.artist}</span>
 						</span>
                     </div>
-                    
+
                     <div className="painting-info-entry">
                     	<strong>CREATION DATE</strong> <br />
                     	<span itemProp="dateCreated">{this.state.painting.date}</span>
                     </div>
-                    
+
                     <div className="painting-info-entry">
                     	<strong>INSCRIPTION</strong> <br />
                     	{this.state.painting.inscription}
                     </div>
-                    
+
                     <div className="painting-info-entry">
                     	<strong>MATERIAL</strong> <br />
                     	<span itemProp="material">{this.state.painting.technique_material}</span>
                     </div>
-                    
+
                     <div className="painting-info-entry">
                     	<strong>Depicted Person</strong> <br />
                     	{this.state.painting.depicted_person}
                     </div>
-                    
+
                     <div className="painting-info-entry">
                     	<strong>Measurements</strong> <br />
                     	{this.state.painting.measurements}
                     </div>
-                    
+
                     <div className="painting-info-entry">
                 		<strong>Copyright notice</strong> <br />
                 		<span itemProp="license">{this.state.painting.right_work}</span>
                 	</div>
-                    
+
                     <div className="painting-info-entry">
                     	<strong>Link</strong> <br />
                     	<a itemProp="url" href={url} className="button">{urlTitle}</a>
-                    </div>                   
-                    
+                    </div>
+
                   </div>
-                  
+
                   <div className="painting-modal-infos-container painting-info-entry content-centered">
                   	<h2>DBpedia info</h2>
                   </div>
-                    
+
                   <div className="painting-modal-infos-container painting-info-entry">
-                    	
+
                     <div>
                 	{this.state.authorDescriptionAndThumbnail.length > 0 ?
                             <div itemProp="creator" itemScope itemType="http://schema.org/Person">
@@ -353,48 +353,48 @@ class PaintingModal extends React.Component {
                 			</div>
                              : ''}
                 	</div>
-                	
+
                 	<div>
                 		{this.state.authorBirthPlace.length > 0 ?
-                            <div><strong>The author birth place</strong> <br /><ul>{authorBirthPlace}</ul></div> 
-                             : '' }               	
+                            <div><strong>The author birth place</strong> <br /><ul>{authorBirthPlace}</ul></div>
+                             : '' }
                 	</div>
-                	
+
                 	<div>
                 		{this.state.otherPeoplesBornInSamePlace.length > 0 ?
                             <div><strong>10 other known people born in the same place</strong> <br /><ul>{otherPeoplesBornInSamePlace}</ul></div> : '' }
                 	</div>
-                    
+
                 	<div>
                 		{this.state.movement.length > 0 ?
                             <div><strong>The artistic movement of the artist</strong> <br />
                                 <ul>{movements}</ul>
                             </div> : ''}
                 	</div>
-                	
+
                 	<div>
                 		{this.state.otherArtistsFromSameMovement.length > 0 ?
                             <div><strong>Other artists from the same movement</strong> <br />
                                 <ul>{otherArtistsFromSameMovement}</ul>
                             </div> : ''}
-                	</div>                                     
-                	
+                	</div>
+
                 	<div>
                 		{this.state.birthPlacesOfDepictedPerson.length > 0 ?
                             <div><strong>Birth place of the depicted person</strong> <br />
                                 <ul>{birthPlacesOfDepictedPerson}</ul>
                             </div> : ''}
                 	</div>
-                	
+
                 	<div>
                 		{this.state.artistsBornBeforeTheDateOfThePainting.length > 0 ?
                             <p><strong>Artists born in Berlin before the creation date of the painting</strong> <br />
                                 <ul>{artistsBornBeforeTheDateOfThePainting}</ul>
                             </p> : '' }
-                	</div>   
-                	
+                	</div>
+
                    </div>
-                                                              
+
                   </div>
                 </Modal.Body>
 
