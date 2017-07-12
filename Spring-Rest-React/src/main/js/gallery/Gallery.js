@@ -84,7 +84,7 @@ class Gallery extends React.Component{
             });
     }
     setFilter(obj) {
-        if (!obj) {
+        if (!obj || obj.label ==='All') {
             this.loadPaintingsFromServer();
         } else {
             this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=' + obj.label);
@@ -125,7 +125,7 @@ class Gallery extends React.Component{
     }
 
     initialiseFilter() {
-        let authors = ['Abraham Bloemaert',
+        let authors = ['All', 'Abraham Bloemaert',
             'Abraham Bruegel',
             'Abraham Hendricksz van Beyeren',
             'Abraham Jansz Begeyn',
