@@ -290,19 +290,19 @@ class PaintingModal extends React.Component {
                   <div className="painting-modal-infos-container">
                     
                     <div className="painting-info-entry">
-                    	<strong>TITLE : </strong> <br />
+                    	<strong>TITLE</strong> <br />
                     	<span itemProp="name">{this.state.painting.title}</span>
                     </div>
                     
                     <div className="painting-info-entry">
-                    	<strong>ARTIST : </strong><br />
+                    	<strong>ARTIST</strong><br />
                     	<span itemProp="creator" itemScope itemType="http://schema.org/Person">
 							<span itemProp="name">{this.state.painting.artist}</span>
 						</span>
                     </div>
                     
                     <div className="painting-info-entry">
-                    	<strong>DATE : </strong> <br />
+                    	<strong>CREATION DATE</strong> <br />
                     	<span itemProp="dateCreated">{this.state.painting.date}</span>
                     </div>
                     
