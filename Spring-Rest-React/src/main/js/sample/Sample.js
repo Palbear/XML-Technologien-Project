@@ -71,7 +71,7 @@ class Sample extends React.Component{
             <div>
                 <div>
                 	<div>
-                		<p className="text-link"><a href="https://lidiakrus.github.io/samplepage/">Another XSLT Sample (Foreign page)</a></p>
+                		<p className="text-link"><a href="https://yj14.github.io/XML-Technologien-Project/">XSLT Sample (Foreign page)</a></p>
                 	</div>
                     <ReactRpg imagesArray={this.state.images} columns={[ 2, 4, 10 ]} padding={10} />
                 </div>
