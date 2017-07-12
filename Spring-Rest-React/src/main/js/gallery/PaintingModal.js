@@ -327,6 +327,10 @@ class PaintingModal extends React.Component {
                     </div>                   
                     
                   </div>
+                  
+                  <div className="painting-modal-infos-container painting-info-entry">
+                  	DBpedia infos
+                  </div>
                     
                   <div className="painting-modal-infos-container painting-info-entry">
                     	
