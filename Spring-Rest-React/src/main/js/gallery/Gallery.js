@@ -92,9 +92,11 @@ class Gallery extends React.Component{
     render() {
         return (
             <div>
-                <div>
+              <div>
                     <ReactRpg imagesArray={this.state.images} columns={[ 1, 2, 5 ]} padding={10} />
-                </div>
+              </div>
+                    
+              <div className="content-centered">
                 <Pagination
                     prev
                     next
@@ -105,8 +107,10 @@ class Gallery extends React.Component{
                     items={this.state.pages}
                     maxButtons={5}
                     activePage={this.state.activePage}
-                    onSelect={this.handleSelect} />
-                <PaintingModal showModal={this.state.showModal} selectedUrl={this.state.selectedUrl} paintings={this.state.paintings}/>
+                    onSelect={this.handleSelect} />               
+               </div>
+                
+               <PaintingModal showModal={this.state.showModal} selectedUrl={this.state.selectedUrl} paintings={this.state.paintings}/>
             </div>
         );
     }

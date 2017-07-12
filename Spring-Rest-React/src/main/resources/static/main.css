@@ -113,3 +113,9 @@ div.painting-modal-infos-container {
 	padding-left: 0;
 	margin-right: 30px;
 }
+.content-centered {
+	text-align: center;
+}
+.pagination-centered {
+	align: center;
+}
