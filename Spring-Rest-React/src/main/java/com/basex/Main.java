@@ -51,14 +51,12 @@ public class Main {
 	}
 	
 	private static void testXslt() {
-		String pathXml = "src/main/resources/static/sampleItems/xslt/data.xml";
-		String pathXsl = "src/main/resources/static/sampleItems/xslt/languages.xsl";
-	
+		String pathXml = "src/main/resources/static/sampleItems/Item_Sample.xml";
+		String pathXsl = "src/main/resources/static/sampleItems/xslt/item-server-side2.xsl";
 	
 		File stylesheet = new File(pathXsl);
         File datafile = new File(pathXml);
 
-        DocumentBuilder builder;
 		try {
 
 	        // Use a Transformer for output	        
