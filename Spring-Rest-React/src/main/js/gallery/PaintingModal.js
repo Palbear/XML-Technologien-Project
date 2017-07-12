@@ -276,7 +276,7 @@ class PaintingModal extends React.Component {
             </li>
         ) : '';
         return (
-            <Modal show={this.state.showModal} onHide={this.close}>
+            <Modal show={this.state.showModal} bsSize="large" onHide={this.close}>
                 <Modal.Header closeButton>
                     <Modal.Title>{this.state.painting.title}</Modal.Title>
                 </Modal.Header>

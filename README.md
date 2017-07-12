@@ -8,6 +8,8 @@ Datensatz: Gemälde - Nationalmuseum Schweden (https://github.com/Nationalmuseum
  
 Datensatz auf Wikidata: http://tools.wmflabs.org/autolist/autolist1.html?props=217&q=CLAIM%5B195%3A842858%5D
 
+Beispiel-Transformation eines Datensatz-Items mit XSLT: https://yj14.github.io/XML-Technologien-Project/
+
 Der Datensatz ist ein Teil der Sammlung des Nationalmuseums in Stockholm. 
 Das Nationalmuseum Schweden stellte LIDO-xml als Grundlage für die Importe zur Verfügung. 
 Der Datensatz besteht aus etwa 13000 XML-Dateien mit Gemäldeinformationen.
