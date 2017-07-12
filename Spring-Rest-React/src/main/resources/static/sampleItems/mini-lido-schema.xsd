@@ -1,0 +1,24 @@
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' 
+             targetNamespace='http://www.lido-schema.org' 
+             elementFormDefault="qualified" 
+             attributeFormDefault="qualified">
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/xml.xsd" />
+    <xs:element name='lidoWrap'>
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name='lido'>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name='lidoRecID'/>
+                <xs:element name='descriptiveMetadata'>
+                </xs:element>
+                <xs:element name='administrativeMetadata'>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>            
+    </xs:element>
+  </xs:schema>

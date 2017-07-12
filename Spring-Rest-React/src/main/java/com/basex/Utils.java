@@ -13,7 +13,9 @@ import com.model.PaintingMapper;
 public class Utils {
 	
 	/**
-	 * This methods fires on application start, reads all the selected paintings infos from XML-Datenbank and transforms them into list of {@link Painting} objects
+	 * This methods fires on application start. It reads all the selected paintings infos from XML-Datenbank 
+	 * and transforms them into list of {@link Painting} objects
+	 * 
 	 * @return list of Painting objects
 	 * @throws IOException
 	 */
@@ -22,6 +24,8 @@ public class Utils {
 		List<Painting> paintings = new ArrayList<>();
 		
 		try (BaseXClient session = new BaseXClient("localhost", 1984, "admin", "admin")) {
+			
+			// Use prepared XQuery to get all relevant for us painting infos from the XML files.
 			File file = new File("src/main/resources/xq/all_paintings_2.xq");
 			//File file = new File("/home/tarix/XML/XML-Technologien-Project/Spring-Rest-React/src/main/resources/xq/all_paintings_2.xq");
 			final String input = FileUtils.readFileToString(file);

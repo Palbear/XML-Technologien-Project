@@ -9,48 +9,108 @@ import java.io.IOException;
 //import com.basex.BaseXClient.Query;
 import java.io.PrintWriter;
 
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Source;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+
 import org.apache.commons.io.FileUtils;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
 import com.basex.BaseXClient.Query;
 
+/**
+ * This class is merely for testing purposes, to quickly try out the results of the queries etc.
+ */
 public class Main {
 
 	public static void main(final String... args) throws IOException {
+		
+		
+		String pathXml = "src/main/resources/static/sampleItems/Item_Sample.xml";
+		String pathSchema = "src/main/resources/static/sampleItems/lido-v1.0.xsd";
+		//String pathSchemaRemote = "http://www.lido-schema.org/schema/v1.0/lido-v1.0.xsd";
+		//String pathSchema = "src/main/resources/static/sampleItems/mini-lido-schema.xsd";
+		
+		//validateSchemaTest(pathXml, pathSchema);
+		
+		testGetAllPaintings();
+	}
+	
+	private static void testGetAllPaintings() {
 		// create session
+				try (BaseXClient session = new BaseXClient("localhost", 1984, "admin", "admin")) {
+					File file = new File("src/main/resources/xq/all_paintings_2.xq");
+					//File file = new File("src/main/resources/xq/get_all_paintings_new.xq");
+					final String input = FileUtils.readFileToString(file);
 
-		try (BaseXClient session = new BaseXClient("localhost", 1984, "admin", "admin")) {
-			File file = new File("src/main/resources/xq/all_paintings_2.xq");
-			//File file = new File("src/main/resources/xq/get_all_paintings_new.xq");
-			final String input = FileUtils.readFileToString(file);
+					try (Query query = session.query(input)) {
+						// loop through all results
+						while (query.more()) {	
+							String res = query.next();
+							System.out.println(res);
+						}
 
-			try (Query query = session.query(input)) {
-				// loop through all results
-				while (query.more()) {	
-					String res = query.next();
-					System.out.println(res);
+						// print query info
+						System.out.println(query.info());
+						
+						/*
+						File file2 = new File("src/main/resources/xq/validate-schema.xq");
+						final String input2 = FileUtils.readFileToString(file2);
+
+						try (Query query = session.query(input2)) {
+							// loop through all results
+							while (query.more()) {	
+								String res = query.next();
+								System.out.println(res);
+							}
+
+							// print query info
+							System.out.println(query.info());
+							
+						}
+						*/
+					} 
+					
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
+							
+	}
 
-				// print query info
-				System.out.println(query.info());
-				
+	
+	private static void validateSchemaTest(String localPathInstanceXml, 
+											String localPathSchema) {
+		try {
+			// parse an XML document into a DOM tree
+			DocumentBuilder parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document document = parser.parse(new File(localPathInstanceXml));
+
+			// create a SchemaFactory capable of understanding WXS schemas
+			SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+
+			// load a WXS schema, represented by a Schema instance
+			Source schemaFile = new StreamSource(new File(localPathSchema));
+			Schema schema = factory.newSchema(schemaFile);
+
+			// create a Validator instance, which can be used to validate an instance document
+			Validator validator = schema.newValidator();
+
+			// validate the DOM tree
+			try {
+			    validator.validate(new DOMSource(document));
+			} catch (SAXException e) {
+			    // instance document is invalid!
+				e.printStackTrace();
 			}
-			
-			/*
-			File file2 = new File("src/main/resources/xq/validate-schema.xq");
-			final String input2 = FileUtils.readFileToString(file2);
-
-			try (Query query = session.query(input2)) {
-				// loop through all results
-				while (query.more()) {	
-					String res = query.next();
-					System.out.println(res);
-				}
-
-				// print query info
-				System.out.println(query.info());
-				
-			}
-			*/
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 
