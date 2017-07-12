@@ -277,6 +277,7 @@ class PaintingModal extends React.Component {
         ) : '';
         return (
             <Modal show={this.state.showModal} bsSize="large" onHide={this.close}>
+            
                 <Modal.Header closeButton>
                     <Modal.Title>{this.state.painting.title}</Modal.Title>
                 </Modal.Header>
@@ -285,7 +286,7 @@ class PaintingModal extends React.Component {
                 	<div className="modal-dialog" itemScope itemType="http://schema.org/Painting">
                     
                     
-                    <img src={this.state.painting.image_link} width="555" height="450"/>
+                    <img itemProp="image" src={this.state.painting.image_link} width="555" height="450"/>
                     
                   <div className="painting-modal-infos-container">
                     
@@ -346,7 +347,10 @@ class PaintingModal extends React.Component {
                     	
                     <div>
                 	{this.state.authorDescriptionAndThumbnail.length > 0 ?
-                            <div><strong>Author - Description and Thumbnail</strong> <br /><ul>{authorDescriptionAndThumbnail}</ul></div>
+                            <div itemProp="creator" itemScope itemType="http://schema.org/Person">
+                				<strong>Author - Description and Thumbnail</strong><br />
+                				<ul>{authorDescriptionAndThumbnail}</ul>
+                			</div>
                              : ''}
                 	</div>
                 	
