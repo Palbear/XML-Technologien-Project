@@ -348,7 +348,7 @@ class PaintingModal extends React.Component {
                     <div>
                 	{this.state.authorDescriptionAndThumbnail.length > 0 ?
                             <div itemProp="creator" itemScope itemType="http://schema.org/Person">
-                				<strong>Author - Description and Thumbnail</strong><br />
+                				<strong>Artist - Description and Thumbnail</strong><br />
                 				<ul>{authorDescriptionAndThumbnail}</ul>
                 			</div>
                              : ''}
