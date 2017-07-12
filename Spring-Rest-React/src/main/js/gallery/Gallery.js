@@ -5,8 +5,9 @@ const React = require('react');
 const axios = require('axios');
 import { ReactRpg } from 'react-rpg';
 import PaintingModal from './PaintingModal';
-import {Pagination} from "react-bootstrap";
-
+import {Pagination, ButtonToolbar, DropdownButton, MenuItem} from "react-bootstrap";
+import Select from 'react-select';
+//import 'react-select/dist/react-select.css';
 
 class Gallery extends React.Component{
     constructor(props) {
@@ -18,11 +19,15 @@ class Gallery extends React.Component{
             showModal: false,
             url: "http://localhost:8080/api/paintings",
             activePage: 1,
-            pages: 1
+            pages: 1,
+            authors: [],
+            filterAuthor: []
         };
         this.handleSelect = this.handleSelect.bind(this);
+        this.setFilter = this.setFilter.bind(this);
     }
     componentWillMount() {
+        this.initialiseFilter();
         this.loadPaintingsFromServer();
     }
     showModal(url, obj) {
@@ -78,41 +83,66 @@ class Gallery extends React.Component{
                 console.log(error);
             });
     }
-    setFilter(word) {
-        if (word === 'All') {
+    setFilter(obj) {
+        if (!obj) {
             this.loadPaintingsFromServer();
-        } else if (word === 'Allaert') {
-            this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=Allaert%20van%20Everdingen');
-        } else if (word === 'David') {
-            this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=David%20Kl%C3%B6cker%20Ehrenstrahl');
-        } else if (word === 'Nicolas') {
-            this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=Nicolas%20Lancret');
-        }
+        } else {
+            this.loadPaintingsFromServer('http://localhost:8080/api/paintings/search/findByArtistLike?name=' + obj.label);
+        } //Allaert%20van%20Everdingen
     }
     render() {
         return (
             <div>
-              <div>
+                <div className="section">
+                    <Select
+                        name="form-field-name"
+                        value="one"
+                        options={this.state.filterAuthor}
+                        onChange={this.setFilter}
+                    />
+                </div>
+                <div>
                     <ReactRpg imagesArray={this.state.images} columns={[ 1, 2, 5 ]} padding={10} />
-              </div>
-                    
-              <div className="content-centered">
-                <Pagination
-                    prev
-                    next
-                    first
-                    last
-                    ellipsis
-                    boundaryLinks
-                    items={this.state.pages}
-                    maxButtons={5}
-                    activePage={this.state.activePage}
-                    onSelect={this.handleSelect} />               
-               </div>
+                </div>
+
+                <div className="content-centered">
+                    <Pagination
+                        prev
+                        next
+                        first
+                        last
+                        ellipsis
+                        boundaryLinks
+                        items={this.state.pages}
+                        maxButtons={5}
+                        activePage={this.state.activePage}
+                        onSelect={this.handleSelect}/>
+                </div>
                 
-               <PaintingModal showModal={this.state.showModal} selectedUrl={this.state.selectedUrl} paintings={this.state.paintings}/>
+                <PaintingModal showModal={this.state.showModal} selectedUrl={this.state.selectedUrl} paintings={this.state.paintings}/>
             </div>
         );
+    }
+
+    initialiseFilter() {
+        let authors = ['Abraham Bloemaert',
+            'Abraham Bruegel',
+            'Abraham Hendricksz van Beyeren',
+            'Abraham Jansz Begeyn',
+            'Abraham Lambertsz van den Tempel',
+            'Abraham Schöpfer',
+            'Abraham van Diepenbeeck',
+            'Abraham van Diepenbeeck (Attributed to)',
+            'Abraham van Diepenbeeck (Earlier attributed to)',
+            'Abraham van Dijck',
+            'Abraham Wuchters',
+            'Abraham Wuchters (Attributed to)',
+            'Acke Hallgren'
+            ];
+        this.setState({
+            filterAuthor: authors.map((author) => { return {value: author.toLowerCase(), label: author}; }),
+            authors: authors
+        })
     }
 };
 

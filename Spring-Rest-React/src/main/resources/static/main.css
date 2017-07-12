@@ -119,3 +119,6 @@ div.painting-modal-infos-container {
 .pagination-centered {
 	align: center;
 }
+.section {
+    display: block;
+}
