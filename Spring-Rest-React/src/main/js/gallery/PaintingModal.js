@@ -286,7 +286,7 @@ class PaintingModal extends React.Component {
                 	<div className="modal-dialog" itemScope itemType="http://schema.org/Painting">
                     
                     
-                    <img itemProp="image" src={this.state.painting.image_link} width="555" height="450"/>
+                    <img itemProp="image" src={this.state.painting.image_link} width="100%" />
                     
                   <div className="painting-modal-infos-container">
                     
