@@ -35,7 +35,8 @@ Gemälde und ihre Details extrahiert hat.
 2. Das Backend Kern-technologie ist basiert auf Spring Boot, Spring JPA-Repositories und Spring Rest Framework. Mit der Xquery von Basex-Client haben wir alle Gemälde (Painting.java) gemappt und in einer JPA-Repository gespeichert. Diese Repository wurde eventuell als Basis für das Rest-Framework verwendet.
 
 3. Für die Rest-Framework haben wir verschiedene Methoden geschrieben, die die Paintings Objekte filtern. Ein Beispiel ist die meiste verwendete Query, die die Paintings nach Namen filtert:
-List<Painting> findByArtistLike(@Param("name") String artist, Pageable pageable);
+
+    List<Painting> findByArtistLike(@Param("name") String artist, Pageable pageable);
 
 
 ## Frontend:
