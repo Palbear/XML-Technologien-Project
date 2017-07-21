@@ -24,10 +24,15 @@ In diesem Projekt haben wir uns entschieden mit Spring und React.js zu arbeiten.
 Dafür wurde den BaseX-Java-Client benutzt und eine Xquery Geschrieben, die alle	
 Gemälde und ihre Details extrahiert hat.
 
+
      How to run BaseX:
+     
      a. Download BaseX from their Github repo : https://github.com/BaseXdb/basex.git
+     
      b. Go to {basex home}/basex-core/etc/
+     
      c. On Mac/Linux run the script basexserver / on Windows run basexserver.bat
+    
      d. Now BaseX is running on port 1984
 
 2. Das Backend Kern-technologie ist basiert auf Spring Boot, Spring JPA-Repositories und Spring Rest Framework. Mit der Xquery von Basex-Client haben wir alle Gemälde (Painting.java) gemappt und in einer JPA-Repository gespeichert. Diese Repository wurde eventuell als Basis für das Rest-Framework verwendet.
