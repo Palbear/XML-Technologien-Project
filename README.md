@@ -24,11 +24,11 @@ How to run BaseX:
 4. Now BaseX is running on port 1984
 
 
-Projektdokumentation:
+# Projektdokumentation:
 
 In diesem Projekt haben wir uns entschieden mit Spring und React.js zu arbeiten. Nach der Anleitung von Spring “¹” haben wir uns festgestellt, dass es möglich ist, eine React.js Webanwendung in einer Jar-Datei zu packen, so dass die JAR-Datei Backend und Frontend Technologien enthält.
 
-Backend:
+## Backend:
 
 1. Als erster Schritt haben wir uns für BaseX als XML-Datenbank-Verwaltungssystem entschieden. Mit BaseX konnten wir alle XML-Dateien importieren um eine Datenbank zu haben, und den Basex-Server auf port 1984 starten, so dass die JAR-Datei (unser Webanwendung) mit dem BaseX Server kommunizieren kann. 
 Dafür wurde den BaseX-Java-Client benutzt und eine Xquery Geschrieben, die alle	
@@ -40,7 +40,7 @@ Gemälde und ihre Details extrahiert hat.
 List<Painting> findByArtistLike(@Param("name") String artist, Pageable pageable);
 
 
-Frontend:
+## Frontend:
 
 1. React (2 views)
 
