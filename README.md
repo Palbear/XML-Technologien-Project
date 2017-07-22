@@ -88,7 +88,7 @@ paintings = paintings.map((painting) => {
                    return newPainting
                 });
 ```
-Der Filter ist nur nach Autoren implementirert. Für den Filter benutzen wir unseren API-Enpoint mit der Suche nach Author:
+Der Filter ist nur nach Autoren implementirert. Der Filter hat auch Autocomplete. Für den benutzen wir unseren API-Enpoint mit der Suche nach Author:
 ```
 'http://localhost:8080/api/paintings/search/findByArtistLike?name=' + obj.label
 ```
