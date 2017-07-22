@@ -90,7 +90,7 @@ Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
 
 ## Architektur:
 
-![img absolute](https://github.com/YJ14/XML-Technologien-Project/blob/master/doc/Architektur.jpg)
+![Architektur-Diagramm](https://github.com/YJ14/XML-Technologien-Project/blob/master/doc/Architektur.jpg)
 
 ## Implementierungsdetails:
 
