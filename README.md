@@ -42,9 +42,10 @@ Gemälde und ihre Details extrahiert hat.
 ## Frontend:
 
 1. React (2 views)
-Das Frontend besteht aus zwei Views(Image Gallery, Painnting inforamtion) und verschiedennen Komponennten(**Pagination, Modalwindows, Filter, Routing...**). 
+Das Frontend besteht aus zwei Views(Image Gallery, Painnting inforamtion) und verschiedennen Komponennten(**Pagination, Modalwindows, Filter, Routing...**). Die Komponennten und Views wurden gutem Aussehen zufolge mit dem CSS gestylet.
+
 **Image Gallery**
-Bei diesem View werden die Thumbnails gleich verteilt in dem Grid 4x5 angezeigt. Die bekommenen Urls vom Server werden entsprechend bearbeitet(geparst), um die Thubnails yu hollen. 
+Bei diesem View werden die Thumbnails gleich verteilt in dem Grid 4x5 angezeigt. Die bekommenen Urls vom Server werden entsprechend bearbeitet(geparst), um die Thubnails yu hollen. Hier wird auch Pagination benutzt.
 
 **Painnting inforamtion**
 Diess View wird nach der Interaktion im ersten View angezeigt. Nach dem du das Bild auswählst wird automatisch die Painting Inforamtion angezeigt. Der Teil von Daten wird vom Server bekommen. Der andere Teil wird mit der Hilfe vom SPARQL-Anfragen an dbpedia.org geholt. 
