@@ -102,15 +102,11 @@ DBpedia, extra Informationen über die Paintings und ihre Künstlern liefern.
 
 Für die Einbettung der Metadaten haben wir URIs von http://schema.org/ benutzt. 
 
-Gemäldeinfo-Popup wurde mit Metadaten-Markierung mittels **Microdata** ausgestattet. 
-
-(Vgl. `XML-Technologien-Project/Spring-Rest-React/src/main/js/gallery/PaintingModal.js`)
+Gemäldeinfo-Popup wurde mit Metadaten-Markierung mittels **Microdata** ausgestattet. (Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js) )
 
 Der Gemäldebereich wird als Painting markiert und die dazugehörigen Informationen erhalten solche Markierungen wie image, title, creator (Person, name), dateCreated, material, licence, url). 
 
-Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
-
-(vgl. `XML-Technologien-Project/Spring-Rest-React/src/main/js/paintingList/Painting.js`)
+Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert. (Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/paintingList/Painting.js))
 
 ## Implementation Notes:
 
@@ -118,7 +114,7 @@ Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
 
 Gemäldeinfo-Popup mit **Microdata**. 
 
-(Vgl. `XML-Technologien-Project/Spring-Rest-React/src/main/js/gallery/PaintingModal.js`)
+(Vgl. [`XML-Technologien-Project/Spring-Rest-React/src/main/js/gallery/PaintingModal.js`](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js))
 
 Im Endeffekt sehen relevante Seitenteile etwa wie folgt aus:
 
@@ -130,10 +126,6 @@ Im Endeffekt sehen relevante Seitenteile etwa wie folgt aus:
     ...
     <span itemprop="creator" itemscope itemtype="http://schema.org/Person">
         <span itemprop="name">Alexander Roslin</span></span>
-    ...
-    <span itemprop="dateCreated">1774</span>
-    ...
-    <a itemprop="url" href="http://collection.nationalmuseum.se/eMuseumPlus?service=ExternalInterface&module=collection&objectId=101028&viewType=detailView" class="button">Nationalmuseum Sweden page: Record 101028</a>
     ...
 ```
 
