@@ -129,7 +129,7 @@ Im Endeffekt sehen relevante Seitenteile etwa wie folgt aus:
     ...
 ```
 
-Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
+Filtered-Paintings-Seite mit **RDFa**.
 
 (vgl. [`XML-Technologien-Project/Spring-Rest-React/src/main/js/paintingList/Painting.js`](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/paintingList/Painting.js))
 
