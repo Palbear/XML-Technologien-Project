@@ -106,7 +106,21 @@ Gemäldeinfo-Popup wurde mit Metadaten-Markierung mittels **Microdata** ausgesta
 
 (Vgl. `XML-Technologien-Project/Spring-Rest-React/src/main/js/gallery/PaintingModal.js`)
 
-Der Gemäldebereich wird als Painting markiert und die dazugehörigen Informationen erhalten solche Markierungen wie image, title, creator (Person, name), dateCreated, material, licence, url). Im Endeffekt sehen relevante Seitenteile etwa wie folgt aus:
+Der Gemäldebereich wird als Painting markiert und die dazugehörigen Informationen erhalten solche Markierungen wie image, title, creator (Person, name), dateCreated, material, licence, url). 
+
+Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
+
+(vgl. `XML-Technologien-Project/Spring-Rest-React/src/main/js/paintingList/Painting.js`)
+
+## Implementation Notes:
+
+**Einbettung der Metadaten**
+
+Gemäldeinfo-Popup mit **Microdata**. 
+
+(Vgl. `XML-Technologien-Project/Spring-Rest-React/src/main/js/gallery/PaintingModal.js`)
+
+Im Endeffekt sehen relevante Seitenteile etwa wie folgt aus:
 
 ```html
 <div class="modal-dialog" itemscope itemtype="http://schema.org/Painting">
