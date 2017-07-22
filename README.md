@@ -48,18 +48,17 @@ Frontend zu benutzen (also nicht in Java sondern direkt in Javascript). Dafür h
 ein npm Packet installiert und 6 verscheide Queries geschrieben, die uns von 
 DBpedia, extra Informationen über die Paintings und ihre Künstlern liefern.
 
-3. Einbettung der **Metadaten** in die Web-Seite (**RDFa, Microformats**)
+3. Einbettung der **Metadaten** in die Web-Seite
 
-Gemäldeinfo-Popup wurde mit Metadaten-Markierung mittels Microformats ausgestattet. 
+Für die Einbettung der Metadaten haben wir URIs von http://schema.org/ benutzt. 
+
+Gemäldeinfo-Popup wurde mit Metadaten-Markierung mittels **Microdata** ausgestattet. 
 
 (Vgl. `XML-Technologien-Project/Spring-Rest-React/src/main/js/gallery/PaintingModal.js`)
-
-Dafür haben wir URIs von http://schema.org/ benutzt. 
 
 Der Gemäldebereich wird als Painting markiert und die dazugehörigen Informationen erhalten solche Markierungen wie image, title, creator (Person, name), dateCreated, material, licence, url). Im Endeffekt sehen relevante Seitenteile etwa wie folgt aus:
 
 ```html
-
 <div class="modal-dialog" itemscope itemtype="http://schema.org/Painting">
     <img itemprop="image" src="http://emp-web-22.zetcom.ch/eMuseumPlus?service=ImageAsset&module=collection&objectId=101028&viewType=detailView&resolution=superImageResolution" width="100%">
     ...
@@ -74,4 +73,18 @@ Der Gemäldebereich wird als Painting markiert und die dazugehörigen Informatio
     ...
 ```
 
+Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
 
+(vgl. `XML-Technologien-Project/Spring-Rest-React/src/main/js/paintingList/Painting.js`)
+
+Relevante HTML-Teile für das gleiche Beispiel-Gemälde sehen dann wie folgt aus:
+
+```html
+<tr vocab="http://schema.org/" typeof="Painting">
+    ...
+    <span property="name">Sofia Magdalena 1746-1813, prinsessa av Danmark, drottning av Sverige, gift med Gustav III</span>
+    ...
+    <div property="creator" typeof="Person">
+        <span property="name">Alexander Roslin</span></div>
+    ...
+```
