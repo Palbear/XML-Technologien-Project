@@ -42,15 +42,15 @@ Gemälde und ihre Details extrahiert hat.
 ## Frontend:
 
 1. React (2 views)
-Das Frontend besteht aus zwei Views(Image Gallery, Painnting inforamtion) und verschiedennen Komponennten(**Pagination, Modalwindows, Filter, Routing...**). Die Komponennten und Views wurden gutem Aussehen zufolge mit dem CSS gestylet.
+Das Frontend besteht aus zwei Views(Image Gallery, Painting information) und verschiedenen Komponenten(**Pagination, Modalwindows, Filter, Routing...**). 
 
 **Image Gallery**
 Bei diesem View werden die Thumbnails gleich verteilt in dem Grid 4x5 angezeigt. Die bekommenen Urls vom Server werden entsprechend bearbeitet(geparst), um die Thubnails yu hollen. Hier wird auch Pagination und Filter benutzt.
 
-**Painnting inforamtion**
-Diess View wird nach der Interaktion im ersten View angezeigt. Nach dem du das Bild auswählst wird automatisch die Painting Inforamtion angezeigt. Der Teil von Daten wird vom Server bekommen. Der andere Teil wird mit der Hilfe vom SPARQL-Anfragen an dbpedia.org geholt. 
+**Painting information**
+Dieses View wird nach der Interaktion im ersten View angezeigt. Nachdem man ein Bild auswählt, wird automatisch die Painting-Information angezeigt. Ein Teil von Daten kommt vom Server. Der andere Teil wird mit der Hilfe vom SPARQL-Anfragen an dbpedia.org geholt. 
 Vom dpbedia.org bekommen wir Solche Info als Author-Beschreibung, Autors Foto, andere Autoren, die an gleichem Ort geboren wurde usw.
-Einen Beispiel vom SPARQL-Anfrage:
+Beispiel einer SPARQL-Anfrage:
 ```html
         let query = 'prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> select ?mov where { dbpedia:' + author.split(' ').join('_') + ' dbpedia-owl:abstract ?abstract ; dbpedia-owl:movement ?movement . filter(langMatches(lang(?abstract),"en"))?movement rdfs:label ?mov .filter(langMatches(lang(?mov),"en"))}';
         let self = this;
@@ -103,8 +103,10 @@ DBpedia, extra Informationen über die Paintings und ihre Künstlern liefern.
 Für die Einbettung der Metadaten haben wir URIs von http://schema.org/ benutzt. 
 Der Gemäldebereich wird als Painting markiert und die dazugehörigen Informationen erhalten Markierungen wie image, title, creator (Person, name), dateCreated, material, licence, url). 
 
-Gemäldeinfo-Popup wurde mit Metadaten-Markierung mittels **Microdata** ausgestattet. (Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js)). 
-Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert. (Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/paintingList/Painting.js)).
+Gemäldeinfo-Popup wurde mit Metadaten-Markierung mittels **Microdata** ausgestattet. 
+(Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js)). 
+Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert. 
+(Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/paintingList/Painting.js)).
 
 ## Implementation Notes:
 
@@ -129,7 +131,7 @@ Im Endeffekt sehen relevante Seitenteile etwa wie folgt aus:
 
 Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
 
-(vgl. `XML-Technologien-Project/Spring-Rest-React/src/main/js/paintingList/Painting.js`)
+(vgl. [`XML-Technologien-Project/Spring-Rest-React/src/main/js/paintingList/Painting.js`](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/paintingList/Painting.js))
 
 Relevante HTML-Teile für das gleiche Beispiel-Gemälde sehen dann wie folgt aus:
 
