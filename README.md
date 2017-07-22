@@ -101,12 +101,10 @@ DBpedia, extra Informationen über die Paintings und ihre Künstlern liefern.
 3. Einbettung der **Metadaten** in die Web-Seite
 
 Für die Einbettung der Metadaten haben wir URIs von http://schema.org/ benutzt. 
+Der Gemäldebereich wird als Painting markiert und die dazugehörigen Informationen erhalten Markierungen wie image, title, creator (Person, name), dateCreated, material, licence, url). 
 
-Gemäldeinfo-Popup wurde mit Metadaten-Markierung mittels **Microdata** ausgestattet. (Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js) )
-
-Der Gemäldebereich wird als Painting markiert und die dazugehörigen Informationen erhalten solche Markierungen wie image, title, creator (Person, name), dateCreated, material, licence, url). 
-
-Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert. (Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/paintingList/Painting.js))
+Gemäldeinfo-Popup wurde mit Metadaten-Markierung mittels **Microdata** ausgestattet. (Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js)). 
+Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert. (Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/paintingList/Painting.js)).
 
 ## Implementation Notes:
 
