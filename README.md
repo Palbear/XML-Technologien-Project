@@ -45,7 +45,7 @@ Gemälde und ihre Details extrahiert hat.
 Das Frontend besteht aus zwei Views(Image Gallery, Painnting inforamtion) und verschiedennen Komponennten(**Pagination, Modalwindows, Filter, Routing...**). Die Komponennten und Views wurden gutem Aussehen zufolge mit dem CSS gestylet.
 
 **Image Gallery**
-Bei diesem View werden die Thumbnails gleich verteilt in dem Grid 4x5 angezeigt. Die bekommenen Urls vom Server werden entsprechend bearbeitet(geparst), um die Thubnails yu hollen. Hier wird auch Pagination benutzt.
+Bei diesem View werden die Thumbnails gleich verteilt in dem Grid 4x5 angezeigt. Die bekommenen Urls vom Server werden entsprechend bearbeitet(geparst), um die Thubnails yu hollen. Hier wird auch Pagination und Filter benutzt.
 
 **Painnting inforamtion**
 Diess View wird nach der Interaktion im ersten View angezeigt. Nach dem du das Bild auswählst wird automatisch die Painting Inforamtion angezeigt. Der Teil von Daten wird vom Server bekommen. Der andere Teil wird mit der Hilfe vom SPARQL-Anfragen an dbpedia.org geholt. 
@@ -87,6 +87,10 @@ paintings = paintings.map((painting) => {
                     newPainting.smallImage = resultString;
                    return newPainting
                 });
+```
+Der Filter ist nur nach Autoren implementirert. Für den Filter benutzen wir unseren API-Enpoint mit der Suche nach Author:
+```
+'http://localhost:8080/api/paintings/search/findByArtistLike?name=' + obj.label
 ```
 
 2. DBpedia: Um Sparql-queries zu schreiben zu können, haben wir uns entschieden, dies direkt im 
