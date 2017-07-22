@@ -49,9 +49,44 @@ Bei diesem View werden die Thumbnails gleich verteilt in dem Grid 4x5 angezeigt.
 **Painnting inforamtion**
 Diess View wird nach der Interaktion im ersten View angezeigt. Nach dem du das Bild auswählst wird automatisch die Painting Inforamtion angezeigt. Der Teil von Daten wird vom Server bekommen. Der andere Teil wird mit der Hilfe vom SPARQL-Anfragen an dbpedia.org geholt. 
 Vom dpbedia.org bekommen wir Solche Info als Author-Beschreibung, Autors Foto, andere Autoren, die an gleichem Ort geboren wurde usw.
+Einen Beispiel vom SPARQL-Anfrage:
+```html
+        let query = 'prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> select ?mov where { dbpedia:' + author.split(' ').join('_') + ' dbpedia-owl:abstract ?abstract ; dbpedia-owl:movement ?movement . filter(langMatches(lang(?abstract),"en"))?movement rdfs:label ?mov .filter(langMatches(lang(?mov),"en"))}';
+        let self = this;
+        dps.client()
+            .query(query)
+            .timeout(15000) 
+            .asJson() // or asXml()
+            .then(function (r) {
+                console.log(r);
+                self.setState({
+                    movement: r.results.bindings
+                });
+            }).catch(function (e) {
+            console.log(e)
+        });
+ ```
+        
 
 **Pagination, Modalwindows, Filter, Routing...**
-Die meisten Komponennten wurde vom react-bootstrap importiert. Dabei sind Pagination, Modalwindows, Filter, Routing, ModalWindow, ReactRpg und die andere. Die gehloten Daten vom unserem Backend-Server bzw vom Server dbpedia.org sind  entsprechend für die jede Komnponente bei dem Frontend vorbereitet.
+Die meisten Komponennten wurde vom react-bootstrap importiert. Dabei sind Pagination, Modalwindows, Filter, Routing, ModalWindow, ReactRpg und die andere. Die gehloten Daten vom unserem Backend-Server bzw vom Server dbpedia.org sind  entsprechend für die jede Komnponente bei dem Frontend vorbereitet. Zum Beispiel Verarbeitung von Url's für die Thumbnails:
+
+```html
+paintings = paintings.map((painting) => {
+                   let newPainting = painting;
+                   let arr = newPainting.image_link.split('&');
+                   let resultString = arr[0];
+                   for(let i = 1; i<arr.length; i++) {
+                       if (arr[i].indexOf('objectId') > -1) {
+                           resultString = resultString.concat('&').concat(arr[i]);
+                           break;
+                       }
+                       resultString = resultString.concat('&').concat(arr[i]);
+                   }
+                    newPainting.smallImage = resultString;
+                   return newPainting
+                });
+```
 
 2. DBpedia: Um Sparql-queries zu schreiben zu können, haben wir uns entschieden, dies direkt im 
 Frontend zu benutzen (also nicht in Java sondern direkt in Javascript). Dafür haben wir 
