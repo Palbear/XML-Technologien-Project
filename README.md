@@ -88,7 +88,11 @@ Gemäldeinfo-Popup wurde mit Metadaten-Markierung mittels **Microdata** ausgesta
 Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert. 
 (Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/paintingList/Painting.js)).
 
-## Implementation Notes:
+## Architektur:
+
+![img absolute](https://github.com/YJ14/XML-Technologien-Project/blob/master/doc/Architektur.jpg)
+
+## Implementierungsdetails:
 
 #### XML-Technologien im Backend
 
