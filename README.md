@@ -42,6 +42,16 @@ Gemälde und ihre Details extrahiert hat.
 ## Frontend:
 
 1. React (2 views)
+Das Frontend besteht aus zwei Views(Image Gallery, Painnting inforamtion) und verschiedennen Komponennten(**Pagination, Modalwindows, Filter, Routing...**). 
+**Image Gallery**
+Bei diesem View werden die Thumbnails gleich verteilt in dem Grid 4x5 angezeigt. Die bekommenen Urls vom Server werden entsprechend bearbeitet(geparst), um die Thubnails yu hollen. 
+
+**Painnting inforamtion**
+Diess View wird nach der Interaktion im ersten View angezeigt. Nach dem du das Bild auswählst wird automatisch die Painting Inforamtion angezeigt. Der Teil von Daten wird vom Server bekommen. Der andere Teil wird mit der Hilfe vom SPARQL-Anfragen an dbpedia.org geholt. 
+Vom dpbedia.org bekommen wir Solche Info als Author-Beschreibung, Autors Foto, andere Autoren, die an gleichem Ort geboren wurde usw.
+
+**Pagination, Modalwindows, Filter, Routing...**
+Die meisten Komponennten wurde vom react-bootstrap importiert. Dabei sind Pagination, Modalwindows, Filter, Routing, ModalWindow, ReactRpg und die andere. Die gehloten Daten vom unserem Backend-Server bzw vom Server dbpedia.org sind  entsprechend für die jede Komnponente bei dem Frontend vorbereitet.
 
 2. DBpedia: Um Sparql-queries zu schreiben zu können, haben wir uns entschieden, dies direkt im 
 Frontend zu benutzen (also nicht in Java sondern direkt in Javascript). Dafür haben wir 
