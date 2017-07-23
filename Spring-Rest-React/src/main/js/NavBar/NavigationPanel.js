@@ -26,7 +26,7 @@ class NavigationPanel extends React.Component {
                         	</LinkContainer>                           
                             <MenuItem divider/>
                             <LinkContainer to="/sample">
-                        		<MenuItem eventKey={3.3}>XSLT Sample (Lidia Test donotdelete)</MenuItem>
+                        		<MenuItem eventKey={3.3}>XSLT Sample (Beta)</MenuItem>
                         	</LinkContainer>
                         </NavDropdown>
                     </Nav>
