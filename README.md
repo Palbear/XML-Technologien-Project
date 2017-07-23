@@ -28,23 +28,26 @@ Dafür wurde den BaseX-Java-Client benutzt und eine XQuery geschrieben, die alle
 Gemälde und ihre Details extrahiert hat. ([XQuery hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/resources/xq/all_paintings_2.xq))
 
 
-#### How to run BaseX:
+#### BaseX:
 
-    a. Download BaseX from their Github repo : https://github.com/BaseXdb/basex.git
+    a. Download BaseX from the Github repo : https://github.com/BaseXdb/basex.git
     b. Go to {basex home}/basex-core/etc/
     c. On Mac/Linux run the script basexserver / on Windows run basexserver.bat
     d. Now BaseX is running on port 1984
 
 2. Das Backend Kern-technologie ist basiert auf Spring Boot, Spring JPA-Repositories und Spring Rest Framework. Mit der XQuery von Basex-Client haben wir alle Gemälde (Painting.java) gemappt und in einer JPA-Repository gespeichert. Diese Repository wurde eventuell als Basis für das Rest-Framework verwendet.
 
-3. Für die REST-Framework haben wir verschiedene Methoden geschrieben, die die Paintings Objekte filtern. Ein Beispiel ist die meiste verwendete Query, die die Paintings nach den Autorennamen filtert:
+3. Für das REST-Framework haben wir verschiedene Methoden geschrieben, die die Paintings Objekte filtern. Ein Beispiel ist die meiste verwendete Query, die die Paintings nach den Autorennamen filtert:
 
-    List<Painting> findByArtistLike(@Param("name") String artist, Pageable pageable);
+
+```
+ List<Painting> findByArtistLike(@Param("name") String artist, Pageable pageable);
+```
 
 
 ## Frontend:
 
-1. React (2 views)
+1. React
 Das Frontend besteht aus zwei Views(Image Gallery, Painting information) und verschiedenen Komponenten(**Pagination, Modalwindows, Filter, Routing...**). 
 
 **Image Gallery**
@@ -92,9 +95,15 @@ Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
 
 Beispiel einer SPARQL-Anfrage:
 
-`
-let query = 'prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> select ?mov where { dbpedia:' + author.split(' ').join('_') + ' dbpedia-owl:abstract ?abstract ; dbpedia-owl:movement ?movement . filter(langMatches(lang(?abstract),"en"))?movement rdfs:label ?mov .filter(langMatches(lang(?mov),"en"))}';
- `
+```
+let query = 'prefix dbpedia: <http://dbpedia.org/resource/> 
+             prefix dbpedia-owl: <http://dbpedia.org/ontology/> 
+             select ?mov where { 
+               dbpedia:' + author.split(' ').join('_') + ' dbpedia-owl:abstract ?abstract ; dbpedia-owl:movement ?movement . 
+               filter(langMatches(lang(?abstract),"en"))?movement rdfs:label ?mov .
+               filter(langMatches(lang(?mov),"en"))
+               }';
+```
  
 Weitere SPARQL-Queries [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js). 
 
