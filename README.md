@@ -10,13 +10,12 @@ Autoren: Hyekyeong Han, Lidia Krus, Severina Virovska, Suzana Puscasu, Taras Kol
 
 ## Abstract
 
-In diesem Projekt haben wir uns mit den Daten befasst, die einen Teil der Sammlung des Nationalmuseums in Stockholm beschreiben. Der Datensatz bestand aus 13865 XML-Dateien mit Gemäldeinformationen im Format LIDO-xml. 
-Wir haben Duplikate ausgefiltert und im Endeffekt mit 5334 XML-Dateien gearbeitet (1 Datei pro Gemälde). 
+In diesem Projekt haben wir uns mit den Daten befasst, die einen Teil der Sammlung des Nationalmuseums in Stockholm beschreiben. Der Datensatz bestand aus 13865 XML-Dateien mit Gemäldeinformationen im Format LIDO-xml.
+Wir haben Duplikate ausgefiltert und im Endeffekt mit 5334 XML-Dateien gearbeitet (1 Datei pro Gemälde).<br />
 Die Daten haben wir benutzt, um eine Art der Online-Galerie zu erstellen, wo man sich die Sammlung anschauen kann, und erweiterte Informationen für einzelne Gemälde zu sehen bekommen kann. Die Gemäldeinformationen kommen dabei aus zwei Quellen: 
 zum einen aus den XML-Dateien selbst, zum anderen aus DBpedia. Die Links auf entsprechende Seiten des Nationalmuseums sind auch vorhanden. Die entstandene Anwendung wurde mittels Spring und React.js, unter Benutzung von BaseX und den in der Vorlesung gelernten XML-Technologien implementiert.
 
 ## Anwendung
-
 
 In diesem Projekt haben wir uns entschieden, mit Spring und React.js zu arbeiten. Nach der Anleitung von Spring haben wir festgestellt, dass es möglich ist, eine React.js Webanwendung in einer JAR-Datei zu packen, so dass die JAR-Datei Backend- und Frontend-Technologien enthält.
 
