@@ -36,6 +36,10 @@ This record id comes from the internal database of the Nationalmuseum. This id h
 
 Having a look at the paintings files with the same record ids helped us realize that there can be up to 3 files for the same painting, each of them coming from a different folder. The file coming from the latest folder contains issue fixes for the files in the previous folders, or an updated information. For this reason we have left out all the older files and created a [filtered dataset](https://github.com/YJ14/XML-Technologien-Project/blob/master/sweden-clean.zip) consisting of 5334 files, where all the described paintings are unique. It is worth noting, that the first folder contains only outdated files and could be completely ignored. So our 5334 files come only from the second and the third folders.
 
+## Overall impression
+
+In general our impression from the dataset was positive. All the basic information we needed for our app to function was provided, such as e.g. unique record ids, painting titles, author information and links to the image thumbnails. But since we were asked to provide a recommendation for the dataset, below we will point out some issues we noticed.
+
 ## Issues
 
 - Issue with author names
