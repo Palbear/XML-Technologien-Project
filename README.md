@@ -98,7 +98,7 @@ Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
 
 ## Implementierungsdetails:
 
-### XML-Technologien im Backend
+### Einsatz grundlegender XML-Technologien
 
 - **XPath/XQuery**: verwendet im Backend, um die Gemäldeliste im Backend zu initialisieren. 
 ([XQuery hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/resources/xq/all_paintings_2.xq)). Auch während der Projekt-Anfangsphase wurde für die Analyse des Datensatzes verwendet.
