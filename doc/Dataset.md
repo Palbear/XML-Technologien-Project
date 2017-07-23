@@ -39,7 +39,23 @@ This record id comes from the internal database of the Nationalmuseum. This reco
 
 For some author names we could not find the information in the DBpedia by simply parsing the provided author name, even though the entry for this author exists. 
 
-E.g.:
+Consider for instance the following code fragment containing painting creator info:
+
+```xml
+<lido:eventActor>
+    <lido:actorInRole>
+        <lido:actor>
+            <lido:nameActorSet>
+                <lido:appellationValue>Pehr Hilleström d.ä.</lido:appellationValue>
+            </lido:nameActorSet>
+        </lido:actor>
+        <lido:roleActor>
+            <lido:term lido:addedSearchTerm="no">Konstnär</lido:term>
+        </lido:roleActor>
+    </lido:actorInRole>
+</lido:eventActor>
+```
+(file `16-12-16_18:34:55/Item_7361463.xml`, record id 101566)
 
 Painter name in XML file: Pehr Hilleström d.ä.
 
