@@ -35,6 +35,10 @@ This record id comes from the internal database of the Nationalmuseum. This reco
 
 ## Issues
 
+- Issue with author names
+
+For some author names we could not find the information in the DBpedia by simply parsing the provided author name, even though the entry for this author exists. 
+
 - Issue with painting measurements data
 
 Some paintings have more than 1 entry for painting measurements and measurements display info. 
@@ -89,10 +93,6 @@ We can see, that the order of the entries for the `lido:displayObjectMeasurement
 
 Problematic paintings e.g. with the following record ids:
 100530, 100529, 101033, 101574, 101585
-
-- Issue with author names
-
-For some author names we could not find the information in the DBpedia by simply parsing the provided author name, even though the entry for this author exists. 
 
 ## Recommenations summary
 
