@@ -12,7 +12,7 @@ Autoren: Hyekyeong Han, Lidia Krus, Severina Virovska, Suzana Puscasu, Taras Kol
 
 In diesem Projekt haben wir uns mit den Daten befasst, die einen Teil der Sammlung des Nationalmuseums in Stockholm beschreiben. Der Datensatz bestand aus 13865 XML-Dateien mit Gemäldeinformationen im Format LIDO-xml.
 Wir haben Duplikate ausgefiltert und im Endeffekt mit 5334 XML-Dateien gearbeitet (1 Datei pro Gemälde).<br />
-Die Daten haben wir benutzt, um eine Art der Online-Galerie zu erstellen, wo man sich die Sammlung anschauen kann, und erweiterte Informationen für einzelne Gemälde zu sehen bekommen kann. Die Gemäldeinformationen kommen dabei aus zwei Quellen: 
+Die Daten haben wir benutzt, um eine Art der Online-Galerie zu erstellen, wo man sich die Sammlung anschauen kann, und erweiterte Informationen zu den einzelnen Gemälden zu sehen bekommen kann. Die Gemäldeinformationen kommen dabei aus zwei Quellen: 
 zum einen aus den XML-Dateien selbst, zum anderen aus DBpedia. Die Links auf entsprechende Seiten des Nationalmuseums sind auch vorhanden. Die entstandene Anwendung wurde mittels Spring und React.js, unter Benutzung von BaseX und den in der Vorlesung gelernten XML-Technologien implementiert.
 
 ## Anwendung
@@ -96,7 +96,7 @@ Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
 
 ## Implementierungsdetails:
 
-#### XML-Technologien im Backend
+### XML-Technologien im Backend
 
 - **XPath/XQuery**: verwendet im Backend, um die Gemäldeliste im Backend zu initialisieren. 
 ([XQuery hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/resources/xq/all_paintings_2.xq)). Auch während der Projekt-Anfangsphase wurde für die Analyse des Datensatzes verwendet.
@@ -105,7 +105,7 @@ Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
 
 - **XML-Schema** wurde während der Erstellung der Datenbank für die Validierung der XML-Dateien des Datensatzes verwendet. 
 
-#### SPARQL
+### SPARQL
 
 Beispiel einer SPARQL-Anfrage:
 
@@ -121,13 +121,13 @@ let query = 'prefix dbpedia: <http://dbpedia.org/resource/>
  
 Weitere SPARQL-Queries [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/sparql.md) sind in der React-Script [PaintingModal.js](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js) implementiert (mit Parametrisierung der Künstlernamen).
 
-#### Einbettung der Metadaten
+### Einbettung der Metadaten
 
 - Gemäldeinfo-Popup mit **Microdata**. 
 
 (Vgl. [`XML-Technologien-Project/Spring-Rest-React/src/main/js/gallery/PaintingModal.js`](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js))
 
-Im Endeffekt sehen relevante Seitenteile etwa wie folgt aus:
+Ergebis-HTML für ein Beispielgemälde:
 
 ```html
 <div class="modal-dialog" itemscope itemtype="http://schema.org/Painting">
@@ -144,7 +144,7 @@ Im Endeffekt sehen relevante Seitenteile etwa wie folgt aus:
 
 (vgl. [`XML-Technologien-Project/Spring-Rest-React/src/main/js/paintingList/Painting.js`](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/paintingList/Painting.js))
 
-Relevante HTML-Teile für das gleiche Beispiel-Gemälde sehen dann wie folgt aus:
+Ergebis-HTML für das gleiche Gemälde:
 
 ```html
 <tr vocab="http://schema.org/" typeof="Painting">
