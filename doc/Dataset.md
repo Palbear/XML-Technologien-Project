@@ -39,6 +39,14 @@ This record id comes from the internal database of the Nationalmuseum. This reco
 
 For some author names we could not find the information in the DBpedia by simply parsing the provided author name, even though the entry for this author exists. 
 
+E.g.:
+
+Painter name in XML file: Pehr Hilleström d.ä.
+
+DBpedia URI for the painter: http://dbpedia.org/page/Pehr_Hilleström
+
+The URI could not be found, since the painter name prepared for the query was: Pehr_Hilleström_d.ä.
+
 - Issue with painting measurements data
 
 Some paintings have more than 1 entry for painting measurements and measurements display info. 
@@ -100,6 +108,6 @@ Problematic paintings e.g. with the following record ids:
 
 - Use more links to global URIs, e.g. DBpedia page for an Author, because even if that contains local author id that is understandable for the Nationalmuseum database, it is easier to find out more additional information this way. (In accordance with Linked Data principles)
 
-- Provide Author names in standardized format.
+- Provide Author names in standardized format, or provide additionally unique global URIs for each author reference.
 
 - When providing multiple dimensions and dimension display information, either order them coherently, or use separate wrapper for each dimensions unit.
