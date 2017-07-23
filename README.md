@@ -28,7 +28,7 @@ In diesem Projekt haben wir uns entschieden, mit Spring und React.js zu arbeiten
 1. BaseX ist ein XML-Datenbankmanagementsystem, das eine tabellarische Abbildung von Baumstrukturen für die Speicherung von XML-Dokumenten verwendet. Mit der GUI von BaseX konnten wir alle XML-Dateien importieren, um eine Datenbank zu haben. Diese Datenbank konnte man mit Xquery und Xpath anfragen.  
 Der Basex-Server ist dann auf port 1984 gestartet, so dass die JAR-Datei (unsere Webanwendung) mit dem BaseX Server kommunizieren kann. 
 
-Dafür wurde den BaseX-Java-Client benutzt und eine XQuery geschrieben, die alle	
+Dafür wurde den BaseX-Java-Client benutzt und eine XQuery geschrieben, die alle
 Gemälde und ihre Details extrahiert hat. ([XQuery hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/resources/xq/all_paintings_2.xq))
 
 
@@ -39,7 +39,7 @@ Gemälde und ihre Details extrahiert hat. ([XQuery hier](https://github.com/YJ14
     c. On Mac/Linux run the script basexserver / on Windows run basexserver.bat
     d. Now BaseX is running on port 1984
 
-2. Das Backend Kern-technologie ist basiert auf Spring Boot, Spring JPA-Repositories und Spring Rest Framework. Mit der XQuery von Basex-Client haben wir alle Gemälde (Painting.java) gemappt und in einer JPA-Repository gespeichert. Diese Repository wurde eventuell als Basis für das Rest-Framework verwendet.
+2. Das Backend Kern-technologie ist basiert auf Spring Boot, Spring JPA-Repositories und Spring Rest Framework. Mit der XQuery von Basex-Client haben wir alle Gemälde (Painting.java) gemappt und in einer JPA-Repository gespeichert (siehe hier die Klasse [DatabaseLoader.java](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/java/com/model/DatabaseLoader.java)). Diese Repository wurde eventuell als Basis für das Rest-Framework verwendet.
 
 3. Für das REST-Framework haben wir verschiedene Methoden geschrieben, die die Paintings Objekte filtern. Ein Beispiel ist die meiste verwendete Query, die die eine Liste von Paintings nach den Autorennamen filtert:
 
@@ -54,6 +54,7 @@ und um ein Painting-Objekt nach recordID zu bekommen:
  Painting findByRecordIDLike(@Param("recordid") String date);
 ```
 
+Siehe die [Implementierungsdetails](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/java/com/model/PaintingsRepository.java) in der PaintingsRepository Klasse.
 
 ## Frontend:
 
