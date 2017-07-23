@@ -1,5 +1,5 @@
 This Rest Api is built on Spring Rest Framework.
-As soon as the database is loaded to the Spring Repository and to Rest Api, it is then saved into a persistence layer that can be easily queried with the URL of the Rest Api this way:
+As soon as the database is loaded to the Spring JPA-Repository and to the Rest Api, it is then saved into a persistence layer that can be easily queried with the URL of the Rest Api this way:
 
 Number of Paintings per Page:
 
