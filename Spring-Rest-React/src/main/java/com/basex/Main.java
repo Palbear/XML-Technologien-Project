@@ -47,9 +47,11 @@ public class Main {
 		//validateSchemaTest(pathXml, pathSchema);
 		
 		//testGetAllPaintings();
-		testXslt();		
+		
+		
+		testXslt();	
 	}
-	
+
 	private static void testXslt() {
 		String pathXml = "src/main/resources/static/sampleItems/Item_Sample.xml";
 		String pathXsl = "src/main/resources/static/sampleItems/xslt/item-server-side2.xsl";
