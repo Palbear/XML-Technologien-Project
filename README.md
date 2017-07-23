@@ -17,17 +17,6 @@ zum einen aus den XML-Dateien selbst, zum anderen aus DBpedia. Die Links auf ent
 
 ## Anwendung
 
-Kursseite: http://www.mi.fu-berlin.de/en/inf/groups/hcc/teaching/Summer-Term-2017/XML-Technologien.html
-
-Datensatz: Gemälde - Nationalmuseum Schweden (https://github.com/NationalmuseumSWE/WikidataCollection). 
- 
-Datensatz auf Wikidata: http://tools.wmflabs.org/autolist/autolist1.html?props=217&q=CLAIM%5B195%3A842858%5D
-
-Der Datensatz ist ein Teil der Sammlung des Nationalmuseums in Stockholm. 
-Das Nationalmuseum Schweden stellte LIDO-xml als Grundlage für die Importe zur Verfügung. 
-Folgende Metadaten sind eingeschlossen: Künstler, Titel, Informationen zu den Medien und Dimensionen und öfters Informationen zu den abgebildeten Personen. 
-Der Datensatz bestand aus 13865 XML-Dateien mit Gemäldeinformationen. 
-Wir haben Duplikate ausgefiltert und im Endeffekt mit 5334 XML-Dateien gearbeitet (1 Datei pro Gemälde).
 
 In diesem Projekt haben wir uns entschieden, mit Spring und React.js zu arbeiten. Nach der Anleitung von Spring haben wir festgestellt, dass es möglich ist, eine React.js Webanwendung in einer JAR-Datei zu packen, so dass die JAR-Datei Backend- und Frontend-Technologien enthält.
 
