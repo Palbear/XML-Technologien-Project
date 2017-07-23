@@ -5,8 +5,8 @@ let $credit := $doc//lido:rightsWorkSet/lido:creditLine/text()
 for $event in $doc//lido:event[lido:eventType/lido:term='Creation']
 let $authors := $event//lido:eventActor//lido:actor
 let $m := $doc//lido:objectMeasurementsWrap
-let $width := $m//lido:measurementsSet[lido:measurementType='Width']/lido:measurementValue
-let $height := $m//lido:measurementsSet[lido:measurementType='Height']/lido:measurementValue
+let $width := $m//lido:measurementsSet[lido:measurementType='Width'][1]/lido:measurementValue
+let $height := $m//lido:measurementsSet[lido:measurementType='Height'][1]/lido:measurementValue
 for $depicted in $doc//lido:objectRelationWrap//lido:subject
 let $depictedPerson := $depicted//lido:appellationValue/text()
 let $sep := "_SPRTR_"
@@ -14,7 +14,7 @@ order by ($recordId)
 return string-join((
     $recordId,
     $sep,
-    string-join($doc//lido:titleSet/lido:appellationValue[@xml:lang='sv'], ", "),
+    string-join($doc//lido:titleSet/lido:appellationValue[1], ", "),
     $sep,
     string-join($authors//lido:nameActorSet/lido:appellationValue, ", "),
     $sep,
@@ -28,9 +28,9 @@ return string-join((
     $sep,
     string-join($doc//lido:eventMaterialsTech/lido:displayMaterialsTech, ", "),
     $sep,
-    string-join($width, " or ") || "-" ||  string-join($height, " or "),
-   $sep,
-   "preferredRightsType: "
+    $width || "-" || $height,
+    $sep,
+    "preferredRightsType: "
       || $doc//lido:rightsResource/lido:rightsType/lido:term
       || ", rightsHolder: "
       || string-join($doc//lido:rightsResource/lido:rightsHolder//lido:appellationValue, ", "),
