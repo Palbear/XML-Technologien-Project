@@ -16,7 +16,7 @@ At the moment of writing the dataset included 13865 XML files concerning 5334 pa
 
 The following image gives an example of selected metadata contained in a single painting item file:
 
-![Painting item metadata]()
+<img src="PaintingItem.png" alt="Painting item metadata" />
 
 ## XML files
 
