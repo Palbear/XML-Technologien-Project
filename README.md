@@ -56,6 +56,9 @@ und um ein Painting-Objekt nach recordID zu bekommen:
 
 Siehe die [Implementierungsdetails](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/java/com/model/PaintingsRepository.java) zum Filtern von Painting-Objekte in der PaintingsRepository Klasse.
 
+Für mehr Informationen über die Rest-API-Implementierung siehe bitte die [RestApi.md](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/RestApi.md) 
+
+
 ## Frontend:
 
 1. React
