@@ -1,7 +1,7 @@
 ### DBpedia Sparql Queries:
 
 
-1. This Sparql Query retrieves the place of birth of the author:
+####1. This Sparql Query retrieves the place of birth of the author:
 
 ```
 prefix dbpedia: <http://dbpedia.org/resource/> 
@@ -15,7 +15,7 @@ filter(langMatches(lang(?place),'en'))
 }
 ```
 
-2. This Sparql Query retrieves Info about the Depicted Person:
+####2. This Sparql Query retrieves Info about the Depicted Person:
 
 Birth Place :
 
@@ -34,7 +34,7 @@ SELECT ?name ?place WHERE {
 }
 ```
 
-3. This Sparql Query retrieves Other Ten People born in the same place:
+####3. This Sparql Query retrieves Other Ten People born in the same place:
 
 ```
 PREFIX db: <http://dbpedia.org/resource/>
@@ -54,7 +54,7 @@ LIMIT 10
 
 
 
-4. This Sparql Query retrieves Movement of the Artist:
+####4. This Sparql Query retrieves Movement of the Artist:
 
 ```
 PREFIX db: <http://dbpedia.org/resource/>
@@ -72,7 +72,7 @@ SELECT ?name ?mov WHERE {
 ```
 
 
-5. This Sparql Query retrieves the description and the thumbnail of the author:
+####5. This Sparql Query retrieves the description and the thumbnail of the author:
 
 ```
 prefix dbpedia: <http://dbpedia.org/resource/> 
@@ -86,7 +86,7 @@ filter(langMatches(lang(?abstract),'en'))
 
 
 
-6. This Sparql Query retrieves ten People who were born in Berlin on a date before the date of the painting
+####6. This Sparql Query retrieves ten People who were born in Berlin on a date before the date of the painting
 
 ```
 PREFIX db: <http://dbpedia.org/resource/>
