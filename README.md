@@ -54,7 +54,7 @@ und um ein Painting-Objekt nach recordID zu bekommen:
  Painting findByRecordIDLike(@Param("recordid") String date);
 ```
 
-Siehe die [Implementierungsdetails](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/java/com/model/PaintingsRepository.java) in der PaintingsRepository Klasse.
+Siehe die [Implementierungsdetails](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/java/com/model/PaintingsRepository.java) zum Filtern von Painting-Objekte in der PaintingsRepository Klasse.
 
 ## Frontend:
 
