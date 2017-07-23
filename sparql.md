@@ -1,4 +1,4 @@
-### DBpedia Queries:
+### DBpedia Sparql Queries:
 
 
 1. This Sparql Query retrieves the place of birth of the author:
