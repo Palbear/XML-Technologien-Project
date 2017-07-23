@@ -1,4 +1,4 @@
-# Projektdokumentation:
+# Projektdokumentation
 
 Datensatz: Gemälde - Nationalmuseum Schweden (https://github.com/NationalmuseumSWE/WikidataCollection). 
 
@@ -21,7 +21,7 @@ zum einen aus den XML-Dateien selbst, zum anderen aus DBpedia. Die Links auf ent
 
 In diesem Projekt haben wir uns entschieden, mit Spring und React.js zu arbeiten. Nach der Anleitung von Spring haben wir festgestellt, dass es möglich ist, eine React.js Webanwendung in einer JAR-Datei zu packen, so dass die JAR-Datei Backend- und Frontend-Technologien enthält.
 
-## Architektur:
+## Architektur
 
 ![Architektur-Diagramm](https://github.com/YJ14/XML-Technologien-Project/blob/master/doc/Architecture.jpg)
 
