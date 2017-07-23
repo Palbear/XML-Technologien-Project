@@ -116,7 +116,7 @@ let query = 'prefix dbpedia: <http://dbpedia.org/resource/>
                }';
 ```
  
-Weitere SPARQL-Queries [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js) sind in der React-Script [PaintingModal.js](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js) implementiert.
+Weitere SPARQL-Queries [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/sparql.md) sind in der React-Script [PaintingModal.js](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js) implementiert.
 
 #### Einbettung der Metadaten
 
