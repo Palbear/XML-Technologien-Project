@@ -11,8 +11,12 @@ DATASET EVALUATION
 
 The dataset prepared by the Nationalmuseum Sweden in Stockholm provides information about a part of the paintings collection of the museum. 
 The dataset consists of a number of XML files in LIDO-xml format. Each file contains metadata for a single painting, 
-including title, creator, media and dimensions, often information on the depicted persons and more. 
+including title, creator, media and dimensions, often information on the depicted persons and more. Most of the descriptions are provided in Swedish language.
 At the moment of writing the dataset included 13865 XML files concerning 5334 paintings.
+
+The following image gives an example of selected metadata contained in a single painting item file:
+
+![Painting item metadata]()
 
 ## XML files
 
