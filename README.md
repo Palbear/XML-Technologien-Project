@@ -2,6 +2,8 @@
 
 Datensatz: Gemälde - Nationalmuseum Schweden (https://github.com/NationalmuseumSWE/WikidataCollection). 
 
+Datensatz gefiltert: https://github.com/YJ14/XML-Technologien-Project/blob/master/sweden-clean.zip
+
 Datensatzbewertung: https://github.com/YJ14/XML-Technologien-Project/blob/master/doc/Dataset.md
 
 Vorlesungsseite: http://www.mi.fu-berlin.de/en/inf/groups/hcc/teaching/Summer-Term-2017/XML-Technologien.html
