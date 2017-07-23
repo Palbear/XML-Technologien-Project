@@ -140,8 +140,7 @@ class PaintingModal extends React.Component {
     }
 
     // This method takes the name of the author and returns a birthPlace
-    //TODO:
-    // A parameter of the author name should replace "August_Strindberg" and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
+    // A parameter of the author name should be provided and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
     authorBirthPlace(author) {
         let query = "prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> select ?birthPlace ?place where { dbpedia:" + author.split(' ').join('_') + " dbpedia-owl:abstract ?abstract ; dbpedia-owl:birthPlace ?birthPlace . filter(langMatches(lang(?abstract),'en')) ?birthPlace rdfs:label ?place . filter(langMatches(lang(?place),'en')) }";
         let self = this;
@@ -160,9 +159,8 @@ class PaintingModal extends React.Component {
 
     }
 
-    // This method takes the name of the author and returns a 10 other known poeple who were born in the same place
-    //TODO:
-    // A parameter of the author name should replace "Ferdinand_von_Wright" and all spaces in the name paramter should be replaced with underscores : .split(' ').join('_')
+    // This method takes the name of the author and returns a 10 other known people who were born in the same place
+    // A parameter of the author name should be provided and all spaces in the name parameter should be replaced with underscores : .split(' ').join('_')
     otherTenPeopleBornInSamePlace(author) {
 
         let query = "PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> prefix dbpedia: <http://dbpedia.org/resource/> prefix dbpedia-owl: <http://dbpedia.org/ontology/> SELECT DISTINCT ?otherName WHERE { dbpedia:" + author.split(' ').join('_') + " dbpedia-owl:birthPlace ?birthPlace . ?person dbo:birthPlace ?birthPlace . ?person dbo:birthDate ?birth . ?person foaf:name ?otherName .} LIMIT 10";
@@ -212,7 +210,6 @@ class PaintingModal extends React.Component {
     }
 
     // This method takes the date of the painting and returns 10 other known artists who were born in Berlin
-    //TODO:
     // A parameter of the date should be replaced by the date variable of the painting
     tenArtistsBornBeforeTheDateOfThePainting(date) {
         let query = "PREFIX db: <http://dbpedia.org/resource/> PREFIX foaf: <http://xmlns.com/foaf/0.1/> PREFIX dbo: <http://dbpedia.org/ontology/> SELECT ?name ?person WHERE { ?person dbo:birthPlace db:Berlin . ?person dbo:birthDate ?birth . ?person foaf:name ?name . FILTER (?birth < '" + date +"'^^xsd:date) . } LIMIT 10";
