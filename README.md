@@ -3,7 +3,7 @@
 
 ## Beschreibung
 
-Kursseite: https://www.mi.fu-berlin.de/inf/groups/hcc/teaching/Sommersemester-2017/XML-Technologien.html
+Kursseite: http://www.mi.fu-berlin.de/en/inf/groups/hcc/teaching/Summer-Term-2017/XML-Technologien.html
 
 Datensatz: Gemälde - Nationalmuseum Schweden (https://github.com/NationalmuseumSWE/WikidataCollection). 
  
