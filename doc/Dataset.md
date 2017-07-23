@@ -2,10 +2,11 @@
 
 DATASET EVALUATION
 
-**Dataset:** [https://github.com/NationalmuseumSWE/WikidataCollection](https://github.com/NationalmuseumSWE/WikidataCollection)
+**Dataset:** https://github.com/NationalmuseumSWE/WikidataCollection
 
-**Wikidata link:** [http://tools.wmflabs.org/autolist/autolist1.html?props=217&q=CLAIM%5B195%3A842858%5D](http://tools.wmflabs.org/autolist/autolist1.html?props=217&q=CLAIM%5B195%3A842858%5D)
+**Wikidata link:** http://tools.wmflabs.org/autolist/autolist1.html?props=217&q=CLAIM%5B195%3A842858%5D
 
+**Filtered dataset:** https://github.com/YJ14/XML-Technologien-Project/blob/master/sweden-clean.zip
 
 ## Content description
 
@@ -30,8 +31,10 @@ The files are packed into 3 folders named by creation date:
 | `16-09-29_23/16/57` | 5309 files | ids 7201049-7206393 |
 | `16-12-16_18/34/55` | 3247 files | ids 7358521-7361767 |
 
-After analysing the content of the files we found out, that every XML file contains a reference to a painting record (recordID). 
-This record id comes from the internal database of the Nationalmuseum. This record id has been proved most useful for our data filtering, since it is unique for every painting. Having a look at the paintings files with the same record ids helped us realize that there can be up to 3 files for the same painting, each of them coming from a different folder. The file coming from the latest folder contains issue fixes for the files in the previous folders, or an updated information. For this reason we have left out all the older files and created a filtered dataset consisting of 5334 files, where all the described paintings are unique. It is worth noting, that the first folder contains only outdated files and could be completely ignored. So our 5334 files come only from the second and the third folders.
+After analysing the content of the files we found out, that every XML file contains a reference to a painting record (`<lido:recordID lido:type="local">101566</lido:recordID>`). 
+This record id comes from the internal database of the Nationalmuseum. This id has been proved most useful for our data filtering, since it is unique for every painting. 
+
+Having a look at the paintings files with the same record ids helped us realize that there can be up to 3 files for the same painting, each of them coming from a different folder. The file coming from the latest folder contains issue fixes for the files in the previous folders, or an updated information. For this reason we have left out all the older files and created a [filtered dataset](https://github.com/YJ14/XML-Technologien-Project/blob/master/sweden-clean.zip) consisting of 5334 files, where all the described paintings are unique. It is worth noting, that the first folder contains only outdated files and could be completely ignored. So our 5334 files come only from the second and the third folders.
 
 ## Issues
 
