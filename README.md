@@ -33,7 +33,7 @@ In diesem Projekt haben wir uns entschieden, mit Spring und React.js zu arbeiten
 Der Basex-Server ist dann auf port 1984 gestartet, so dass die JAR-Datei (unsere Webanwendung) mit dem BaseX Server kommunizieren kann. 
 
 Dafür wurde den BaseX-Java-Client benutzt und eine XQuery geschrieben, die alle
-Gemälde und ihre Details extrahiert hat. ([XQuery hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/resources/xq/all_paintings_2.xq))
+Gemälde und ihre Details extrahiert hat. ([XQuery hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/resources/xq/all_paintings_2.xq)) 
 
 
 #### BaseX:
@@ -103,11 +103,12 @@ Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
 ### Einsatz grundlegender XML-Technologien
 
 - **XPath/XQuery**: verwendet im Backend, um die Gemäldeliste im Backend zu initialisieren. 
-([XQuery hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/resources/xq/all_paintings_2.xq)). Auch während der Projekt-Anfangsphase wurde für die Analyse des Datensatzes verwendet.
+([XQuery hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/resources/xq/all_paintings_2.xq)). Außerdem während der Projekt-Anfangsphase für die Analyse des Datensatzes verwendet. (Einige Queries [hier](https://github.com/YJ14/XML-Technologien-Project/tree/master/Spring-Rest-React/src/main/resources/xq))
 
-- **XSLT** findet Verwendung in der [Projektdarstellungsseite](https://yj14.github.io/XML-Technologien-Project/), die Beispiel-Transformationen eines Datensatz-Items mit XSLT enthält. 
+- **XSLT** findet Verwendung in der [Projektdarstellungsseite](https://yj14.github.io/XML-Technologien-Project/), die Beispiel-Transformationen eines Datensatz-Items mit XSLT enthält. (Code-Beispiele [hier](https://github.com/YJ14/XML-Technologien-Project/tree/master/Spring-Rest-React/src/main/resources/static/sampleItems))
 
 - **XML-Schema** wurde während der Erstellung der Datenbank für die Validierung der XML-Dateien des Datensatzes verwendet. 
+(Vgl. Test-code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/java/com/basex/Main.java))
 
 ### SPARQL
 
