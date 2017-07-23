@@ -162,22 +162,3 @@ Relevante HTML-Teile für das gleiche Beispiel-Gemälde sehen dann wie folgt aus
         <span property="name">Alexander Roslin</span></div>
     ...
 ```
-
-#### Anpassung der Image-Thumbnail-Urls
-
-```html
-paintings = paintings.map((painting) => {
-                   let newPainting = painting;
-                   let arr = newPainting.image_link.split('&');
-                   let resultString = arr[0];
-                   for(let i = 1; i<arr.length; i++) {
-                       if (arr[i].indexOf('objectId') > -1) {
-                           resultString = resultString.concat('&').concat(arr[i]);
-                           break;
-                       }
-                       resultString = resultString.concat('&').concat(arr[i]);
-                   }
-                    newPainting.smallImage = resultString;
-                   return newPainting
-                });
-```
