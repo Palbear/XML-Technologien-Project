@@ -15,9 +15,7 @@ filter(langMatches(lang(?place),'en'))
 }
 ```
 
-#### This Sparql Query retrieves Info about the Depicted Person:
-
-Birth Place :
+#### This Sparql Query retrieves the 'Birth Place' of the Depicted Person:
 
 ```
 PREFIX db: <http://dbpedia.org/resource/>
