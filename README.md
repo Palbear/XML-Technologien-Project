@@ -11,10 +11,15 @@ Datensatz auf Wikidata: http://tools.wmflabs.org/autolist/autolist1.html?props=2
 
 Der Datensatz ist ein Teil der Sammlung des Nationalmuseums in Stockholm. 
 Das Nationalmuseum Schweden stellte LIDO-xml als Grundlage für die Importe zur Verfügung. 
-Der Datensatz besteht aus etwa 13000 XML-Dateien mit Gemäldeinformationen.
 Folgende Metadaten sind eingeschlossen: Künstler, Titel, Informationen zu den Medien und Dimensionen und öfters Informationen zu den abgebildeten Personen. 
+Der Datensatz bestand aus 13865 XML-Dateien mit Gemäldeinformationen. 
+Wir haben Duplikate ausgefiltert und im Endeffekt mit 5334 XML-Dateien gearbeitet (1 Datei pro Gemälde).
 
 In diesem Projekt haben wir uns entschieden mit Spring und React.js zu arbeiten. Nach der Anleitung von Spring “¹” haben wir uns festgestellt, dass es möglich ist, eine React.js Webanwendung in einer Jar-Datei zu packen, so dass die JAR-Datei Backend und Frontend Technologien enthält.
+
+## Architektur:
+
+![Architektur-Diagramm](https://github.com/YJ14/XML-Technologien-Project/blob/master/doc/Architecture.jpg)
 
 ## Backend:
 
@@ -87,10 +92,6 @@ Gemäldeinfo-Popup wurde mit Metadaten-Markierung mittels **Microdata** ausgesta
 (Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/gallery/PaintingModal.js)). 
 Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert. 
 (Code [hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/js/paintingList/Painting.js)).
-
-## Architektur:
-
-![Architektur-Diagramm](https://github.com/YJ14/XML-Technologien-Project/blob/master/doc/Architecture.jpg)
 
 ## Implementierungsdetails:
 
