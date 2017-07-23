@@ -103,7 +103,7 @@ Filtered-Paintings-Seite wurde mit Metadaten mittels **RDFa** markiert.
 - **XPath/XQuery**: verwendet im Backend, um die Gemäldeliste im Backend zu initialisieren. 
 ([XQuery hier](https://github.com/YJ14/XML-Technologien-Project/blob/master/Spring-Rest-React/src/main/resources/xq/all_paintings_2.xq)). Auch während der Projekt-Anfangsphase wurde für die Analyse des Datensatzes verwendet.
 
-- **XSLT** Findet Verwendung in der Projektdarstellungsseite. Beispiel-Transformation eines Datensatz-Items mit XSLT: https://yj14.github.io/XML-Technologien-Project/. 
+- **XSLT** findet Verwendung in der [Projektdarstellungsseite](https://yj14.github.io/XML-Technologien-Project/), die Beispiel-Transformationen eines Datensatz-Items mit XSLT enthält. 
 
 - **XML-Schema** wurde während der Erstellung der Datenbank für die Validierung der XML-Dateien des Datensatzes verwendet. 
 
