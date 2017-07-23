@@ -57,11 +57,9 @@ Consider for instance the following code fragment containing painting creator in
 ```
 (file `16-12-16_18:34:55/Item_7361463.xml`, record id 101566)
 
-Painter name in XML file: Pehr Hilleström d.ä.
 
-DBpedia URI for the painter: http://dbpedia.org/page/Pehr_Hilleström
 
-The URI could not be found, since the painter name prepared for the query was: Pehr_Hilleström_d.ä.
+DBpedia URI for the painter (http://dbpedia.org/page/Pehr_Hilleström) could not be found, since painter name prepared for the query was: Pehr_Hilleström_d.ä. (based on the painter name from the XML file: Pehr Hilleström d.ä.)
 
 - Issue with painting measurements data
 
