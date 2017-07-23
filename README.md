@@ -25,7 +25,7 @@ In diesem Projekt haben wir uns entschieden, mit Spring und React.js zu arbeiten
 
 ## Backend:
 
-1. BaseX ist ein XML-Datenbankmanagementsystem, das eine tabellarische Abbildung von Baumstrukturen für die Speicherung von XML-Dokumenten verwendet. Mit der GUI von BaseX konnten wir alle XML-Dateien importieren, um eine Datenbank zu haben. Diese Datenbank konnte man mit Xquery und Xpath anfragen. <br /> 
+1. BaseX ist ein XML-Datenbankmanagementsystem, das eine tabellarische Abbildung von Baumstrukturen für die Speicherung von XML-Dokumenten verwendet. Mit der GUI von BaseX konnten wir alle XML-Dateien importieren, um eine Datenbank zu haben. Diese Datenbank konnte man mit Xquery und Xpath anfragen.  
 Der Basex-Server ist dann auf port 1984 gestartet, so dass die JAR-Datei (unsere Webanwendung) mit dem BaseX Server kommunizieren kann. 
 
 Dafür wurde den BaseX-Java-Client benutzt und eine XQuery geschrieben, die alle	
