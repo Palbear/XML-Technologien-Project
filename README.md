@@ -51,29 +51,13 @@ Das Frontend besteht aus zwei Views(Image Gallery, Painting information) und ver
 Bei diesem View werden die Thumbnails gleich verteilt in dem Grid 4x5 angezeigt. Die vom Server erhaltenen Urls werden entsprechend bearbeitet(geparst), um die Thubnails zu hollen. Hier wird auch Pagination und Filter benutzt.
 
 **Painting information**
-Dieses View wird nach der Interaktion im ersten View angezeigt. Nachdem man ein Bild auswählt, wird automatisch die Painting-Information angezeigt. Ein Teil von Daten kommt vom Server. Der andere Teil wird mit der Hilfe vom SPARQL-Anfragen an dbpedia.org geholt. 
-Vom dpbedia.org bekommen wir Solche Info als Author-Beschreibung, Autors Foto, andere Autoren, die an gleichem Ort geboren wurde usw.
+Dieses View wird nach der Interaktion im ersten View angezeigt. Nachdem man ein Bild durch Anklicken auswählt, wird automatisch die Painting-Information angezeigt. Ein Teil von Daten kommt vom Server. Der andere Teil wird mit der Hilfe vom SPARQL-Anfragen an dbpedia.org geholt. 
+Vom dpbedia.org bekommen wir solche Info wie Author-Beschreibung, Foto des Autors, andere Autoren mit dem gleichen Geburtsort usw.
         
 **Pagination, Modalwindows, Filter, Routing...**
-Die meisten Komponennten wurde vom react-bootstrap importiert. Dabei sind Pagination, Modalwindows, Filter, Routing, ModalWindow, ReactRpg und die andere. Die gehloten Daten vom unserem Backend-Server bzw vom Server dbpedia.org sind  entsprechend für die jede Komnponente bei dem Frontend vorbereitet. Zum Beispiel Verarbeitung von Url's für die Thumbnails:
+Die meisten Komponennten wurde vom react-bootstrap importiert. Dazu gehören Pagination, Modalwindows, Filter, Routing, ModalWindow, ReactRpg u.a. Die gehloten Daten von unserem Backend-Server bzw. vom Server dbpedia.org sind entsprechend für jede Komnponente bei dem Frontend vorbereitet. (Z.B. Urls für die Image-Thumbnails werden angepasst)
 
-```html
-paintings = paintings.map((painting) => {
-                   let newPainting = painting;
-                   let arr = newPainting.image_link.split('&');
-                   let resultString = arr[0];
-                   for(let i = 1; i<arr.length; i++) {
-                       if (arr[i].indexOf('objectId') > -1) {
-                           resultString = resultString.concat('&').concat(arr[i]);
-                           break;
-                       }
-                       resultString = resultString.concat('&').concat(arr[i]);
-                   }
-                    newPainting.smallImage = resultString;
-                   return newPainting
-                });
-```
-Der Filter ist nur nach Autoren implementirert. Der Filter hat auch Autocomplete. Für den benutzen wir unseren API-Enpoint mit der Suche nach Author:
+Der Filter ist nur nach Autoren implementirert. Der Filter hat auch Autocomplete-Feature. Dafür benutzen wir unseren API-Enpoint mit der Suche nach dem Author:
 ```
 'http://localhost:8080/api/paintings/search/findByArtistLike?name=' + obj.label
 ```
@@ -147,4 +131,23 @@ Relevante HTML-Teile für das gleiche Beispiel-Gemälde sehen dann wie folgt aus
     <div property="creator" typeof="Person">
         <span property="name">Alexander Roslin</span></div>
     ...
+```
+
+#### Anpassung der Image-Thumbnail-Urls
+
+```html
+paintings = paintings.map((painting) => {
+                   let newPainting = painting;
+                   let arr = newPainting.image_link.split('&');
+                   let resultString = arr[0];
+                   for(let i = 1; i<arr.length; i++) {
+                       if (arr[i].indexOf('objectId') > -1) {
+                           resultString = resultString.concat('&').concat(arr[i]);
+                           break;
+                       }
+                       resultString = resultString.concat('&').concat(arr[i]);
+                   }
+                    newPainting.smallImage = resultString;
+                   return newPainting
+                });
 ```
