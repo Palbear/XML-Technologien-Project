@@ -10,8 +10,6 @@ Vorlesungsseite: http://www.mi.fu-berlin.de/en/inf/groups/hcc/teaching/Summer-Te
 
 Projektdarstellungsseite: https://yj14.github.io/XML-Technologien-Project/
 
-Autoren: Hyekyeong Han, Lidia Krus, Severina Virovska, Suzana Puscasu, Taras Kolba, Yamen Jeries
-
 ## Abstract
 
 In diesem Projekt haben wir uns mit den Daten befasst, die einen Teil der Sammlung des Nationalmuseums in Stockholm beschreiben. Der Datensatz bestand aus 13865 XML-Dateien mit Gemäldeinformationen im Format LIDO-xml.
